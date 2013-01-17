@@ -192,7 +192,7 @@ void maxlib_average_setup(void)
     class_addfloat(average_class, average_float);
 	class_addmethod(average_class, (t_method)average_index, gensym("index"), A_FLOAT, 0);
 #ifndef MAXLIB
-    post(version);
+    logpost(NULL, 4, version);
     
 #else
 	class_addcreator((t_newmethod)average_new, gensym("average"), A_DEFFLOAT, 0);
