@@ -56,14 +56,14 @@ static void rand_arbran_pdfscale(t_rand_arbran *x)
 	t_garray *bx = x->x_bufx, *bp = x->x_bufp;
 	t_float a = 0;
 	t_int k = 0;
-	t_float *tx, *tp;
+	t_word *tp, *tx;
 	int ix, ip;
-	if (!garray_getfloatarray(bx, &ix, &tx))
+	if (!garray_getfloatwords(bx, &ix, &tx))
 	{
 		post("arbran: couldn't read from array!");
 		return;
 	}
-	if (!garray_getfloatarray(bp, &ip, &tp))
+	if (!garray_getfloatwords(bp, &ip, &tp))
 	{
 		post("arbran: couldn't read from array!");
 		return;
@@ -71,11 +71,12 @@ static void rand_arbran_pdfscale(t_rand_arbran *x)
 
 	for(k = 1; k < ix; k++)
 	{
-		a += (tx[k]-tx[k-1])*(tp[k]+tp[k-1])/2.0;
+		a += (tx[k].w_float-tx[k-1].w_float)*(tp[k].w_float +
+		    tp[k-1].w_float)/2.0;
 	}
 	for(k = 0; k < ix; k++)
 	{
-		tp[k] = tp[k]/a;
+		tp[k].w_float = tp[k].w_float/a;
 	}
 	garray_redraw(x->x_bufp);
 }
@@ -85,14 +86,14 @@ static void rand_arbran_bang(t_rand_arbran *x)
 	t_garray *bx = x->x_bufx, *bp = x->x_bufp;
 	t_float a, u, a0, slope, b, d, r;
 	t_int k = 0;
-	t_float *tx, *tp;
+	t_word *tp, *tx;
 	int ix, ip;
-	if (!garray_getfloatarray(bx, &ix, &tx))
+	if (!garray_getfloatwords(bx, &ix, &tx))
 	{
 		post("arbran: couldn't read from array!");
 		return;
 	}
-	if (!garray_getfloatarray(bp, &ip, &tp))
+	if (!garray_getfloatwords(bp, &ip, &tp))
 	{
 		post("arbran: couldn't read from array!");
 		return;
@@ -103,20 +104,23 @@ static void rand_arbran_bang(t_rand_arbran *x)
 	u = fran();
 	while(u > a)
 	{
-		a0 = (tx[k+1]-tx[k])*(tp[k+1]+tp[k])/2.0;
+		a0 = (tx[k+1].w_float-tx[k].w_float)*(tp[k+1].w_float +
+		    tp[k].w_float)/2.0;
 		a += a0;
 		k++;
 	}
 	k--;
-	slope = (tp[k+1]-tp[k])/(tx[k+1]-tx[k]);
+	slope = (tp[k+1].w_float-tp[k].w_float)/(tx[k+1].w_float -
+	    tx[k].w_float);
 	if(slope == 0)
 	{
-		r = (u-a+a0)/tp[k]+tx[k];
+		r = (u-a+a0)/tp[k].w_float+tx[k].w_float;
 	}
 	else
 	{
-		b=tp[k]/slope-tx[k];
-		d=b*b+tx[k]*tx[k]+2*b*tx[k]+2*(u-a+a0)/slope;
+		b=tp[k].w_float/slope-tx[k].w_float;
+		d=b*b+tx[k].w_float*tx[k].w_float +
+		    2*b*tx[k].w_float+2*(u-a+a0)/slope;
 		if(slope > 0)
 			r=-b+sqrt(d);
 		else

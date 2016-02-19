@@ -72,7 +72,7 @@ static void score_float(t_score *x, t_floatarg f)
 
 	t_int velo = x->x_velo;     /* get the velocity */
 	t_garray *b = x->x_buf;		/* make local copy of array */
-	float *tab;                 /* we'll store notes in here */
+	t_word *tab;                 /* we'll store notes in here */
 	int items;
 	int i, j, n, check;
 
@@ -86,7 +86,7 @@ static void score_float(t_score *x, t_floatarg f)
 		x->x_error = 1;
 		goto output;
 	}
-	if (!garray_getfloatarray(b, &items, &tab))
+	if (!garray_getfloatwords(b, &items, &tab))
 	{
 		post("score: couldn't read from array!");
 		x->x_error = 1;
@@ -111,7 +111,7 @@ static void score_float(t_score *x, t_floatarg f)
 		for (i = x->x_index + 1; i < (x->x_index + x->x_skipindex + 1); i++)
 		{
 			// post("%d: %d -> %d", i, x->x_alloctable[n], (t_int)tab[i]);
-			if(x->x_alloctable[n] == (t_int)tab[i])
+			if(x->x_alloctable[n] == (t_int)tab[i].w_float)
 			{
 				if(i - x->x_index != 1) post("score: skipped %d notes!", i - x->x_index - 1);
 				x->x_alloctable[n] = -1;		/* delete note, we've matched it! */
@@ -127,7 +127,7 @@ static void score_float(t_score *x, t_floatarg f)
 
 			for (j = 0; j < MAX_NOTES; j++)	/* check with every note from our alloctable */
 			{ 
-				if (x->x_alloctable[check] == (t_int)tab[i])	/* this one would fit */
+				if (x->x_alloctable[check] == (t_int)tab[i].w_float)	/* this one would fit */
 				{
 						/* check the time restrictions */
 					if (clock_gettimesince(x->x_starttime[check]) < x->x_skiptime)

@@ -148,7 +148,7 @@ static int subst_calc(t_subst *x, int n)
 	t_atom newrow[MAXSIZE];
 	t_garray *A = x->x_buf;
 	int npoints;
-	t_float *vec;
+	t_word *vec;
 
 	if(x->x_length <= 1)
 	{
@@ -224,7 +224,7 @@ static int subst_calc(t_subst *x, int n)
 	// write to array
 	if(x->x_array)if (!(A = (t_garray *)pd_findbyclass(x->x_array, garray_class)))
 		error("subst: %s: no such array", x->x_array->s_name);
-	else if (!garray_getfloatarray(A, &npoints, &vec))
+	else if (!garray_getfloatwords(A, &npoints, &vec))
 		error("subst: %s: bad template ", x->x_array->s_name);
 	else
 	{
@@ -234,8 +234,7 @@ static int subst_calc(t_subst *x, int n)
 		{
 			while(npoints--)
 			{
-				*vec++ = atom_getfloat(x->x_row + i);
-				i++;
+				vec[i++].w_float = atom_getfloat(x->x_row + i);
 			}
 		}
 		else				// update 
@@ -243,10 +242,10 @@ static int subst_calc(t_subst *x, int n)
 			npoints -= l;
 			while (l--)
 			{
-				*vec++ = atom_getfloat(x->x_row + i);
-				i++;
+				vec[i++].w_float = atom_getfloat(x->x_row + i);
 			}
-			while (npoints--) *vec++ = 0;
+			while (npoints--) 
+				vec[i++].w_float = 0;
 		}
 		garray_redraw(A);
 	}
@@ -298,7 +297,7 @@ void subst_set(t_subst *x, t_symbol *s)
 static void subst_load(t_subst *x, t_symbol *s)
 {	
 	t_garray *b;		/* make local copy of array */
-	t_float *tab;                 /* the content itselfe */
+	t_word *tab;                 /* the content itselfe */
 	int items, i;
 
 	if ((b = (t_garray *)pd_findbyclass(s, garray_class)))
@@ -310,14 +309,14 @@ static void subst_load(t_subst *x, t_symbol *s)
 	}
 
 		// read from our array
-	if (!garray_getfloatarray(b, &items, &tab))
+	if (!garray_getfloatwords(b, &items, &tab))
 	{
 		post("subst: couldn't read from array!");
 		return;
 	}
 	for(i = 0; i < items; i++)
 	{
-		SETFLOAT(x->x_row + i, tab[i]);		// copy array into x->x_row
+		SETFLOAT(x->x_row + i, tab[i].w_float);		// copy array into x->x_row
 	}
 	x->x_length = items;
 	post("subst: loaded %d values from array \"%s\"", items, s->s_name);
