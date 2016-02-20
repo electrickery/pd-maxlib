@@ -1,40 +1,191 @@
-#N canvas 0 26 663 491 12;
-#X obj 41 152 bng 20 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
--1;
-#X floatatom 41 249 5 0 0 0 - - -;
-#N canvas 0 0 450 300 (subpatch) 0;
-#X array \$0-a1 6 float 1;
-#A 0 1.1 2.67143 3.24285 3.1 4.38571 8.67143;
-#X coords 0 10 5 0 200 140 1;
-#X restore 347 71 graph;
-#N canvas 0 0 450 300 (subpatch) 0;
-#X array \$0-a2 6 float 1;
-#A 0 0.0229077 0.204366 0.486501 0.0632986 0.204028 0.025319;
-#X coords 0 1 5 0 200 140 1;
-#X restore 347 240 graph;
-#X text 39 21 arbran :: generates a random variable that conforms to
-the piecewise probability density functions specified in two arrays
+#N canvas 500 80 571 534 10;
+#X obj 0 0 cnv 15 552 40 empty empty arbran 3 12 0 18 -204280 -1 0
 ;
-#X text 40 297 array1 has values between 0 and 10;
-#X text 40 317 array2 between 0 and 1 !;
-#X msg 99 152 pdfscale;
-#X text 41 389 array1 stores the values and array2 the corresponding
-probabilities (0 - 1) for each of that values \, use message 'pdfscale'
-to check (and adjust) the probability values to correct settings (the
-area below the curve has to be 1);
-#N canvas 293 158 494 344 META 0;
-#X text 12 155 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
-Wilkes for Pd version 0.42.;
+#X obj 0 371 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 430 cnv 3 550 3 empty empty outlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 467 cnv 3 550 3 empty empty arguments 8 12 0 13 -228856 -1
+0;
+#X obj 79 439 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X obj 79 385 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X obj 0 630 cnv 15 552 21 empty empty empty 20 12 0 14 -233017 -33289
+0;
+#N canvas 242 347 428 75 Related_objects 0;
+#X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
+#X text 6 1 Related Objects;
+#X restore 206 632 pd Related_objects;
+#N canvas 592 514 379 261 META 0;
 #X text 12 25 LICENSE GPL v2;
-#X text 12 135 AUTHOR Olaf Matthes <olaf.matthes@gmx.de>;
+#X text 12 125 AUTHOR Olaf Matthes <olaf.matthes@gmx.de>;
+#X text 12 145 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
+Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
+#X text 12 5 KEYWORDS control random array;
 #X text 12 45 DESCRIPTION generate a random variable conforming to
 the piecewise probability density functions specified in two arrays
 ;
-#X text 12 95 INLET_0 bang pdfscale;
-#X text 12 115 OUTLET_0 float;
-#X text 12 5 KEYWORDS control random array;
-#X restore 605 463 pd META;
-#X obj 41 202 arbran \$0-a1 \$0-a2;
-#X connect 0 0 10 0;
-#X connect 7 0 10 0;
-#X connect 10 0 1 0;
+#X text 11 87 INLET_0 bang pdfscale;
+#X text 11 107 OUTLET_0 float;
+#X restore 502 632 pd META;
+#X obj 0 516 cnv 3 550 3 empty empty more_info 8 12 0 13 -228856 -1
+0;
+#X text 8 23 generates a random variable based on two arrays;
+#X obj 99 97 bng 20 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
+-1;
+#X floatatom 99 334 5 0 0 0 - - -, f 5;
+#N canvas 0 50 450 300 (subpatch) 0;
+#X array \$0-a1 6 float 1;
+#A 0 1.1 2.67143 3.24285 3.1 4.38571 8.67143;
+#X coords 0 10 5 0 200 140 1;
+#X restore 347 60 graph;
+#N canvas 0 50 450 300 (subpatch) 0;
+#X array \$0-a2 6 float 1;
+#A 0 -0.00715542 0.357147 0.4865 0.0632985 0.204028 0.025319;
+#X coords 0 1 5 0 200 140 1;
+#X restore 347 221 graph;
+#X msg 157 98 pdfscale;
+#N canvas 533 319 462 519 hist 0;
+#X obj 19 54 inlet;
+#X obj 58 242 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 112 242 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 166 242 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 220 242 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 274 242 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 352 55 inlet;
+#X obj 352 102 s \$0-clr;
+#X msg 352 79 1;
+#X obj 138 299 + 1;
+#X obj 127 270 r \$0-clr;
+#X floatatom 112 326 5 0 0 0 - - -, f 5;
+#X obj 84 298 + 1;
+#X obj 73 270 r \$0-clr;
+#X floatatom 58 325 5 0 0 0 - - -, f 5;
+#X obj 246 299 + 1;
+#X obj 235 270 r \$0-clr;
+#X floatatom 220 326 5 0 0 0 - - -, f 5;
+#X obj 192 298 + 1;
+#X obj 181 270 r \$0-clr;
+#X floatatom 166 325 5 0 0 0 - - -, f 5;
+#X obj 354 299 + 1;
+#X obj 343 270 r \$0-clr;
+#X floatatom 328 326 5 0 0 0 - - -, f 5;
+#X obj 300 299 + 1;
+#X obj 289 270 r \$0-clr;
+#X floatatom 274 326 5 0 0 0 - - -, f 5;
+#X obj 58 361 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 800 1;
+#X obj 112 361 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 700 1;
+#X obj 166 361 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 300 1;
+#X obj 220 361 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 1000 1;
+#X obj 274 361 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 400 1;
+#X obj 328 361 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 300 1;
+#X obj 58 109 moses 2;
+#X obj 112 135 moses 3;
+#X obj 166 159 moses 4;
+#X obj 220 186 moses 5;
+#X obj 274 212 moses 6;
+#X obj 19 242 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 19 83 moses 1;
+#X obj 328 242 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 328 299 f 1;
+#X obj 274 299 f 1;
+#X obj 220 299 f 1;
+#X obj 166 298 f 1;
+#X obj 112 299 f 1;
+#X obj 58 298 f 1;
+#X connect 0 0 39 0;
+#X connect 1 0 46 0;
+#X connect 2 0 45 0;
+#X connect 3 0 44 0;
+#X connect 4 0 43 0;
+#X connect 5 0 42 0;
+#X connect 6 0 8 0;
+#X connect 8 0 7 0;
+#X connect 9 0 45 1;
+#X connect 10 0 45 1;
+#X connect 11 0 28 0;
+#X connect 12 0 46 1;
+#X connect 13 0 46 1;
+#X connect 14 0 27 0;
+#X connect 15 0 43 1;
+#X connect 16 0 43 1;
+#X connect 17 0 30 0;
+#X connect 18 0 44 1;
+#X connect 19 0 44 1;
+#X connect 20 0 29 0;
+#X connect 21 0 41 1;
+#X connect 22 0 41 1;
+#X connect 23 0 32 0;
+#X connect 24 0 42 1;
+#X connect 25 0 42 1;
+#X connect 26 0 31 0;
+#X connect 33 0 1 0;
+#X connect 33 1 34 0;
+#X connect 34 0 2 0;
+#X connect 34 1 35 0;
+#X connect 35 0 3 0;
+#X connect 35 1 36 0;
+#X connect 36 0 4 0;
+#X connect 36 1 37 0;
+#X connect 37 0 5 0;
+#X connect 37 1 40 0;
+#X connect 39 0 38 0;
+#X connect 39 1 33 0;
+#X connect 40 0 41 0;
+#X connect 41 0 21 0;
+#X connect 41 0 23 0;
+#X connect 42 0 24 0;
+#X connect 42 0 26 0;
+#X connect 43 0 15 0;
+#X connect 43 0 17 0;
+#X connect 44 0 18 0;
+#X connect 44 0 20 0;
+#X connect 45 0 9 0;
+#X connect 45 0 11 0;
+#X connect 46 0 12 0;
+#X connect 46 0 14 0;
+#X restore 141 333 pd hist;
+#X obj 99 72 metro 100;
+#X obj 99 50 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X text 197 333 <-distribution;
+#X text 385 203 - values between 0 and 1 !;
+#X obj 506 4 arbran;
+#X obj 99 229 maxlib/arbran \$0-a1 \$0-a2;
+#X text 379 44 - values between 0 and 10;
+#X text 107 385 bang;
+#X text 162 385 - calculate next output value;
+#X text 107 405 pdfscale;
+#X text 162 405 - check and adjust probability values (sum has to be
+1);
+#X text 107 439 float;
+#X text 162 439 - calculated value;
+#X text 96 495 arg2: probability array;
+#X text 96 525 arbran generates a random variable that conforms to
+the piecewise probability density functions specified in two arrays
+;
+#X text 95 567 array1 stores the values and array2 the corresponding
+probabilities (0 - 1) for each of that values \, use message 'pdfscale'
+to check (and adjust) the probability values to correct settings (the
+area below the curve has to be 1);
+#X text 96 476 arg1: value array;
+#X connect 11 0 22 0;
+#X connect 15 0 22 0;
+#X connect 17 0 11 0;
+#X connect 18 0 17 0;
+#X connect 22 0 12 0;
+#X connect 22 0 16 0;
