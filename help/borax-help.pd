@@ -1,60 +1,24 @@
-#N canvas 0 26 645 549 12;
-#X obj 125 230 bng 20 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
--1;
-#X floatatom 125 298 6 0 0 0 - - -;
-#X floatatom 50 451 5 0 0 0 - - -;
-#X floatatom 26 502 5 0 0 0 - - -;
-#X floatatom 63 425 5 0 0 0 - - -;
-#X floatatom 38 476 5 0 0 0 - - -;
-#X floatatom 100 349 6 0 0 0 - - -;
-#X floatatom 75 399 5 0 0 0 - - -;
-#X floatatom 112 323 5 0 0 0 - - -;
-#X floatatom 87 374 5 0 0 0 - - -;
-#X obj 26 269 borax 0 0 0 0;
-#X text 103 452 number of voices currently playing;
-#X text 120 422 pitch;
-#X text 127 399 velocity;
-#X obj 15 54 makenote 100 1500;
-#X obj 336 67 metro 100;
-#X obj 428 124 + 50;
-#X obj 428 147 s time;
-#X obj 403 43 r time;
-#X obj 260 147 s pitch;
-#X obj 15 17 r pitch;
-#X obj 80 18 r velo;
-#X msg 336 14 1;
-#X msg 345 37 0;
-#X obj 513 101 random 64;
-#X obj 513 124 + 64;
-#X obj 513 147 s velo;
-#X obj 146 19 r duration;
-#X obj 336 147 s duration;
-#X obj 336 124 + 250;
-#X text 91 477 voice allocation number - each note playing is assigned
-a no;
-#X obj 45 88 noteout 1;
-#X obj 428 101 random 500;
-#X obj 260 101 random 88;
-#X obj 260 124 + 21;
-#X text 120 200 borax :: analyse incoming midi notes;
-#X text 363 13 <-- click to play random music;
-#X obj 40 125 notein 1;
-#X text 186 300 delta time value - time between note-ons;
-#X text 160 350 duration value - time between note-on and note-off
+#N canvas 498 82 557 489 10;
+#X obj 0 0 cnv 15 552 40 empty empty borax 3 12 0 18 -204280 -1 0;
+#X obj 0 421 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
 ;
-#X text 79 502 note-on count;
-#X text 141 374 duration count;
-#X text 164 326 delta time count;
-#X obj 336 101 random 1000;
-#X text 153 228 <-- reset :: sets counters and clocks to zero and sends
+#X obj 0 508 cnv 3 550 3 empty empty outlets 8 12 0 13 -228856 -1 0
 ;
-#X text 258 243 note-off for all notes currently playing;
-#X text 137 273 <--- zeroes only added to make the object larger;
-#N canvas 326 26 507 368 META 0;
-#X text 12 326 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
-Wilkes for Pd version 0.42.;
-#X text 12 25 LICENSE GPL v2;
+#X obj 0 754 cnv 3 550 3 empty empty arguments 8 12 0 13 -228856 -1
+0;
+#X obj 79 432 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X obj 0 784 cnv 15 552 21 empty empty empty 20 12 0 14 -233017 -33289
+0;
+#N canvas 242 347 428 75 Related_objects 0;
+#X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
+#X text 6 1 Related Objects;
+#X restore 206 788 pd Related_objects;
+#N canvas 931 384 379 261 META 0;
 #X text 12 306 AUTHOR Olaf Matthes <olaf.matthes@gmx.de>;
+#X text 12 326 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
+Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
+#X text 12 25 LICENSE GPL v2;
 #X text 12 5 KEYWORDS control MIDI max_compatible;
 #X text 12 45 DESCRIPTION analyse incoming midi notes;
 #X text 12 65 INLET_0 float;
@@ -69,38 +33,132 @@ Wilkes for Pd version 0.42.;
 #X text 12 245 OUTLET_6 float;
 #X text 12 265 OUTLET_7 float;
 #X text 12 285 OUTLET_8 float;
-#X restore 583 517 pd META;
-#X connect 0 0 10 2;
-#X connect 10 0 3 0;
-#X connect 10 1 5 0;
-#X connect 10 2 2 0;
-#X connect 10 3 4 0;
-#X connect 10 4 7 0;
-#X connect 10 5 9 0;
-#X connect 10 6 6 0;
-#X connect 10 7 8 0;
-#X connect 10 8 1 0;
-#X connect 14 0 10 0;
-#X connect 14 0 31 0;
-#X connect 14 1 10 1;
-#X connect 14 1 31 1;
-#X connect 15 0 24 0;
-#X connect 15 0 32 0;
-#X connect 15 0 33 0;
-#X connect 15 0 43 0;
-#X connect 16 0 17 0;
-#X connect 18 0 15 1;
-#X connect 20 0 14 0;
-#X connect 21 0 14 1;
-#X connect 22 0 15 0;
-#X connect 23 0 15 0;
-#X connect 24 0 25 0;
-#X connect 25 0 26 0;
-#X connect 27 0 14 2;
-#X connect 29 0 28 0;
-#X connect 32 0 16 0;
-#X connect 33 0 34 0;
-#X connect 34 0 19 0;
-#X connect 37 0 10 0;
-#X connect 37 1 10 1;
-#X connect 43 0 29 0;
+#X restore 502 788 pd META;
+#X obj 79 456 cnv 17 3 17 empty empty 1 5 9 0 16 -228856 -162280 0
+;
+#X text 107 455 float;
+#X obj 79 518 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X text 107 518 float;
+#X text 9 23 analyse incoming midi notes;
+#X obj 511 4 borax;
+#X obj 79 47 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 184 74 bng 20 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
+-1;
+#X floatatom 154 192 6 0 0 0 - - -, f 6;
+#X floatatom 97 345 5 0 0 0 - - -, f 5;
+#X floatatom 79 396 5 0 0 0 - - -, f 5;
+#X floatatom 107 319 5 0 0 0 - - -, f 5;
+#X floatatom 88 370 5 0 0 0 - - -, f 5;
+#X floatatom 135 243 6 0 0 0 - - -, f 6;
+#X floatatom 116 293 5 0 0 0 - - -, f 5;
+#X floatatom 144 217 5 0 0 0 - - -, f 5;
+#X floatatom 125 268 5 0 0 0 - - -, f 5;
+#N canvas 504 452 450 300 random 0;
+#X obj 157 126 metro 100;
+#X obj 249 183 + 50;
+#X obj 334 160 random 64;
+#X obj 334 183 + 64;
+#X obj 157 183 + 250;
+#X obj 249 160 random 500;
+#X obj 58 160 random 88;
+#X obj 58 183 + 21;
+#X obj 157 160 random 1000;
+#X obj 157 35 inlet;
+#X obj 165 55 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 58 224 makenote 100 1500;
+#X obj 58 262 outlet;
+#X obj 157 262 outlet;
+#X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
+#X text 6 1 Random music generator;
+#X connect 0 0 2 0;
+#X connect 0 0 5 0;
+#X connect 0 0 6 0;
+#X connect 0 0 8 0;
+#X connect 1 0 0 1;
+#X connect 2 0 3 0;
+#X connect 3 0 11 1;
+#X connect 4 0 11 2;
+#X connect 5 0 1 0;
+#X connect 6 0 7 0;
+#X connect 7 0 11 0;
+#X connect 8 0 4 0;
+#X connect 9 0 0 0;
+#X connect 10 0 0 0;
+#X connect 11 0 12 0;
+#X connect 11 1 13 0;
+#X restore 79 71 pd random music;
+#X text 96 760 none;
+#X obj 79 479 cnv 17 3 17 empty empty 2 5 9 0 16 -228856 -162280 0
+;
+#X text 107 478 bang;
+#X text 162 477 - sets counters and clocks to zero and sends note-off
+for all notes currently playing;
+#X text 162 454 - velocity;
+#X text 163 432 - note number;
+#X text 107 432 float;
+#X obj 79 541 cnv 17 3 17 empty empty 1 5 9 0 16 -228856 -162280 0
+;
+#X text 107 541 float;
+#X obj 79 564 cnv 17 3 17 empty empty 2 5 9 0 16 -228856 -162280 0
+;
+#X text 107 564 float;
+#X obj 79 587 cnv 17 3 17 empty empty 3 5 9 0 16 -228856 -162280 0
+;
+#X text 107 587 float;
+#X obj 79 610 cnv 17 3 17 empty empty 4 5 9 0 16 -228856 -162280 0
+;
+#X text 107 610 float;
+#X obj 79 633 cnv 17 3 17 empty empty 5 5 9 0 16 -228856 -162280 0
+;
+#X text 107 633 float;
+#X text 116 396 0: note-on count;
+#X text 133 346 2: number of voices currently playing;
+#X text 141 320 3: pitch;
+#X text 151 294 4: velocity;
+#X text 160 270 5: duration count;
+#X text 182 217 7: delta time count;
+#X obj 79 655 cnv 17 3 17 empty empty 6 5 9 0 16 -228856 -162280 0
+;
+#X text 107 655 float;
+#X obj 79 678 cnv 17 3 17 empty empty 7 5 9 0 16 -228856 -162280 0
+;
+#X text 107 678 float;
+#X obj 79 701 cnv 17 3 17 empty empty 8 5 9 0 16 -228856 -162280 0
+;
+#X text 107 701 float;
+#X obj 79 724 cnv 17 3 17 empty empty 9 5 9 0 16 -228856 -162280 0
+;
+#X text 107 724 float;
+#X text 161 724 - delta time value - time between note-ons;
+#X text 199 192 8: delta time value;
+#X text 163 701 - delta time count;
+#X text 162 680 - duration value - time between note-on and note-off
+;
+#X text 178 245 6: duration value;
+#X text 163 519 - note-on count;
+#X text 123 370 1: voice allocation number;
+#X text 162 539 - voice allocation number: each note playing is assigned
+a nunber;
+#X text 163 565 - number of voices currently playing;
+#X text 163 587 - pitch;
+#X text 163 610 - velocity;
+#X text 163 633 - duration count;
+#X text 163 655 - duration value;
+#X text 209 77 reset;
+#X obj 79 163 maxlib/borax;
+#X connect 14 0 25 0;
+#X connect 15 0 71 2;
+#X connect 25 0 71 0;
+#X connect 25 1 71 1;
+#X connect 71 0 18 0;
+#X connect 71 1 20 0;
+#X connect 71 2 17 0;
+#X connect 71 3 19 0;
+#X connect 71 4 22 0;
+#X connect 71 5 24 0;
+#X connect 71 6 21 0;
+#X connect 71 7 23 0;
+#X connect 71 8 16 0;

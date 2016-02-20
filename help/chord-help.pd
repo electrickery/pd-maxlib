@@ -1,32 +1,23 @@
-#N canvas 0 26 500 334 12;
-#X floatatom 15 276 5 0 0 0 - - -;
-#X symbolatom 44 212 48 0 0 0 - - -;
-#X floatatom 74 149 5 0 0 0 - - -;
-#X floatatom 131 149 5 0 0 0 - - -;
-#X floatatom 189 149 5 0 0 0 - - -;
-#X floatatom 248 149 5 0 0 0 - - -;
-#X floatatom 59 182 5 0 0 0 - - -;
-#X text 71 276 MIDI note number of bass note;
-#X text 116 175 root position (0) \, 1st inversion (1);
-#X text 115 188 or 2nd inversion (2);
-#X floatatom 29 249 5 0 0 0 - - -;
-#X text 84 251 class of bass note;
-#X text 231 118 list of chord notes;
-#X obj 15 51 notein;
-#X obj 15 86 chord 59;
-#X text 90 86 <-- notes higher than 59 get ignored;
-#X text 15 9 chord :: tries to detect chords;
-#X text 89 232 notes in chord : chord name;
-#X text 89 26 written by Olaf Matthes <olaf.matthes@gmx.de>;
-#X text 89 44 based on code by Rober Rowe;
-#X obj 74 118 unpack f f f f f f;
-#X floatatom 303 149 5 0 0 0 - - -;
-#X floatatom 362 149 5 0 0 0 - - -;
-#N canvas 293 158 494 344 META 0;
-#X text 12 226 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
-Wilkes for Pd version 0.42.;
+#N canvas 498 81 557 534 10;
+#X obj 0 0 cnv 15 552 40 empty empty chord 3 12 0 18 -204280 -1 0;
+#X obj 0 353 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 414 cnv 3 550 3 empty empty outlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 554 cnv 3 550 3 empty empty arguments 8 12 0 13 -228856 -1
+0;
+#X obj 79 428 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X obj 0 584 cnv 15 552 21 empty empty empty 20 12 0 14 -233017 -33289
+0;
+#N canvas 242 347 428 75 Related_objects 0;
+#X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
+#X text 6 1 Related Objects;
+#X restore 206 586 pd Related_objects;
+#N canvas 701 411 379 261 META 0;
+#X text 13 238 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
+Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
 #X text 12 25 LICENSE GPL v2;
-#X text 12 206 AUTHOR Olaf Matthes <olaf.matthes@gmx.de>;
 #X text 12 86 INLET_1 float;
 #X text 12 106 OUTLET_0 float;
 #X text 12 45 DESCRIPTION tries to detect chords;
@@ -36,17 +27,69 @@ Wilkes for Pd version 0.42.;
 #X text 12 146 OUTLET_2 symbol;
 #X text 12 186 OUTLET_4 list;
 #X text 12 66 INLET_0 float;
-#X restore 435 308 pd META;
-#X connect 13 0 14 0;
-#X connect 13 1 14 1;
-#X connect 14 0 0 0;
-#X connect 14 1 10 0;
-#X connect 14 2 1 0;
-#X connect 14 3 6 0;
-#X connect 14 4 20 0;
-#X connect 20 0 2 0;
-#X connect 20 1 3 0;
-#X connect 20 2 4 0;
-#X connect 20 3 5 0;
-#X connect 20 4 21 0;
-#X connect 20 5 22 0;
+#X text 12 205 AUTHOR Olaf Matthes <olaf.matthes@gmx.de> based on code
+by Rober Rowe;
+#X restore 502 588 pd META;
+#X text 20 21 tries to detect chords;
+#X obj 513 4 chord;
+#X floatatom 83 309 5 0 0 0 - - -, f 5;
+#X symbolatom 126 270 48 0 0 0 - - -, f 48;
+#X floatatom 170 231 5 0 0 0 - - -, f 5;
+#X floatatom 212 231 5 0 0 0 - - -, f 5;
+#X floatatom 257 231 5 0 0 0 - - -, f 5;
+#X floatatom 303 231 5 0 0 0 - - -, f 5;
+#X floatatom 148 252 5 0 0 0 - - -, f 5;
+#X floatatom 104 289 5 0 0 0 - - -, f 5;
+#X obj 83 98 notein;
+#X obj 170 205 unpack f f f f f f;
+#X obj 83 153 maxlib/chord 59;
+#X obj 79 453 cnv 17 3 17 empty empty 1 5 9 0 16 -228856 -162280 0
+;
+#X text 107 428 float;
+#X text 107 453 float;
+#X text 96 563 lowest not number to ignore;
+#X obj 79 367 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X obj 79 392 cnv 17 3 17 empty empty 1 5 9 0 16 -228856 -162280 0
+;
+#X text 107 367 float;
+#X text 162 367 - note number;
+#X text 107 392 float;
+#X text 162 392 - note velocity;
+#X obj 79 478 cnv 17 3 17 empty empty 2 5 9 0 16 -228856 -162280 0
+;
+#X obj 79 503 cnv 17 3 17 empty empty 3 5 9 0 16 -228856 -162280 0
+;
+#X text 107 503 float;
+#X obj 79 528 cnv 17 3 17 empty empty 5 5 9 0 16 -228856 -162280 0
+;
+#X text 162 428 - MIDI note number of bass note;
+#X text 162 453 - class of bass note;
+#X text 162 501 - root position (0) \, 1st inversion (1) or 2nd inversion
+(2);
+#X text 107 478 symbol;
+#X text 162 478 - notes in chord : chord name;
+#X text 162 528 - list of chord notes;
+#X text 107 528 list;
+#X obj 152 112 unpack f f;
+#X msg 355 51 42 63 \, 44 63 \, 46 63;
+#X msg 355 70 42 0 \, 44 0 \, 46 0;
+#X msg 354 91 60 63 \, 64 63 \, 55 63;
+#X msg 354 110 60 0 \, 64 0 \, 55 0;
+#X connect 18 0 20 0;
+#X connect 18 1 20 1;
+#X connect 19 0 12 0;
+#X connect 19 1 13 0;
+#X connect 19 2 14 0;
+#X connect 19 3 15 0;
+#X connect 20 0 10 0;
+#X connect 20 1 17 0;
+#X connect 20 2 11 0;
+#X connect 20 3 16 0;
+#X connect 20 4 19 0;
+#X connect 42 0 20 0;
+#X connect 42 1 20 1;
+#X connect 43 0 42 0;
+#X connect 44 0 42 0;
+#X connect 45 0 42 0;
+#X connect 46 0 42 0;

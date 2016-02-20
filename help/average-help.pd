@@ -1,42 +1,78 @@
-#N canvas 0 26 470 342 12;
-#X floatatom 47 39 5 0 0 0 - - -;
-#X floatatom 47 276 5 0 0 0 - - -;
-#X floatatom 122 191 5 0 0 0 - - -;
-#X obj 47 219 average 10;
-#X text 177 191 number of items to average;
-#X text 139 220 creation argument = number of items;
-#X floatatom 122 254 5 0 0 0 - - -;
-#X text 105 277 average of last N items;
-#X text 125 11 average :: calculates the average of the;
-#X text 214 30 last N items (floats);
-#X text 176 255 tendency (up = 1 \, down = -1);
-#X msg 100 60 reset;
-#X text 152 61 forget everything;
-#X msg 129 94 linear;
-#X msg 147 118 geometric;
-#X text 191 93 linear average (dafault);
-#X text 230 119 geometric average;
-#X msg 158 146 weight;
-#X text 217 147 weighted average (giving last;
-#X text 218 163 items higher weight);
-#N canvas 293 158 494 344 META 0;
-#X text 12 180 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
-Wilkes for Pd version 0.42.;
+#N canvas 475 79 571 534 10;
+#X obj 0 0 cnv 15 552 40 empty empty average 3 12 0 18 -204280 -1 0
+;
+#X obj 0 317 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 439 cnv 3 550 3 empty empty outlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 507 cnv 3 550 3 empty empty arguments 8 12 0 13 -228856 -1
+0;
+#X obj 79 331 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X obj 0 547 cnv 15 552 21 empty empty empty 20 12 0 14 -233017 -33289
+0;
+#N canvas 240 348 428 75 Related_objects 0;
+#X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
+#X text 6 1 Related Objects;
+#X restore 206 551 pd Related_objects;
+#N canvas 935 382 379 261 META 0;
 #X text 12 25 LICENSE GPL v2;
-#X text 12 160 AUTHOR Olaf Matthes <olaf.matthes@gmx.de>;
+#X text 12 156 AUTHOR Olaf Matthes <olaf.matthes@gmx.de>;
+#X text 12 176 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
+Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
 #X text 12 5 KEYWORDS control;
 #X text 12 45 DESCRIPTION calculates the average of the last N items
 (floats);
-#X text 12 80 INLET_0 float reset linear geometric weight;
-#X text 12 100 INLET_1 float;
-#X text 12 140 OUTLET_1 float;
-#X text 12 120 OUTLET_0 float;
-#X restore 405 313 pd META;
-#X connect 0 0 3 0;
-#X connect 2 0 3 1;
-#X connect 3 0 1 0;
-#X connect 3 1 6 0;
-#X connect 11 0 3 0;
-#X connect 13 0 3 0;
-#X connect 14 0 3 0;
-#X connect 17 0 3 0;
+#X text 12 77 INLET_0 float reset linear geometric weight;
+#X text 12 97 INLET_1 float;
+#X text 12 137 OUTLET_1 float;
+#X text 12 117 OUTLET_0 float;
+#X restore 502 551 pd META;
+#X obj 79 413 cnv 17 3 17 empty empty 1 5 9 0 16 -228856 -162280 0
+;
+#X obj 499 4 average;
+#X text 8 23 average of last N values;
+#X floatatom 108 288 5 0 0 0 - - -, f 5;
+#X floatatom 207 173 5 0 0 0 - - -, f 5;
+#X floatatom 207 288 5 0 0 0 - - -, f 5;
+#X msg 205 78 reset;
+#X msg 260 76 linear;
+#X msg 260 96 geometric;
+#X msg 260 116 weight;
+#X text 107 331 linear;
+#X text 107 351 geometric;
+#X text 107 371 weight;
+#X text 163 331 - linear average (default);
+#X text 162 351 - geometric average;
+#X text 163 371 - weighted average (giving last items higher weight)
+;
+#X text 107 390 reset;
+#X text 163 390 - clear buffer;
+#X text 107 412 float;
+#X text 162 411 - new number of items to average (as int);
+#X obj 79 454 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X obj 79 482 cnv 17 3 17 empty empty 1 5 9 0 16 -228856 -162280 0
+;
+#X text 107 455 float;
+#X text 107 483 float;
+#X text 162 454 - average of last N items;
+#X text 96 515 arg1: number of items;
+#X obj 108 107 random 100;
+#X obj 108 84 metro 100;
+#X floatatom 108 130 5 0 0 0 - - -, f 5;
+#X obj 108 63 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 108 231 maxlib/average 10;
+#X text 162 482 - tendency (1 = up \, 0 = unchanged \, -1 = down);
+#X connect 12 0 38 1;
+#X connect 14 0 38 0;
+#X connect 15 0 38 0;
+#X connect 16 0 38 0;
+#X connect 17 0 38 0;
+#X connect 34 0 36 0;
+#X connect 35 0 34 0;
+#X connect 36 0 38 0;
+#X connect 37 0 35 0;
+#X connect 38 0 11 0;
+#X connect 38 1 13 0;

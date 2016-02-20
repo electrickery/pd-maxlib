@@ -1,24 +1,73 @@
-#N canvas 0 26 485 306 12;
-#X obj 70 95 bng 20 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
--1;
-#X floatatom 70 192 5 0 0 0 - - -;
-#X floatatom 177 103 5 0 0 0 - - -;
-#X text 230 105 lambda;
-#X text 13 20 bilex :: bilinear exponetionally distributed random numbers
+#N canvas 500 81 557 489 10;
+#X obj 0 0 cnv 15 552 40 empty empty bilex 3 12 0 18 -204280 -1 0;
+#X obj 0 312 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
 ;
-#X obj 70 140 bilex 1.5;
-#N canvas 293 158 494 344 META 0;
-#X text 12 165 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
-Wilkes for Pd version 0.42.;
-#X text 12 25 LICENSE GPL v2;
+#X obj 0 382 cnv 3 550 3 empty empty outlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 419 cnv 3 550 3 empty empty arguments 8 12 0 13 -228856 -1
+0;
+#X obj 79 323 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X obj 0 449 cnv 15 552 21 empty empty empty 20 12 0 14 -233017 -33289
+0;
+#N canvas 242 347 428 75 Related_objects 0;
+#X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
+#X text 6 1 Related Objects;
+#X restore 206 453 pd Related_objects;
+#N canvas 933 383 379 261 META 0;
 #X text 12 145 AUTHOR Olaf Matthes <olaf.matthes@gmx.de>;
+#X text 12 165 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
+Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
+#X text 12 25 LICENSE GPL v2;
 #X text 12 125 OUTLET_0 float;
 #X text 12 5 KEYWORDS control random;
 #X text 12 85 INLET_0 bang;
 #X text 12 105 INLET_1 float;
 #X text 12 45 DESCRIPTION bilinear exponetionally distributed random
 numbers;
-#X restore 423 277 pd META;
-#X connect 0 0 5 0;
-#X connect 2 0 5 1;
-#X connect 5 0 1 0;
+#X restore 502 453 pd META;
+#X text 107 323 bang;
+#X text 163 323 - calculate next output value;
+#X obj 79 352 cnv 17 3 17 empty empty 1 5 9 0 16 -228856 -162280 0
+;
+#X text 107 351 float;
+#X obj 79 392 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X text 107 392 float;
+#X text 163 392 - random number;
+#X text 8 23 bilinear exponentially distributed random numbers;
+#X obj 511 4 bilex;
+#X obj 77 101 bng 20 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
+-1;
+#X floatatom 77 287 8 0 0 0 - - -, f 8;
+#X floatatom 170 107 5 0 0 0 - - -, f 5;
+#X text 162 350 - labda;
+#X text 96 425 arg1: default labda;
+#N canvas 0 50 450 250 (subpatch) 0;
+#X array \$0-a1 100 float 2;
+#X coords 0 2 100 -2 200 140 1 0 0;
+#X restore 349 161 graph;
+#X obj 142 284 tabwrite \$0-a1;
+#X obj 223 262 f 0;
+#X obj 249 263 + 1;
+#X obj 142 240 t f b;
+#X msg 223 239 0;
+#X obj 77 74 metro 100;
+#X obj 77 53 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 77 167 maxlib/bilex 1.5;
+#X text 249 239 restart;
+#X text 339 157 2;
+#X text 333 287 -2;
+#X connect 17 0 30 0;
+#X connect 19 0 30 1;
+#X connect 24 0 25 0;
+#X connect 24 0 23 1;
+#X connect 25 0 24 1;
+#X connect 26 0 23 0;
+#X connect 26 1 24 0;
+#X connect 27 0 24 0;
+#X connect 28 0 17 0;
+#X connect 29 0 28 0;
+#X connect 30 0 18 0;
+#X connect 30 0 26 0;

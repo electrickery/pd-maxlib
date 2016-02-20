@@ -1,22 +1,73 @@
-#N canvas 0 31 487 308 12;
-#X obj 70 95 bng 20 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
--1;
-#X floatatom 70 192 5 0 0 0 - - -;
-#X floatatom 185 103 5 0 0 0 - - -;
-#X obj 70 140 cauchy 0.5;
-#X text 238 104 alpha - governs spread;
-#X text 39 21 cauchy :: Cauchy distributed random numbers;
-#N canvas 293 158 494 344 META 0;
-#X text 12 150 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
-Wilkes for Pd version 0.42.;
+#N canvas 498 82 557 489 10;
+#X obj 0 0 cnv 15 552 40 empty empty cauchy 3 12 0 18 -204280 -1 0
+;
+#X obj 0 312 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 382 cnv 3 550 3 empty empty outlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 419 cnv 3 550 3 empty empty arguments 8 12 0 13 -228856 -1
+0;
+#X obj 79 323 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X obj 0 449 cnv 15 552 21 empty empty empty 20 12 0 14 -233017 -33289
+0;
+#N canvas 242 347 428 75 Related_objects 0;
+#X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
+#X text 6 1 Related Objects;
+#X restore 206 453 pd Related_objects;
+#N canvas 632 494 379 261 META 0;
+#X text 12 125 AUTHOR Olaf Matthes <olaf.matthes@gmx.de>;
+#X text 12 145 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
+Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
 #X text 12 25 LICENSE GPL v2;
-#X text 12 130 AUTHOR Olaf Matthes <olaf.matthes@gmx.de>;
-#X text 12 90 INLET_1 float;
-#X text 12 110 OUTLET_0 float;
-#X text 12 45 DESCRIPTION Cauchy distributed random numbers;
+#X text 12 105 OUTLET_0 float;
 #X text 12 5 KEYWORDS control random;
-#X text 12 70 INLET_0 bang;
-#X restore 425 278 pd META;
-#X connect 0 0 3 0;
-#X connect 2 0 3 1;
-#X connect 3 0 1 0;
+#X text 12 65 INLET_0 bang;
+#X text 12 85 INLET_1 float;
+#X text 12 45 DESCRIPTION Cauchy distributed random numbers;
+#X restore 502 453 pd META;
+#X text 107 323 bang;
+#X text 163 323 - calculate next output value;
+#X obj 79 352 cnv 17 3 17 empty empty 1 5 9 0 16 -228856 -162280 0
+;
+#X text 107 351 float;
+#X obj 79 392 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X text 107 392 float;
+#X text 163 392 - random number;
+#X obj 77 101 bng 20 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
+-1;
+#X floatatom 77 287 8 0 0 0 - - -, f 8;
+#X floatatom 176 107 5 0 0 0 - - -, f 5;
+#N canvas 0 50 450 250 (subpatch) 0;
+#X array \$0-a1 100 float 2;
+#X coords 0 2 100 -2 200 140 1 0 0;
+#X restore 349 161 graph;
+#X obj 142 284 tabwrite \$0-a1;
+#X obj 223 262 f 0;
+#X obj 249 263 + 1;
+#X obj 142 240 t f b;
+#X msg 223 239 0;
+#X obj 77 74 metro 100;
+#X obj 77 53 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X text 249 239 restart;
+#X text 339 157 2;
+#X text 333 287 -2;
+#X text 8 23 Cauchy distributed random numbers;
+#X obj 506 4 cauchy;
+#X obj 77 167 maxlib/cauchy 0.5;
+#X text 96 425 arg1: default alpha;
+#X text 162 350 - alpha (governs spread);
+#X connect 15 0 31 0;
+#X connect 17 0 31 1;
+#X connect 20 0 21 0;
+#X connect 20 0 19 1;
+#X connect 21 0 20 1;
+#X connect 22 0 19 0;
+#X connect 22 1 20 0;
+#X connect 23 0 20 0;
+#X connect 24 0 15 0;
+#X connect 25 0 24 0;
+#X connect 31 0 16 0;
+#X connect 31 0 22 0;

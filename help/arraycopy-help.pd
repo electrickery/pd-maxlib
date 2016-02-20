@@ -1,72 +1,182 @@
-#N canvas 0 26 810 584 12;
-#N canvas 0 0 450 300 (subpatch) 0;
-#X array a1 20 float 1;
-#A 0 0 0 0.342857 0.542857 0.6 -0.442857 -0.485714 0.0142858 -0.428571
--0.114286 0.0857143 -0.2 -0.214285 0.314285 -0.157143 -0.314285 -0.142857
--0.0428571 0.114286 -0.685713;
-#X coords 0 1 19 -1 200 140 1;
-#X restore 580 27 graph;
-#N canvas 0 0 450 300 (subpatch) 0;
-#X array a2 20 float 1;
-#A 0 -0.214286 -0.171429 0.1 0.614286 0.757143 0.757143 0.542857 0.2
--0.0285714 -0.271429 -0.414286 -0.514286 -0.528571 -0.485714 -0.371429
--0.157143 0.214286 0.557143 0.714286 0.757143;
-#X coords 0 1 19 -1 200 140 1;
-#X restore 581 196 graph;
-#N canvas 0 0 450 300 (subpatch) 0;
-#X array a3 20 float 1;
-#A 0 1.86265e-09 1.86265e-09 1.86265e-09 1.86265e-09 1.86265e-09 -0.0142857
--0.0142857 -0.0142857 -0.0142857 -0.0142857 -0.0142857 -0.0142857 -0.0142857
--0.0285714 -0.0285714 -0.0285714 -0.0285714 -0.0142857 -0.0142857 -0.0142857
+#N canvas 504 79 571 534 10;
+#X obj 0 0 cnv 15 552 40 empty empty arraycopy 3 12 0 18 -204280 -1
+0;
+#X obj 0 317 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
 ;
-#X coords 0 1 19 -1 200 140 1;
-#X restore 580 371 graph;
-#X text 339 402 set the destination array;
-#X text 41 1 arraycopy :: copy data from one array to another;
-#X text 146 22 written by Olaf Matthes <olaf.matthes@gmx.de>;
-#X text 87 107 copy the whole array;
-#X text 156 138 copy from value 10 to 15;
-#X text 173 168 copy from value 10 the next 5 values;
-#X msg 85 359 print \$1;
-#X obj 85 333 tgl 20 0 empty empty empty 0 -6 0 8 -262144 -1 -1 0 1
+#X obj 0 441 cnv 3 550 3 empty empty outlets 8 12 0 13 -228856 -1 0
 ;
-#X text 116 334 switch console printout on/off;
-#X text 217 200 copy from value 10 to 15;
-#X text 248 249 copy from value 10 to 15;
-#X msg 86 414 bang;
-#X text 137 412 perform last copy;
-#X text 137 429 operation again;
-#X text 20 537 creation argument: initial destination array to copy
-data to;
-#X obj 200 502 symbol;
-#N canvas 293 158 494 344 META 0;
-#X text 12 125 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
-Wilkes for Pd version 0.42.;
+#X obj 0 478 cnv 3 550 3 empty empty arguments 8 12 0 13 -228856 -1
+0;
+#X obj 79 331 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X obj 0 584 cnv 15 552 21 empty empty empty 20 12 0 14 -233017 -33289
+0;
+#N canvas 242 347 428 75 Related_objects 0;
+#X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
+#X text 6 1 Related Objects;
+#X restore 206 588 pd Related_objects;
+#N canvas 937 381 379 261 META 0;
 #X text 12 25 LICENSE GPL v2;
 #X text 12 105 AUTHOR Olaf Matthes <olaf.matthes@gmx.de>;
-#X text 12 5 KEYWORDS control array;
+#X text 12 125 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
+Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
 #X text 12 45 DESCRIPTION copy data from one array to another;
 #X text 12 65 INLET_0 bang copy print;
 #X text 12 85 INLET_1 symbol;
-#X restore 745 553 pd META;
-#X msg 22 109 copy a1;
-#X msg 43 139 copy a1 10 15;
-#X msg 60 169 copy a1 10 +5;
-#X msg 73 201 copy a1 10 15 a2;
-#X msg 92 250 copy a1 10 15 a2 4;
-#X text 216 220 into a2 (starting at 0);
-#X text 247 269 into a2 starting at 4;
-#X msg 339 428 a2;
-#X msg 368 454 a3;
-#X obj 22 500 arraycopy a3;
-#X connect 9 0 29 0;
-#X connect 10 0 9 0;
-#X connect 14 0 29 0;
-#X connect 18 0 29 1;
-#X connect 20 0 29 0;
-#X connect 21 0 29 0;
-#X connect 22 0 29 0;
-#X connect 23 0 29 0;
-#X connect 24 0 29 0;
-#X connect 27 0 18 0;
-#X connect 28 0 18 0;
+#X text 12 5 KEYWORDS control array;
+#X restore 502 588 pd META;
+#X obj 0 527 cnv 3 550 3 empty empty more_info 8 12 0 13 -228856 -1
+0;
+#X text 107 331 bang;
+#X text 163 331 - calculate next output value;
+#X obj 489 4 arraycopy;
+#X text 8 23 copy data from one array to another;
+#X msg 77 91 copy \$1-a1;
+#X msg 109 116 copy \$1-a1 10 15;
+#X obj 77 69 \$0;
+#X obj 77 51 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 109 69 \$0;
+#X obj 109 51 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#N canvas 287 450 478 495 advanced 0;
+#N canvas 0 50 450 300 (subpatch) 0;
+#X array \$0-a4 20 float 1;
+#A 0 0 0 0.342857 0.542857 0.6 -0.442857 -0.485714 0.0142858 -0.428571
+-0.114286 0.0857143 -0.2 -0.214285 0.314285 -0.157143 -0.314285 -0.142857
+-0.0428571 0.114286 -0.685713;
+#X coords 0 1 19 -1 100 70 1 0 0;
+#X restore 336 49 graph;
+#N canvas 0 50 450 300 (subpatch) 0;
+#X array \$0-a5 20 float 1;
+#A 0 -0.082577 0.242578 0.54191 0.78357 0.94185 0.999875 0.951492 0.801858
+0.56688 0.271565 -0.0526462 -0.371261 -0.650353 -0.860233 -0.978574
+-0.992755 -0.901278 -0.713892 -0.450527 -0.139207;
+#X coords 0 1 19 -1 100 70 1 0 0;
+#X restore 336 137 graph;
+#N canvas 0 50 450 300 (subpatch) 0;
+#X array \$0-a6 20 float 1;
+#A 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0;
+#X coords 0 1 19 -1 100 70 1 0 0;
+#X restore 336 226 graph;
+#N canvas 1 80 450 300 (subpatch) 0;
+#X array \$0-a7 20 float 1;
+#A 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0;
+#X coords 0 1 19 -1 100 70 1 0 0;
+#X restore 336 316 graph;
+#X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
+#X text 6 1 Advanced copy operations;
+#X text 45 55 copy from value 10 the next 5 values;
+#X text 53 105 copy from value 10 to 15;
+#X text 58 186 copy from value 10 to 15;
+#X text 53 119 into a2 (starting at 0);
+#X text 57 200 into a2 starting at 4;
+#X obj 17 52 \$0;
+#X obj 17 34 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 26 115 \$0;
+#X obj 26 97 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X msg 26 137 \$1 \$1;
+#X obj 32 201 \$0;
+#X obj 32 183 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X msg 32 223 \$1 \$1;
+#X msg 57 347 print 1;
+#X obj 57 325 loadbang;
+#X msg 17 73 copy \$1-a4 10 +5;
+#X obj 17 443 arraycopy \$0-a6;
+#X msg 26 158 copy \$1-a5 10 15 \$2-a7;
+#X msg 32 244 copy \$1-a5 10 15 \$2-a7 4;
+#X obj 161 405 symbol;
+#X obj 161 362 \$0;
+#X obj 161 344 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 161 383 \$1-a6;
+#X obj 203 362 \$0;
+#X obj 203 344 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 203 383 \$1-a7;
+#X connect 11 0 21 0;
+#X connect 12 0 11 0;
+#X connect 13 0 15 0;
+#X connect 14 0 13 0;
+#X connect 15 0 23 0;
+#X connect 16 0 18 0;
+#X connect 17 0 16 0;
+#X connect 18 0 24 0;
+#X connect 19 0 22 0;
+#X connect 20 0 19 0;
+#X connect 21 0 22 0;
+#X connect 23 0 22 0;
+#X connect 24 0 22 0;
+#X connect 25 0 22 1;
+#X connect 26 0 28 0;
+#X connect 27 0 26 0;
+#X connect 28 0 25 0;
+#X connect 29 0 31 0;
+#X connect 30 0 29 0;
+#X connect 31 0 25 0;
+#X restore 248 293 pd advanced copy options;
+#N canvas 0 50 450 300 (subpatch) 0;
+#X array \$0-a1 20 float 1;
+#A 0 0 0 0.342857 0.542857 0.6 -0.442857 -0.485714 0.0142858 -0.428571
+-0.114286 0.0857143 -0.2 -0.214285 0.314285 -0.157143 -0.314285 -0.142857
+-0.0428571 0.114286 -0.685713;
+#X coords 0 1 19 -1 100 70 1 0 0;
+#X restore 440 60 graph;
+#N canvas 0 50 450 300 (subpatch) 0;
+#X array \$0-a2 20 float 1;
+#A 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0;
+#X coords 0 1 19 -1 100 70 1 0 0;
+#X restore 440 150 graph;
+#X obj 77 290 arraycopy \$0-a2;
+#X text 146 91 copy the whole array;
+#X text 107 351 copy;
+#X text 162 351 - <sourceArray> <startPos> <endPos> [<newDestArray>]
+[<startPostDest>];
+#X text 107 380 print n;
+#X text 163 380 - n:0 disable console message;
+#X text 164 392 - n:1 enable console message;
+#X text 107 411 symbol;
+#X obj 79 412 cnv 17 3 17 empty empty 1 5 9 0 16 -228856 -162280 0
+;
+#X text 162 410 - new destination array;
+#X text 96 487 arg1: default destination array;
+#X text 96 542 Both the symbol at the second inlet as the 4th copy
+argument overwrite the destination array.;
+#X msg 139 196 print \$1;
+#X msg 139 224 bang;
+#X obj 139 177 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#N canvas 0 50 450 300 (subpatch) 0;
+#X array \$0-a3 20 float 1;
+#A 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0;
+#X coords 0 1 19 -1 100 70 1 0 0;
+#X restore 440 239 graph;
+#X obj 226 239 symbol;
+#X obj 226 193 \$0;
+#X obj 277 193 \$0;
+#X obj 226 175 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 277 175 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 226 214 \$1-a2;
+#X msg 277 213 \$1-a3;
+#X text 214 116 copy from position 10 to 15;
+#X connect 13 0 22 0;
+#X connect 14 0 22 0;
+#X connect 15 0 13 0;
+#X connect 16 0 15 0;
+#X connect 17 0 14 0;
+#X connect 18 0 17 0;
+#X connect 34 0 22 0;
+#X connect 35 0 22 0;
+#X connect 36 0 34 0;
+#X connect 38 0 22 1;
+#X connect 39 0 43 0;
+#X connect 40 0 44 0;
+#X connect 41 0 39 0;
+#X connect 42 0 40 0;
+#X connect 43 0 38 0;
+#X connect 44 0 38 0;

@@ -1,4 +1,4 @@
-#N canvas 75 -12 1161 819 10;
+#N canvas 669 79 1161 819 10;
 #X obj 307 260 average;
 #X obj 18 150 beat;
 #X obj 18 175 borax;
@@ -121,3 +121,6 @@
 #X text 741 202 copy from one array to another;
 #X obj 17 525 nchange s;
 #X text 89 526 change that exepts any kind of input;
+#X obj 791 502 allow;
+#X text 829 501 lets only 'allowed' floats or symbols through;
+#X text 792 480 FILTER;

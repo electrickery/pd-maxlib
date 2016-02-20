@@ -1,46 +1,24 @@
-#N canvas 0 26 608 549 12;
-#X floatatom 20 503 8 0 0 0 - - -;
-#X obj 20 66 notein;
-#X obj 183 376 makenote 100 250;
-#X floatatom 41 477 5 0 0 0 - - -;
-#X text 43 13 beat :: beat tracker;
-#X text 97 505 beats per minute;
-#X msg 71 224 reset;
-#X obj 183 219 tgl 20 0 empty empty empty 0 -6 0 8 -262144 -1 -1 0
-1;
-#X msg 183 346 60;
-#X msg 53 108 print;
-#X obj 63 446 bng 20 250 50 0 empty empty empty 0 -6 0 8 -262144 -258699
--1;
-#X text 93 447 'on beat';
-#X text 96 479 milliseconds;
-#X msg 303 336 400;
-#X obj 319 299 + 0;
-#X text 411 245 <-- adding some jitter;
-#X obj 183 271 random 4;
-#X obj 183 298 select 0 1 2 3;
-#X text 211 218 <-- click here to play random rhythm;
-#X obj 338 243 random 3;
-#X obj 338 270 - 1;
-#X obj 20 414 beat 4;
-#X text 88 415 creation: beat <band percentage>;
-#X text 349 456 certain percentage in which;
-#X text 350 472 the beats have to lie;
-#X msg 262 337 200;
-#X msg 222 336 100;
-#X obj 183 245 metro 100;
-#X text 106 108 print internal data (toggle on/off);
-#X text 106 136 prints out: time between current and last event \,
-the five best-fitting theories (with likelyhood in brackets) \, the
-time of arrival of current event (R) and the expected time of arrival
-(E) of the next event;
-#X text 213 439 band percentage: creates a critical time band of a
+#N canvas 683 80 571 534 10;
+#X obj 0 0 cnv 15 552 40 empty empty beat 3 12 0 18 -204280 -1 0;
+#X obj 0 317 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
 ;
-#N canvas 316 146 494 344 META 0;
-#X text 12 185 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
-Wilkes for Pd version 0.42.;
-#X text 12 25 LICENSE GPL v2;
+#X obj 0 439 cnv 3 550 3 empty empty outlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 535 cnv 3 550 3 empty empty arguments 8 12 0 13 -228856 -1
+0;
+#X obj 79 331 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X obj 0 674 cnv 15 552 21 empty empty empty 20 12 0 14 -233017 -33289
+0;
+#N canvas 240 348 428 75 Related_objects 0;
+#X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
+#X text 6 1 Related Objects;
+#X restore 206 678 pd Related_objects;
+#N canvas 933 383 379 261 META 0;
 #X text 12 165 AUTHOR Olaf Matthes <olaf.matthes@gmx.de>;
+#X text 12 185 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
+Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
+#X text 12 25 LICENSE GPL v2;
 #X text 12 85 INLET_1 float;
 #X text 12 125 OUTLET_1 float;
 #X text 12 105 OUTLET_0 float;
@@ -48,32 +26,102 @@ Wilkes for Pd version 0.42.;
 #X text 12 45 DESCRIPTION beat tracker;
 #X text 12 65 INLET_0 float reset print;
 #X text 12 145 OUTLET_2 bang;
-#X restore 545 518 pd META;
-#X connect 1 0 21 0;
-#X connect 1 1 21 1;
-#X connect 2 0 21 0;
-#X connect 2 1 21 1;
-#X connect 6 0 21 0;
-#X connect 7 0 27 0;
+#X restore 502 678 pd META;
+#X obj 79 413 cnv 17 3 17 empty empty 1 5 9 0 16 -228856 -162280 0
+;
+#X text 107 371 weight;
+#X text 163 371 - weighted average (giving last items higher weight)
+;
+#X text 107 390 reset;
+#X text 163 390 - clear buffer;
+#X text 107 412 float;
+#X text 162 411 - new number of items to average (as int);
+#X obj 79 454 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X obj 79 482 cnv 17 3 17 empty empty 1 5 9 0 16 -228856 -162280 0
+;
+#X text 107 455 float;
+#X text 107 483 float;
+#X obj 517 4 beat;
+#X text 7 23 beat tracker;
+#N canvas 1281 257 450 300 random 0;
+#X msg 62 183 60;
+#X msg 154 183 400;
+#X obj 169 139 + 0;
+#X obj 62 109 random 4;
+#X obj 62 136 select 0 1 2 3;
+#X obj 184 83 random 3;
+#X obj 184 110 - 1;
+#X msg 123 183 200;
+#X msg 92 183 100;
+#X obj 62 83 metro 100;
+#X obj 62 222 outlet;
+#X obj 62 49 inlet;
+#X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
+#X text 6 1 Random rhythm generator;
+#X connect 0 0 10 0;
+#X connect 1 0 2 0;
+#X connect 2 0 9 1;
+#X connect 3 0 4 0;
+#X connect 4 0 0 0;
+#X connect 4 0 8 0;
+#X connect 4 1 0 0;
+#X connect 4 1 7 0;
+#X connect 4 2 1 0;
+#X connect 4 2 0 0;
+#X connect 4 3 0 0;
+#X connect 4 3 1 0;
+#X connect 5 0 6 0;
+#X connect 6 0 2 1;
+#X connect 7 0 2 0;
 #X connect 8 0 2 0;
-#X connect 9 0 21 0;
-#X connect 13 0 14 0;
-#X connect 14 0 27 1;
-#X connect 16 0 17 0;
-#X connect 17 0 8 0;
-#X connect 17 0 26 0;
-#X connect 17 1 8 0;
-#X connect 17 1 25 0;
-#X connect 17 2 13 0;
-#X connect 17 2 8 0;
-#X connect 17 3 8 0;
-#X connect 17 3 13 0;
-#X connect 19 0 20 0;
-#X connect 20 0 14 1;
-#X connect 21 0 0 0;
-#X connect 21 1 3 0;
-#X connect 21 2 10 0;
-#X connect 25 0 14 0;
-#X connect 26 0 14 0;
-#X connect 27 0 16 0;
-#X connect 27 0 19 0;
+#X connect 9 0 3 0;
+#X connect 9 0 5 0;
+#X connect 11 0 9 0;
+#X restore 233 78 pd random rhythm;
+#X obj 233 54 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X floatatom 81 295 8 0 0 0 - - -, f 8;
+#X obj 81 54 notein;
+#X floatatom 118 276 5 0 0 0 - - -, f 5;
+#X msg 165 80 reset;
+#X msg 166 106 print;
+#X obj 156 251 bng 20 250 50 0 empty empty empty 0 -6 0 8 -262144 -258699
+-1;
+#X text 107 331 float;
+#X text 163 331 - note number;
+#X text 107 351 print;
+#X text 162 351 - print internal data (toggle on/off);
+#X text 96 543 arg1: band percentage (float);
+#X obj 0 565 cnv 3 550 3 empty empty more_info 8 12 0 13 -228856 -1
+0;
+#X text 96 573 prints out: time between current and last event \, the
+five best-fitting theories (with likelyhood in brackets) \, the time
+of arrival of current event (R) and the expected time of arrival (E)
+of the next event;
+#X text 96 631 band percentage: creates a critical time band of a certain
+percentage in which the beats have to lie;
+#X obj 79 510 cnv 17 3 17 empty empty 2 5 9 0 16 -228856 -162280 0
+;
+#X text 107 511 bang;
+#X text 162 510 - 'on beat';
+#X text 162 482 - milliseconds;
+#X text 162 454 - beats per minute;
+#X obj 233 104 makenote 100 250;
+#X obj 81 195 maxlib/beat 4;
+#X text 136 294 bpm;
+#X text 154 275 ms;
+#X obj 233 131 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X connect 21 0 42 0;
+#X connect 22 0 21 0;
+#X connect 24 0 43 0;
+#X connect 24 1 43 1;
+#X connect 26 0 43 0;
+#X connect 27 0 43 0;
+#X connect 42 0 43 0;
+#X connect 42 0 46 0;
+#X connect 42 1 43 1;
+#X connect 43 0 23 0;
+#X connect 43 1 25 0;
+#X connect 43 2 28 0;
