@@ -1,23 +1,27 @@
-#N canvas 0 26 464 316 12;
-#X floatatom 54 239 5 0 0 0 - - -;
-#X floatatom 54 127 5 0 0 0 - - -;
-#X floatatom 129 127 5 0 0 0 - - -;
-#X obj 54 172 divmod 8 6;
-#X text 146 170 use creation arguments to set initial;
-#X text 146 186 values for inlets;
-#X msg 23 83 bang;
-#X text 69 82 calculate and output result now;
-#X floatatom 129 219 5 0 0 0 - - -;
-#X text 182 222 modulo;
-#X text 106 242 result of division;
-#X text 186 127 takes int's only!;
-#X text 12 19 divmod :: calculate division and modulo;
-#X text 92 35 outputs results even when right inlet changes;
-#N canvas 293 158 494 344 META 0;
-#X text 12 175 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
-Wilkes for Pd version 0.42.;
-#X text 12 25 LICENSE GPL v2;
+#N canvas 509 80 557 534 10;
+#X obj 0 0 cnv 15 552 40 empty empty divmod 3 12 0 18 -204280 -1 0
+;
+#X obj 0 278 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 354 cnv 3 550 3 empty empty outlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 412 cnv 3 550 3 empty empty arguments 8 12 0 13 -228856 -1
+0;
+#X obj 79 363 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X obj 79 289 cnv 17 3 30 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X obj 0 495 cnv 15 552 21 empty empty empty 20 12 0 14 -233017 -33289
+0;
+#N canvas 242 347 428 75 Related_objects 0;
+#X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
+#X text 6 1 Related Objects;
+#X restore 206 497 pd Related_objects;
+#N canvas 513 575 379 261 META 0;
+#X text 12 174 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
+Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
 #X text 12 155 AUTHOR Olaf Matthes <olaf.matthes@gmx.de>;
+#X text 12 25 LICENSE GPL v2;
 #X text 12 5 KEYWORDS control nonlocal;
 #X text 12 75 INLET_0 bang float;
 #X text 12 95 INLET_1 float;
@@ -25,9 +29,36 @@ Wilkes for Pd version 0.42.;
 #X text 12 45 DESCRIPTION calculate division and modulo outputs results
 even when right inlet changes;
 #X text 12 135 OUTLET_1 float;
-#X restore 395 283 pd META;
-#X connect 1 0 3 0;
-#X connect 2 0 3 1;
-#X connect 3 0 0 0;
-#X connect 3 1 8 0;
-#X connect 6 0 3 0;
+#X restore 502 499 pd META;
+#X obj 0 445 cnv 3 550 3 empty empty more_info 8 12 0 13 -228856 -1
+0;
+#X obj 513 4 allow;
+#X text 107 363 float;
+#X obj 79 327 cnv 17 3 17 empty empty 1 5 9 0 16 -228856 -162280 0
+;
+#X text 107 327 float;
+#X text 8 23 calculate division and modulo outputs results;
+#X obj 79 389 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X text 107 389 float;
+#X text 162 389 - modulo of divident % divisor;
+#X text 162 363 - division of divident / divisor;
+#X text 96 454 outputs results even when right inlet changes;
+#X text 96 470 ignores 0 at right inlet;
+#X text 96 421 arg 1: divident \, arg 2: divisor;
+#X floatatom 94 241 5 0 0 0 - - -, f 5;
+#X floatatom 94 92 5 0 0 0 - - -, f 5;
+#X floatatom 193 92 5 0 0 0 - - -, f 5;
+#X msg 63 71 bang;
+#X floatatom 193 241 5 0 0 0 - - -, f 5;
+#X text 107 307 float;
+#X text 162 307 - divident \, converted to integer;
+#X text 107 289 bang;
+#X text 162 289 - recalculate with last inlet values;
+#X text 162 327 - divisor \, converted to integer;
+#X obj 94 160 maxlib/divmod 8 6;
+#X connect 23 0 32 0;
+#X connect 24 0 32 1;
+#X connect 25 0 32 0;
+#X connect 32 0 22 0;
+#X connect 32 1 26 0;

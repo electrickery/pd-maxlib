@@ -1,23 +1,79 @@
-#N canvas 0 26 452 302 12;
-#X obj 38 176 fifo 10;
-#X floatatom 38 231 5 0 0 0 - - -;
-#X floatatom 61 132 5 0 0 0 - - -;
-#X msg 38 98 bang;
-#X text 83 98 hit to get next number;
-#X text 111 176 fifo <size>;
-#X text 92 233 output of fifo;
-#X text 42 14 fifo :: first in first out buffer for floats;
-#X text 105 32 written for Max by St. Rainstick;
-#N canvas 293 158 494 344 META 0;
+#N canvas 493 79 557 515 10;
+#X obj 0 0 cnv 15 552 40 empty empty fifo 3 12 0 18 -204280 -1 0;
+#X obj 0 295 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 353 cnv 3 550 3 empty empty outlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 393 cnv 3 550 3 empty empty arguments 8 12 0 13 -228856 -1
+0;
+#X obj 79 364 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X obj 79 308 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X obj 0 493 cnv 15 552 21 empty empty empty 20 12 0 14 -233017 -33289
+0;
+#N canvas 240 348 428 75 Related_objects 0;
+#X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
+#X text 6 1 Related Objects;
+#X restore 206 495 pd Related_objects;
+#N canvas 501 581 379 261 META 0;
 #X text 12 125 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
-Wilkes for Pd version 0.42.;
+Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
+#X text 12 106 AUTHOR Olaf Matthes <olaf.matthes@gmx.de>;
 #X text 12 25 LICENSE GPL v2;
-#X text 12 105 AUTHOR Olaf Matthes <olaf.matthes@gmx.de>;
 #X text 12 85 OUTLET_0 float;
 #X text 12 45 DESCRIPTION first in first out buffer for floats;
 #X text 12 5 KEYWORDS control storage;
 #X text 12 65 INLET_0 bang float;
-#X restore 385 268 pd META;
+#X restore 502 497 pd META;
+#X text 107 364 bang;
+#X text 107 307 bang;
+#X text 161 364 - numbers from the buffer;
+#X text 162 307 - triggers next number from the fifo buffer to outlet
+;
+#X text 86 414 fifo size. minimum is 10;
+#X obj 0 435 cnv 3 550 3 empty empty more_info 8 12 0 13 -228856 -1
+0;
+#X text 86 456 if more numbers are inserted than the size \, the filling
+is restarted. The previous set is deleted.;
+#N canvas 1090 229 450 369 filler 0;
+#X obj 143 144 f 0;
+#X obj 171 144 + 1;
+#X obj 143 106 metro 100;
+#X obj 183 201 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 143 83 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X msg 212 108 0;
+#X obj 183 171 select 8;
+#X obj 212 39 t b b;
+#X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
+#X text 4 2 Filler;
+#X obj 143 35 inlet;
+#X obj 143 235 outlet;
 #X connect 0 0 1 0;
+#X connect 0 0 6 0;
+#X connect 0 0 11 0;
+#X connect 1 0 0 1;
 #X connect 2 0 0 0;
-#X connect 3 0 0 0;
+#X connect 3 0 7 0;
+#X connect 4 0 2 0;
+#X connect 5 0 0 1;
+#X connect 6 0 3 0;
+#X connect 7 0 5 0;
+#X connect 7 1 4 0;
+#X connect 10 0 4 0;
+#X restore 129 72 pd filler;
+#X obj 129 53 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X msg 77 52 bang;
+#X obj 77 269 print listfifo_output;
+#X obj 77 158 maxlib/fifo 10;
+#X text 107 328 float;
+#X text 162 328 - inserts a float into the fifo buffer;
+#X obj 510 4 fifo;
+#X text 8 23 first in first out buffer for floats;
+#X connect 16 0 20 0;
+#X connect 17 0 16 0;
+#X connect 18 0 20 0;
+#X connect 20 0 19 0;

@@ -1,18 +1,24 @@
-#N canvas 0 26 386 286 12;
-#X obj 38 176 lifo 10;
-#X floatatom 38 231 5 0 0 0 - - -;
-#X floatatom 61 110 5 0 0 0 - - -;
-#X msg 38 76 bang;
-#X text 83 76 hit to get next number;
-#X text 111 176 lifo <size>;
-#X text 42 14 lifo :: last in first out buffer for floats;
-#X text 108 33 written for Max by St. Rainstick;
-#X msg 76 140 clear;
-#X text 127 139 clear buffer;
-#X text 92 233 output of buffer;
-#N canvas 396 26 494 344 META 0;
-#X text 12 145 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
-Wilkes for Pd version 0.42.;
+#N canvas 424 80 557 534 10;
+#X obj 0 0 cnv 15 552 40 empty empty lifo 3 12 0 18 -204280 -1 0;
+#X obj 0 308 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 376 cnv 3 550 3 empty empty outlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 417 cnv 3 550 3 empty empty arguments 8 12 0 13 -228856 -1
+0;
+#X obj 79 385 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X obj 79 319 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X obj 0 493 cnv 15 552 21 empty empty empty 20 12 0 14 -233017 -33289
+0;
+#N canvas 242 347 428 75 Related_objects 0;
+#X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
+#X text 6 1 Related Objects;
+#X restore 206 495 pd Related_objects;
+#N canvas 510 680 379 261 META 0;
+#X text 12 137 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
+Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
 #X text 12 25 LICENSE GPL v2;
 #X text 12 45 DESCRIPTION last in first out buffer for floats;
 #X text 12 5 KEYWORDS control storage;
@@ -20,8 +26,63 @@ Wilkes for Pd version 0.42.;
 #X text 12 85 OUTLET_0 float;
 #X text 12 105 AUTHOR written for Max by St. Rainstick \, ported to
 Pd by Olaf Matthes <olaf.matthes@gmx.de>;
-#X restore 322 254 pd META;
-#X connect 0 0 1 0;
-#X connect 2 0 0 0;
-#X connect 3 0 0 0;
-#X connect 8 0 0 0;
+#X restore 502 497 pd META;
+#X obj 0 450 cnv 3 550 3 empty empty more_info 8 12 0 13 -228856 -1
+0;
+#X text 107 385 float;
+#X text 162 385 - passed only no new value is received in the last
+N milliseconds;
+#X obj 507 4 lifo;
+#X text 11 22 last in first out buffer for floats, f 38;
+#X obj 76 195 lifo 10;
+#X floatatom 76 276 5 0 0 0 - - -, f 5;
+#X msg 76 65 bang;
+#X msg 97 90 clear;
+#X text 107 320 bang;
+#X text 162 319 - hit to get next number;
+#X text 162 357 - input value;
+#X text 107 357 float;
+#X text 107 338 clear;
+#X text 162 338 - clear buffer;
+#X text 96 426 buffer size;
+#X floatatom 150 109 5 0 0 0 - - -, f 5;
+#X obj 150 68 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#N canvas 1016 219 450 300 filler 0;
+#X floatatom 143 205 5 0 0 0 - - -, f 5;
+#X obj 143 144 f 0;
+#X obj 171 144 + 1;
+#X obj 143 106 metro 100;
+#X obj 183 201 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 143 83 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X msg 212 108 0;
+#X obj 212 39 t b b;
+#X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
+#X text 4 2 Filler;
+#X obj 143 35 inlet;
+#X obj 143 246 outlet;
+#X obj 183 172 select 8;
+#X connect 0 0 11 0;
+#X connect 1 0 2 0;
+#X connect 1 0 0 0;
+#X connect 1 0 12 0;
+#X connect 2 0 1 1;
+#X connect 3 0 1 0;
+#X connect 4 0 7 0;
+#X connect 5 0 3 0;
+#X connect 6 0 1 1;
+#X connect 7 0 6 0;
+#X connect 7 1 5 0;
+#X connect 10 0 5 0;
+#X connect 12 0 4 0;
+#X restore 150 87 pd filler;
+#X text 96 459 if more numbers are inserted than the size \, an error
+message is printed on the console.;
+#X connect 14 0 15 0;
+#X connect 16 0 14 0;
+#X connect 17 0 14 0;
+#X connect 25 0 14 0;
+#X connect 26 0 27 0;
+#X connect 27 0 25 0;

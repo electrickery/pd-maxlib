@@ -1,67 +1,140 @@
-#N canvas 0 26 454 483 12;
-#X floatatom 23 424 5 0 0 0 - - -;
-#X floatatom 39 397 5 0 0 0 - - -;
-#X floatatom 76 424 5 0 0 0 - - -;
-#X floatatom 93 397 5 0 0 0 - - -;
-#X floatatom 129 424 5 0 0 0 - - -;
-#X floatatom 147 397 5 0 0 0 - - -;
-#X floatatom 183 425 5 0 0 0 - - -;
-#X floatatom 200 398 5 0 0 0 - - -;
-#X msg 22 33 bang;
-#X msg 69 123 randfill;
-#X msg 84 150 fill 0;
-#X msg 100 177 lo 2;
-#X msg 108 204 hi 3;
-#X msg 120 231 nset 3;
-#X msg 161 312 display;
-#X text 178 233 set neighbourhood;
-#X text 151 205 set high;
-#X text 146 176 set low;
-#X text 151 150 fill cells with 0;
-#X text 145 123 fill cells with random value;
-#X text 226 312 display state of cells;
-#X msg 35 72 1;
-#X text 63 33 calculate next generation and output;
-#X text 64 50 bangs on every cell that is alife;
-#X text 68 72 calculate next generation and output;
-#X text 68 89 1 if cell is alife \, 0 if dead;
-#X text 227 329 in Pd console window;
-#X text 142 355 mlife <number of cells> <view_start>;
-#X text 189 370 <view_size> <closed>;
-#X text 279 395 closed universe if;
-#X text 279 409 <closed> = 1;
-#X msg 134 258 randseed 4;
-#X text 225 258 seed array with random no.;
-#X text 225 284 seed array with a number;
-#X msg 149 285 seed 1 4;
-#X obj 23 356 mlife 8 1 8 0;
-#X text 44 5 mlife :: a cellular automata object;
-#N canvas 464 26 494 344 META 0;
-#X text 12 155 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
-Wilkes for Pd version 0.42.;
+#N canvas 502 79 557 515 10;
+#X obj 0 0 cnv 15 552 40 empty empty mlife 3 12 0 18 -204280 -1 0;
+#X obj 0 317 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 486 cnv 3 550 3 empty empty outlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 526 cnv 3 550 3 empty empty arguments 8 12 0 13 -228856 -1
+0;
+#X obj 79 497 cnv 17 3 17 empty empty n 5 9 0 16 -228856 -162280 0
+;
+#X obj 79 330 cnv 17 3 25 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X obj 0 590 cnv 15 552 21 empty empty empty 20 12 0 14 -233017 -33289
+0;
+#N canvas 238 349 428 75 Related_objects 0;
+#X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
+#X text 6 1 Related Objects;
+#X restore 206 592 pd Related_objects;
+#N canvas 497 583 379 261 META 0;
+#X text 12 138 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
+Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
+#X text 12 119 AUTHOR Olaf Matthes <olaf.matthes@gmx.de>;
 #X text 12 25 LICENSE GPL v2;
-#X text 12 135 AUTHOR Olaf Matthes <olaf.matthes@gmx.de>;
 #X text 12 5 KEYWORDS control;
 #X text 12 45 DESCRIPTION a cellular automata object;
 #X text 12 65 INLET_0 bang float randfill fill lo hi nset randseed
 seed display;
-#X text 12 105 OUTLET_N float;
-#X restore 386 452 pd META;
-#X connect 8 0 35 0;
-#X connect 9 0 35 0;
-#X connect 10 0 35 0;
-#X connect 11 0 35 0;
-#X connect 12 0 35 0;
-#X connect 13 0 35 0;
-#X connect 14 0 35 0;
-#X connect 21 0 35 0;
-#X connect 31 0 35 0;
-#X connect 34 0 35 0;
-#X connect 35 0 0 0;
-#X connect 35 1 1 0;
-#X connect 35 2 2 0;
-#X connect 35 3 3 0;
-#X connect 35 4 4 0;
-#X connect 35 5 5 0;
-#X connect 35 6 6 0;
-#X connect 35 7 7 0;
+#X text 12 99 OUTLET_N float;
+#X restore 502 594 pd META;
+#X text 162 354 - list to be matched against argument list;
+#X text 107 329 bang;
+#X text 7 23 a cellular automata object, f 30;
+#X obj 505 4 mlife;
+#X msg 148 70 randfill;
+#X obj 79 74 metro 500;
+#X obj 79 50 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 79 200 maxlib/mlife 16 0 16 0 -------------------;
+#X msg 216 71 fill 0;
+#X msg 281 50 lo 2;
+#X msg 317 51 hi 3;
+#X msg 280 72 nset 3;
+#X msg 281 117 display;
+#X msg 281 95 randseed 4;
+#X msg 353 95 seed 1 4;
+#X text 162 328 - calculate next generation and output bangs on every
+cell that is alife;
+#X text 107 354 display;
+#X obj 79 289 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 95 289 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 79 289 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 112 289 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 128 289 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 112 289 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 145 289 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 162 289 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 145 289 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 178 289 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 195 289 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 178 289 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 211 289 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 228 289 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 211 289 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 245 289 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 261 289 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 245 289 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 278 289 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 294 289 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 278 289 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 311 289 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 328 289 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 311 289 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X text 107 372 fill;
+#X text 162 372 - fill cells with 0;
+#X text 107 389 lo n;
+#X text 162 389 - set die-low value;
+#X text 108 407 hi n;
+#X text 162 407 - set die-high value;
+#X text 108 425 nset n;
+#X text 108 443 randseed n;
+#X text 108 461 seed n m;
+#X text 162 425 - set neighbourhood size;
+#X text 179 443 - set neighbourhood size;
+#X text 162 461 - seeds m cells starting from n;
+#X text 107 497 bang;
+#X text 161 497 - send bang if cell value is 1;
+#X text 85 545 mlife <number of cells> <view_start> <view_size> <closed>
+, f 61;
+#X text 85 564 closed = 0 means open \, closed = 1 means closed, f
+61;
+#X connect 13 0 16 0;
+#X connect 14 0 16 0;
+#X connect 15 0 14 0;
+#X connect 16 0 26 0;
+#X connect 16 1 27 0;
+#X connect 16 2 29 0;
+#X connect 16 3 30 0;
+#X connect 16 4 32 0;
+#X connect 16 5 33 0;
+#X connect 16 6 35 0;
+#X connect 16 7 36 0;
+#X connect 16 8 38 0;
+#X connect 16 9 39 0;
+#X connect 16 10 41 0;
+#X connect 16 11 42 0;
+#X connect 16 12 44 0;
+#X connect 16 13 45 0;
+#X connect 16 14 47 0;
+#X connect 16 15 48 0;
+#X connect 17 0 16 0;
+#X connect 18 0 16 0;
+#X connect 19 0 16 0;
+#X connect 20 0 16 0;
+#X connect 21 0 16 0;
+#X connect 22 0 16 0;
+#X connect 23 0 16 0;

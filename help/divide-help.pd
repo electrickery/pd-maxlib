@@ -1,31 +1,67 @@
-#N canvas 0 26 466 318 12;
-#X floatatom 54 217 5 0 0 0 - - -;
-#X floatatom 54 132 5 0 0 0 - - -;
-#X floatatom 108 132 5 0 0 0 - - -;
-#X text 39 20 divide :: like '/' but calculates result;
-#X text 133 204 use creation arguments to set initial;
-#X text 133 220 values for inlets;
-#X msg 7 104 bang;
-#X text 53 103 calculate and output result now;
-#X obj 54 172 divide 8 6 4;
-#X text 118 58 allows for up to 32 inlets;
-#X floatatom 164 132 5 0 0 0 - - -;
-#X text 120 38 when leftmost or second inlet is changed;
-#N canvas 293 158 494 344 META 0;
-#X text 12 185 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
-Wilkes for Pd version 0.42.;
+#N canvas 507 81 557 512 10;
+#X obj 0 0 cnv 15 552 40 empty empty divide 3 12 0 18 -204280 -1 0
+;
+#X obj 0 310 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 394 cnv 3 550 3 empty empty outlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 431 cnv 3 550 3 empty empty arguments 8 12 0 13 -228856 -1
+0;
+#X obj 79 403 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X obj 79 321 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X obj 0 471 cnv 15 552 21 empty empty empty 20 12 0 14 -233017 -33289
+0;
+#N canvas 242 347 428 75 Related_objects 0;
+#X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
+#X text 6 1 Related Objects;
+#X restore 206 473 pd Related_objects;
+#N canvas 513 575 379 261 META 0;
+#X text 12 179 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
+Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
 #X text 12 25 LICENSE GPL v2;
-#X text 12 165 AUTHOR Olaf Matthes <olaf.matthes@gmx.de>;
+#X text 12 160 AUTHOR Olaf Matthes <olaf.matthes@gmx.de>;
 #X text 12 5 KEYWORDS control nonlocal;
 #X text 12 45 DESCRIPTION like '/' but calculates result when leftmost
 or second inlet is changed;
-#X text 12 85 INLET_0 bang float;
-#X text 12 105 INLET_1 float;
-#X text 12 125 INLET_N float;
-#X text 12 145 OUTLET_0 float;
-#X restore 395 283 pd META;
-#X connect 1 0 8 0;
-#X connect 2 0 8 1;
-#X connect 6 0 8 0;
-#X connect 8 0 0 0;
-#X connect 10 0 8 2;
+#X text 12 80 INLET_0 bang float;
+#X text 12 100 INLET_1 float;
+#X text 12 120 INLET_N float;
+#X text 12 140 OUTLET_0 float;
+#X restore 502 475 pd META;
+#X obj 513 4 allow;
+#X text 8 23 like '/' but calculates result when leftmost or second
+inlet is changed, f 72;
+#X text 96 440 use creation arguments to set initial values for inlets
+;
+#X text 107 403 float;
+#X floatatom 120 262 5 0 0 0 - - -, f 5;
+#X floatatom 120 128 5 0 0 0 - - -, f 5;
+#X floatatom 175 128 5 0 0 0 - - -, f 5;
+#X msg 73 106 bang;
+#X floatatom 231 128 5 0 0 0 - - -, f 5;
+#X obj 79 344 cnv 17 3 17 empty empty 1 5 9 0 16 -228856 -162280 0
+;
+#X obj 79 370 cnv 17 3 17 empty empty n 5 9 0 16 -228856 -162280 0
+;
+#X text 107 370 float;
+#X text 107 344 float;
+#X text 107 321 float;
+#X obj 120 191 maxlib/divide 8 6 4;
+#X msg 190 74 4;
+#X msg 246 74 2;
+#X msg 135 74 16;
+#X text 162 321 - dividend1 (a);
+#X text 162 370 - divisor (c);
+#X text 162 403 - the result of a / b / c;
+#X text 162 343 - dividend2 (b). This inlet is also hot \, and changing
+it will force recalculation;
+#X connect 14 0 23 0;
+#X connect 15 0 23 1;
+#X connect 16 0 23 0;
+#X connect 17 0 23 2;
+#X connect 23 0 13 0;
+#X connect 24 0 23 1;
+#X connect 25 0 23 2;
+#X connect 26 0 23 0;

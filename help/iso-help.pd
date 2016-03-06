@@ -1,69 +1,101 @@
-#N canvas 0 26 464 535 12;
-#X obj 16 407 iso;
-#X floatatom 16 434 5 0 0 0 - - -;
-#X floatatom 69 434 10 0 0 0 - - -;
-#X msg 72 156 bang;
-#X msg 96 207 stop;
-#X msg 106 233 pause;
-#X msg 117 259 resume;
-#X msg 128 285 loop;
-#X msg 139 311 unloop;
-#X text 214 100 list of pitches;
-#X text 273 129 list of attacks [ms];
-#X text 170 284 turn loopin back on;
-#X text 198 309 turn looping off;
-#X obj 16 460 makenote 0 100;
-#X obj 16 487 noteout;
-#X text 112 156 start from beginning;
-#X text 149 183 start at item specyfied;
-#X text 281 145 (inter-note onsets);
-#X text 88 45 ported to Pd by Olaf Matthes;
-#X text 216 337 global time multiplier;
-#X text 163 435 duration in ms;
-#X msg 152 337 hook 2;
-#X msg 161 368 duty 1.5;
-#X text 234 369 duration multiplier;
-#X obj 16 69 loadbang;
-#X msg 82 182 start 4;
-#X text 251 350 (speed adjustment);
-#X text 237 389 duty < 1 - staccato;
-#X text 237 404 duty > 1 - legato;
-#X text 169 198 (item count starts with 0);
-#X text 88 26 written for Max by Charlie Baker;
-#X text 31 6 iso :: queues up lists of pitches and attack points;
-#X msg 16 100 60 61 62 66 67 68 69 70;
-#X msg 35 128 240 10 500 375 15 15 375 500;
-#N canvas 474 26 494 344 META 0;
-#X text 12 205 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
-Wilkes for Pd version 0.42.;
+#N canvas 426 79 557 534 10;
+#X obj 0 0 cnv 15 552 40 empty empty iso 3 12 0 18 -204280 -1 0;
+#X obj 0 392 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 603 cnv 3 550 3 empty empty outlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 644 cnv 3 550 3 empty empty arguments 8 12 0 13 -228856 -1
+0;
+#X obj 79 612 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X obj 79 406 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X obj 0 673 cnv 15 552 21 empty empty empty 20 12 0 14 -233017 -33289
+0;
+#N canvas 242 347 428 75 Related_objects 0;
+#X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
+#X text 6 1 Related Objects;
+#X restore 206 675 pd Related_objects;
+#N canvas 510 680 379 261 META 0;
+#X text 12 160 AUTHOR Olaf Matthes <olaf.matthes@gmx.de>;
+#X text 12 180 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
+Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
 #X text 12 25 LICENSE GPL v2;
 #X text 12 125 OUTLET_0 float;
 #X text 12 45 DESCRIPTION queues up lists of pitches and attack points
 ;
-#X text 12 165 AUTHOR written for Max by Charlie Baker \, ported to
-Pd by Olaf Matthes <olaf.matthes@gmx.de>;
 #X text 12 65 INLET_0 list bang start stop pause resume loop unloop
 hook duty;
 #X text 12 105 INLET_1 list;
 #X text 12 145 OUTLET_1 float;
 #X text 12 5 KEYWORDS control;
-#X restore 402 504 pd META;
-#X connect 0 0 1 0;
-#X connect 0 1 2 0;
-#X connect 1 0 13 0;
-#X connect 2 0 13 1;
-#X connect 3 0 0 0;
-#X connect 4 0 0 0;
-#X connect 5 0 0 0;
-#X connect 6 0 0 0;
-#X connect 7 0 0 0;
-#X connect 8 0 0 0;
-#X connect 13 0 14 0;
-#X connect 13 1 14 1;
-#X connect 21 0 0 0;
-#X connect 22 0 0 0;
-#X connect 24 0 32 0;
-#X connect 24 0 33 0;
-#X connect 25 0 0 0;
-#X connect 32 0 0 0;
-#X connect 33 0 0 1;
+#X restore 502 677 pd META;
+#X obj 79 578 cnv 17 3 17 empty empty 1 5 9 0 16 -228856 -162280 0
+;
+#X text 107 612 float;
+#X text 162 612 - passes value only when no new value is received in
+the last N milliseconds;
+#X text 8 23 queues up lists of pitches and attack points, f 75;
+#X obj 507 4 iso;
+#X floatatom 82 324 5 0 0 0 - - -, f 5;
+#X floatatom 122 324 10 0 0 0 - - -, f 10;
+#X msg 150 119 bang;
+#X msg 151 142 stop;
+#X msg 187 142 pause;
+#X msg 228 142 resume;
+#X msg 228 165 loop;
+#X msg 263 165 unloop;
+#X obj 82 342 makenote 0 100;
+#X obj 82 364 noteout;
+#X msg 228 187 hook 2;
+#X msg 228 209 duty 1.5;
+#X obj 82 49 loadbang;
+#X msg 186 119 start 4;
+#X msg 82 73 60 61 62 66 67 68 69 70;
+#X msg 139 96 240 10 500 375 15 15 375 500;
+#X obj 82 263 maxlib/iso;
+#X text 107 406 list;
+#X text 162 405 - float note numbers;
+#X text 107 578 list;
+#X text 162 578 - float note velocities;
+#X text 107 438 list;
+#X text 107 422 bang;
+#X text 162 421 - start from beginning;
+#X text 162 437 - start at item specified (item count starts with 0)
+;
+#X text 107 454 stop;
+#X text 107 470 pause;
+#X text 107 486 resume;
+#X text 107 502 loop;
+#X text 107 518 unloop;
+#X text 107 534 hook 2;
+#X text 107 550 duty 1.5;
+#X text 162 501 - turn loopin back on;
+#X text 162 517 - turn looping off;
+#X text 162 453 - stop playback;
+#X text 162 469 - pauses playback;
+#X text 162 485 - resumes playback;
+#X text 162 533 - global time multiplier (speed adjustment) must be
+> 1;
+#X text 162 550 - duration multiplier \; duty < 1 - staccato \, duty
+> 1 - legato;
+#X text 96 653;
+#X connect 14 0 22 0;
+#X connect 15 0 22 1;
+#X connect 16 0 30 0;
+#X connect 17 0 30 0;
+#X connect 18 0 30 0;
+#X connect 19 0 30 0;
+#X connect 20 0 30 0;
+#X connect 21 0 30 0;
+#X connect 22 0 23 0;
+#X connect 22 1 23 1;
+#X connect 24 0 30 0;
+#X connect 25 0 30 0;
+#X connect 26 0 28 0;
+#X connect 26 0 29 0;
+#X connect 27 0 30 0;
+#X connect 28 0 30 0;
+#X connect 29 0 30 1;
+#X connect 30 0 14 0;
+#X connect 30 1 15 0;

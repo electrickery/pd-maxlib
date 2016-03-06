@@ -1,30 +1,66 @@
-#N canvas 0 26 423 305 12;
-#X floatatom 54 217 5 0 0 0 - - -;
-#X floatatom 54 127 5 0 0 0 - - -;
-#X floatatom 108 128 5 0 0 0 - - -;
-#X text 39 20 multi :: like '*' but calculates result;
-#X text 133 204 use creation arguments to set initial;
-#X text 133 220 values for inlets;
-#X msg 23 83 bang;
-#X text 69 82 calculate and output result now;
-#X obj 54 172 multi 8 6 2;
-#X floatatom 163 129 5 0 0 0 - - -;
-#X text 120 38 when leftmost or second inlet is changed;
-#N canvas 433 26 494 344 META 0;
-#X text 12 195 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
-Wilkes for Pd version 0.42.;
+#N canvas 489 81 557 515 10;
+#X obj 0 0 cnv 15 552 40 empty empty multi 3 12 0 18 -204280 -1 0;
+#X obj 0 295 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 410 cnv 3 550 3 empty empty outlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 450 cnv 3 550 3 empty empty arguments 8 12 0 13 -228856 -1
+0;
+#X obj 79 421 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X obj 79 308 cnv 17 3 25 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X obj 0 550 cnv 15 552 21 empty empty empty 20 12 0 14 -233017 -33289
+0;
+#N canvas 238 349 428 75 Related_objects 0;
+#X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
+#X text 6 1 Related Objects;
+#X restore 206 552 pd Related_objects;
+#N canvas 497 583 379 261 META 0;
+#X text 12 186 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
+Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
+#X text 12 167 AUTHOR Olaf Matthes <olaf.matthes@gmx.de>;
 #X text 12 25 LICENSE GPL v2;
-#X text 12 175 AUTHOR Olaf Matthes <olaf.matthes@gmx.de>;
 #X text 12 5 KEYWORDS control;
-#X text 12 45 DESCRIPTION like [*] but calculates result when leftmost
-or second inlet is changed;
 #X text 12 85 INLET_0 bang float;
 #X text 12 105 INLET_1 float;
-#X text 12 125 INLET_N float;
 #X text 12 145 OUTLET_0 float;
-#X restore 356 272 pd META;
-#X connect 1 0 8 0;
-#X connect 2 0 8 1;
-#X connect 6 0 8 0;
-#X connect 8 0 0 0;
-#X connect 9 0 8 2;
+#X text 12 125 INLET_N float;
+#X text 12 45 DESCRIPTION like [*] but calculates result when leftmost
+or second inlet is changed;
+#X restore 502 554 pd META;
+#X obj 0 492 cnv 3 550 3 empty empty more_info 8 12 0 13 -228856 -1
+0;
+#X text 107 421 list;
+#X text 162 328 - list to be matched against argument list;
+#X floatatom 99 242 5 0 0 0 - - -, f 5;
+#X floatatom 99 81 5 0 0 0 - - -, f 5;
+#X floatatom 151 81 5 0 0 0 - - -, f 5;
+#X msg 62 79 bang;
+#X floatatom 204 81 5 0 0 0 - - -, f 5;
+#X text 107 307 bang;
+#X text 162 307 - calculate and output result now;
+#X text 107 328 float;
+#X obj 78 351 cnv 17 3 17 empty empty 1 5 9 0 16 -228856 -162280 0
+;
+#X obj 78 379 cnv 17 3 17 empty empty n 5 9 0 16 -228856 -162280 0
+;
+#X text 107 352 float;
+#X text 107 378 float;
+#X text 85 469 initial values for inlets. Also defines the number of
+inlets., f 61;
+#X text 85 513 a maximum of 32 arguments is allowed;
+#X text 87 527 this can be changed in the source !;
+#X obj 505 4 multi;
+#X text 7 23 like '*' but calculates result when leftmost or second
+inlet is changed, f 76;
+#X obj 99 168 maxlib/multi 8 6 2;
+#X text 161 421 - the result of all multiplications: <inlet0> * <inlet1>
+* <inlet2 ... * <inletn>;
+#X text 162 352 - first multiplied inlet value. Is a hot inlet;
+#X text 162 378 - other multiplied values.;
+#X connect 13 0 29 0;
+#X connect 14 0 29 1;
+#X connect 15 0 29 0;
+#X connect 16 0 29 2;
+#X connect 29 0 12 0;

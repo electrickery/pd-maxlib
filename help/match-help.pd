@@ -1,79 +1,99 @@
-#N canvas 0 26 828 407 12;
-#X obj 50 350 bng 24 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
--1;
-#X msg 148 212 reset;
-#X obj 50 95 random 5;
-#X msg 50 5 0;
-#X msg 65 32 1;
-#X obj 50 65 metro 100;
-#X text 203 212 reset internal data storage;
-#X text 182 26 input values matches the creation;
-#X text 183 42 arguments;
-#X text 185 82 this can be changed in the sources !;
-#X text 83 351 <-- 'bang' when input matches arguments;
-#X obj 62 122 hdl 20 1 0 5 empty empty empty 0 -6 0 8 -262144 -1 -1
-0;
-#X floatatom 50 154 5 0 0 0 - - -;
-#X text 228 229 -> forget all old values;
-#X obj 50 243 match 3 4;
-#X floatatom 81 325 5 0 0 0 - - -;
-#X floatatom 156 324 5 0 0 0 - - -;
-#X obj 81 294 unpack f f;
-#X text 111 11 match :: outputs a list when a list of;
-#X msg 93 178 1 3 4 7;
-#X msg 160 178 1 2 4 5;
-#X text 230 179 send a list of floats;
-#X symbolatom 688 302 10 0 0 0 - - -;
-#X symbolatom 616 326 10 0 0 0 - - -;
-#X symbolatom 581 346 10 0 0 0 - - -;
-#X obj 540 339 bng 24 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
--1;
-#X obj 540 244 match dog bytes 2 cats;
-#X msg 553 186 dog bytes 2 cats;
-#X msg 564 214 cat bytes 2 dogs;
-#X text 384 114 same works for symbols and mixtures of floats and symbols:
+#N canvas 491 80 557 515 10;
+#X obj 0 0 cnv 15 552 40 empty empty match 3 12 0 18 -204280 -1 0;
+#X obj 0 295 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
 ;
-#X obj 581 275 unpack s s f s;
-#X floatatom 635 303 5 0 0 0 - - -;
-#X text 89 271 sends out the list when a match is found;
-#X msg 459 151 dog;
-#X msg 494 143 cats;
-#X msg 519 170 2;
-#X msg 471 195 bytes;
-#X text 183 68 a maximum of 16 arguments is allowed;
-#N canvas 289 198 494 344 META 0;
-#X text 12 145 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
-Wilkes for Pd version 0.42.;
+#X obj 0 369 cnv 3 550 3 empty empty outlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 409 cnv 3 550 3 empty empty arguments 8 12 0 13 -228856 -1
+0;
+#X obj 79 380 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X obj 79 308 cnv 17 3 55 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X obj 0 509 cnv 15 552 21 empty empty empty 20 12 0 14 -233017 -33289
+0;
+#N canvas 238 349 428 75 Related_objects 0;
+#X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
+#X text 6 1 Related Objects;
+#X restore 206 511 pd Related_objects;
+#N canvas 501 581 379 261 META 0;
+#X text 12 137 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
+Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
+#X text 12 118 AUTHOR Olaf Matthes <olaf.matthes@gmx.de>;
 #X text 12 25 LICENSE GPL v2;
-#X text 12 125 AUTHOR Olaf Matthes <olaf.matthes@gmx.de>;
 #X text 12 45 DESCRIPTION outputs a list when a list of input values
 matches the creation arguments;
 #X text 12 5 KEYWORDS control list_op anything_op;
-#X text 12 105 OUTLET_0 list;
-#X text 12 85 INLET_0 anything;
-#X restore 766 377 pd META;
-#X connect 1 0 14 0;
-#X connect 2 0 12 0;
-#X connect 3 0 5 0;
-#X connect 4 0 5 0;
-#X connect 5 0 2 0;
-#X connect 11 0 12 0;
-#X connect 12 0 14 0;
-#X connect 14 0 0 0;
-#X connect 14 0 17 0;
-#X connect 17 0 15 0;
-#X connect 17 1 16 0;
-#X connect 19 0 14 0;
-#X connect 20 0 14 0;
-#X connect 26 0 25 0;
-#X connect 26 0 30 0;
-#X connect 27 0 26 0;
-#X connect 28 0 26 0;
-#X connect 30 0 24 0;
-#X connect 30 1 23 0;
-#X connect 30 2 31 0;
-#X connect 30 3 22 0;
-#X connect 33 0 26 0;
-#X connect 34 0 26 0;
-#X connect 35 0 26 0;
-#X connect 36 0 26 0;
+#X text 12 99 OUTLET_0 list;
+#X text 12 79 INLET_0 anything;
+#X restore 502 513 pd META;
+#X obj 0 451 cnv 3 550 3 empty empty more_info 8 12 0 13 -228856 -1
+0;
+#X text 107 328 list;
+#X obj 505 4 match;
+#X text 7 23 outputs a list when a list of input values matches the
+creation arguments, f 76;
+#X obj 82 265 bng 24 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
+-1;
+#X msg 184 132 reset;
+#X obj 82 87 random 5;
+#X obj 82 63 metro 100;
+#X floatatom 127 272 5 0 0 0 - - -, f 5;
+#X floatatom 184 272 5 0 0 0 - - -, f 5;
+#X obj 127 241 unpack f f;
+#X msg 125 109 1 3 4 7;
+#X msg 183 109 1 2 4 5;
+#X obj 82 42 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 82 189 maxlib/match 3 4;
+#X text 107 307 float;
+#X text 107 347 reset;
+#X text 107 380 list;
+#N canvas 1015 189 450 300 match 0;
+#X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
+#X text 6 1 match for symbol lists;
+#X symbolatom 283 209 10 0 0 0 - - -, f 10;
+#X symbolatom 218 232 10 0 0 0 - - -, f 10;
+#X symbolatom 191 252 10 0 0 0 - - -, f 10;
+#X obj 150 245 bng 24 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
+-1;
+#X obj 150 150 match dog bytes 2 cats;
+#X msg 173 98 dog bytes 2 cats;
+#X msg 174 120 cat bytes 2 dogs;
+#X obj 191 181 unpack s s f s;
+#X floatatom 245 209 5 0 0 0 - - -, f 5;
+#X msg 77 42 dog;
+#X msg 179 42 cats;
+#X msg 150 42 2;
+#X msg 108 42 bytes;
+#X connect 6 0 5 0;
+#X connect 6 0 9 0;
+#X connect 7 0 6 0;
+#X connect 8 0 6 0;
+#X connect 9 0 4 0;
+#X connect 9 1 3 0;
+#X connect 9 2 10 0;
+#X connect 9 3 2 0;
+#X connect 11 0 6 0;
+#X connect 12 0 6 0;
+#X connect 13 0 6 0;
+#X connect 14 0 6 0;
+#X restore 385 107 pd match for lists;
+#X text 87 486 this can be changed in the sources !;
+#X text 85 472 a maximum of 16 arguments is allowed;
+#X text 84 428 the list to match;
+#X text 162 307 - value to be matched against argument list;
+#X text 162 328 - list to be matched against argument list;
+#X text 162 347 - reset a partially matched list;
+#X text 161 380 - the argument list when it is matched on the inlet
+\, either as list or stream of floats and symbols;
+#X connect 14 0 23 0;
+#X connect 15 0 23 0;
+#X connect 16 0 15 0;
+#X connect 19 0 17 0;
+#X connect 19 1 18 0;
+#X connect 20 0 23 0;
+#X connect 21 0 23 0;
+#X connect 22 0 16 0;
+#X connect 23 0 13 0;
+#X connect 23 0 19 0;

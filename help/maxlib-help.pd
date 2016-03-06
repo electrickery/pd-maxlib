@@ -1,4 +1,4 @@
-#N canvas 669 79 1161 819 10;
+#N canvas 263 232 1161 819 10;
 #X obj 307 260 average;
 #X obj 18 150 beat;
 #X obj 18 175 borax;
@@ -25,7 +25,7 @@
 #X obj 403 525 speedlim;
 #X obj 403 603 step;
 #X obj 660 318 subst;
-#X text 140 44 written by Olaf Matthes <olaf.matthes@gmx.de>;
+#X text 5 44 written by Olaf Matthes <olaf.matthes@gmx.de>;
 #X text 71 125 chord detection;
 #X text 68 150 beat tracking;
 #X text 77 201 beat detection;
@@ -63,7 +63,7 @@
 #X obj 14 661 netrec;
 #X text 73 662 netreceive with extra info about sender;
 #X obj 307 364 delta;
-#X text 139 61 download at http://www.akustische-kunst.org/puredata/maxlib
+#X text 4 61 download at http://www.akustische-kunst.org/puredata/maxlib
 ;
 #X obj 656 173 listfifo;
 #X text 734 172 first in first out for lists;
@@ -116,7 +116,6 @@
 #X text 66 333 meassure tilt of input;
 #X obj 16 489 listfunnel;
 #X text 107 490 Max's funnel for lists;
-#X text 30 26 maxlib 1.5 :: Music Analysis eXtensions LIBrary;
 #X obj 656 201 arraycopy;
 #X text 741 202 copy from one array to another;
 #X obj 17 525 nchange s;
@@ -124,3 +123,9 @@
 #X obj 791 502 allow;
 #X text 829 501 lets only 'allowed' floats or symbols through;
 #X text 792 480 FILTER;
+#X obj 792 528 deny;
+#X text 831 527 blocks denied floats or symbols;
+#X obj 2 2 cnv 15 552 40 empty empty maxlib_1.5_Music_Analysis_eXtensions_LIBrary
+3 12 0 18 -204280 -1 0;
+#X text 30 26 comment;
+#X obj 1042 757 maxlib-meta;

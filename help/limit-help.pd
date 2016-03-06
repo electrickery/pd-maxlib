@@ -1,39 +1,87 @@
-#N canvas 0 26 510 365 12;
-#X floatatom 27 277 8 0 0 0 - - -;
-#X floatatom 27 73 5 0 0 0 - - -;
-#X text 215 46 written by <olaf.matthes@gmx.de>;
-#X floatatom 54 131 5 0 0 0 - - -;
-#X floatatom 82 152 5 0 0 0 - - -;
-#X floatatom 110 173 5 0 0 0 - - -;
-#X text 84 71 input value;
-#X text 57 104 creation arguments can be changed dynamically:;
-#X obj 27 249 limit 0 9 5;
-#X text 35 316 creation arguments:;
-#X text 170 172 0 = limit \, others: compression ratio;
-#X text 35 340 limit <lower limit> <upper limit> <ratio>;
-#X text 324 195 values between 0 and 1;
-#X text 325 213 result in expansion !;
-#X text 106 278 limited / compressed output value;
-#X text 141 11 limit :: limits input to lie between boundaries;
-#X text 213 27 allows for compression / expansion;
-#X text 114 129 lower boundary;
-#X text 144 151 upper boundary;
-#N canvas 520 26 494 344 META 0;
-#X text 12 225 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
-Wilkes for Pd version 0.42.;
+#N canvas 480 79 557 534 10;
+#X obj 0 0 cnv 15 552 40 empty empty limit 3 12 0 18 -204280 -1 0;
+#X obj 0 295 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 405 cnv 3 550 3 empty empty outlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 446 cnv 3 550 3 empty empty arguments 8 12 0 13 -228856 -1
+0;
+#X obj 79 414 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X obj 79 306 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X obj 0 522 cnv 15 552 21 empty empty empty 20 12 0 14 -233017 -33289
+0;
+#N canvas 242 347 428 75 Related_objects 0;
+#X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
+#X text 6 1 Related Objects;
+#X restore 206 524 pd Related_objects;
+#N canvas 508 681 379 261 META 0;
+#X text 12 197 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
+Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
 #X text 12 25 LICENSE GPL v2;
-#X text 12 165 OUTLET_0 float;
+#X text 12 160 OUTLET_0 float;
 #X text 12 5 KEYWORDS control filter;
 #X text 12 45 DESCRIPTION limits input to lie between boundaries and
 allows for compression / expansion;
-#X text 12 85 INLET_0 float;
-#X text 12 105 INLET_1 float;
-#X text 12 125 INLET_2 float;
-#X text 12 145 INLET_3 float;
-#X text 12 185 AUTHOR Olaf Matthes <olaf.matthes@gmx.de>;
-#X restore 442 334 pd META;
-#X connect 1 0 8 0;
-#X connect 3 0 8 1;
-#X connect 4 0 8 2;
-#X connect 5 0 8 3;
-#X connect 8 0 0 0;
+#X text 12 80 INLET_0 float;
+#X text 12 100 INLET_1 float;
+#X text 12 120 INLET_2 float;
+#X text 12 140 INLET_3 float;
+#X text 12 180 AUTHOR Olaf Matthes <olaf.matthes@gmx.de>;
+#X restore 502 526 pd META;
+#X obj 0 479 cnv 3 550 3 empty empty more_info 8 12 0 13 -228856 -1
+0;
+#X text 107 414 float;
+#X text 162 308 - input value;
+#X text 107 308 float;
+#X obj 508 4 limit;
+#X text 11 22 limits input to lie between boundaries allows for compression
+/ expansion, f 74;
+#X floatatom 77 262 8 0 0 0 - - -, f 8;
+#X floatatom 77 58 5 0 0 0 - - -, f 5;
+#X floatatom 114 78 5 0 0 0 - - -, f 5;
+#X floatatom 151 98 5 0 0 0 - - -, f 5;
+#X floatatom 188 118 5 0 0 0 - - -, f 5;
+#X obj 79 330 cnv 17 3 17 empty empty 1 5 9 0 16 -228856 -162280 0
+;
+#X text 107 332 float;
+#X obj 79 354 cnv 17 3 17 empty empty 2 5 9 0 16 -228856 -162280 0
+;
+#X text 107 356 float;
+#X obj 79 378 cnv 17 3 17 empty empty 3 5 9 0 16 -228856 -162280 0
+;
+#X text 107 380 float;
+#X text 162 332 - lower boundary;
+#X text 162 356 - upper boundary;
+#X text 162 380 - compression ratio;
+#X text 96 488 a limit value of 0 meand limiting \, < 1 expansion \,
+> 1 compression;
+#X text 96 455 default values for lower and upper boundary and compression
+factor;
+#X text 162 414 - output value;
+#N canvas 0 50 450 250 (subpatch) 0;
+#X array \$0-a1 100 float 2;
+#X coords 0 -5 100 5 200 140 1 0 0;
+#X restore 334 121 graph;
+#X text 318 121 5;
+#X text 318 249 -5;
+#X obj 153 258 tabwrite \$0-a1;
+#X obj 234 236 f 0;
+#X obj 260 237 + 1;
+#X obj 153 214 t f b;
+#X msg 234 213 0;
+#X text 258 213 restart;
+#X obj 77 166 maxlib/limit -5 5 0;
+#X connect 16 0 41 0;
+#X connect 17 0 41 1;
+#X connect 18 0 41 2;
+#X connect 19 0 41 3;
+#X connect 36 0 37 0;
+#X connect 36 0 35 1;
+#X connect 37 0 36 1;
+#X connect 38 0 35 0;
+#X connect 38 1 36 0;
+#X connect 39 0 36 0;
+#X connect 41 0 15 0;
+#X connect 41 0 38 0;
