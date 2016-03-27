@@ -1,52 +1,87 @@
-#N canvas 10 3 630 380 12;
-#X floatatom 116 199 5 0 0 0 - - -;
-#X obj 41 290 print matched;
-#X obj 116 256 print failed;
-#X msg 78 151 8;
-#X obj 41 226 nroute 8 2;
-#X msg 41 77 0 8 15;
-#X msg 56 105 17 3 45;
-#X msg 116 153 3;
-#X text 170 197 position to match;
-#X floatatom 427 204 5 0 0 0 - - -;
-#X obj 336 293 print matched;
-#X obj 427 259 print failed;
-#X obj 336 229 nroute fly 2;
-#X msg 381 178 go;
-#X msg 417 178 walk;
-#X msg 336 80 swifts fly high;
-#X msg 351 108 dogs walk slow;
-#X msg 363 141 please go go;
-#X text 153 152 what to match;
-#X text 54 8 nroute :: route if Nth argument is matched;
-#X text 135 24 written by Olaf Matthes <olaf.matthes@gmx.de>;
-#N canvas 260 141 494 344 META 0;
-#X text 12 65 TEMPLATE template-help.pd v0.1;
-#X text 12 85 PLATFORM windows macosx gnulinux;
-#X text 12 5 GENRE help;
-#X text 12 165 WEBSITE;
-#X text 12 205 RELEASE_VERSION 0.42;
-#X text 12 225 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
-Wilkes for Pd version 0.42.;
-#X text 12 125 LIBRARY external maxlib;
-#X text 12 45 LICENSE;
-#X text 12 185 RELEASE_DATE;
-#X text 12 25 KEYWORDS control;
-#X text 12 105 DATATYPE float symbol list;
-#X text 12 145 AUTHOR Olaf Matthes;
-#X restore 571 354 pd META;
-#X connect 0 0 4 2;
-#X connect 3 0 4 1;
-#X connect 4 0 1 0;
-#X connect 4 1 2 0;
-#X connect 5 0 4 0;
-#X connect 6 0 4 0;
-#X connect 7 0 4 1;
-#X connect 9 0 12 2;
-#X connect 12 0 10 0;
-#X connect 12 1 11 0;
-#X connect 13 0 12 1;
-#X connect 14 0 12 1;
-#X connect 15 0 12 0;
-#X connect 16 0 12 0;
-#X connect 17 0 12 0;
+#N canvas 563 79 557 515 10;
+#X obj 0 0 cnv 15 552 40 empty empty nroute 3 12 0 18 -204280 -1 0
+;
+#X obj 0 295 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 410 cnv 3 550 3 empty empty outlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 478 cnv 3 550 3 empty empty arguments 8 12 0 13 -228856 -1
+0;
+#X obj 79 421 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X obj 79 308 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X obj 0 523 cnv 15 552 21 empty empty empty 20 12 0 14 -233017 -33289
+0;
+#N canvas 238 349 428 75 Related_objects 0;
+#X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
+#X text 6 1 Related Objects;
+#X restore 206 525 pd Related_objects;
+#N canvas 682 594 379 261 META 0;
+#X text 12 191 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
+Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
+#X text 12 172 AUTHOR Olaf Matthes <olaf.matthes@gmx.de>;
+#X text 12 25 LICENSE GPL v2;
+#X text 12 5 KEYWORDS control;
+#X text 12 67 INLET_0 bang float;
+#X text 12 87 INLET_1 float;
+#X text 12 127 OUTLET_0 float;
+#X text 12 147 OUTLET_1 float;
+#X text 12 107 INLET_2 float;
+#X text 12 45 DESCRIPTION routes list on specified list element;
+#X restore 502 527 pd META;
+#X text 107 421 list;
+#X obj 79 336 cnv 17 3 17 empty empty 1 5 9 0 16 -228856 -162280 0
+;
+#X obj 79 382 cnv 17 3 17 empty empty 2 5 9 0 16 -228856 -162280 0
+;
+#X text 108 337 float;
+#X text 108 381 float;
+#X text 7 23 route if Nth argument is matched, f 76;
+#X obj 502 4 nroute;
+#X floatatom 177 139 5 0 0 0 - - -, f 5;
+#X obj 78 271 print matched;
+#X obj 177 271 print failed;
+#X msg 127 102 8;
+#X msg 78 58 0 8 15;
+#X msg 86 80 17 3 45;
+#X msg 165 102 3;
+#X floatatom 460 152 5 0 0 0 - - -, f 5;
+#X obj 349 271 print matched;
+#X obj 460 271 print failed;
+#X msg 404 126 go;
+#X msg 436 126 walk;
+#X msg 349 58 swifts fly high;
+#X msg 358 80 dogs walk slow;
+#X msg 367 102 please go go;
+#X obj 78 207 maxlib/nroute 8 2;
+#X obj 349 207 maxlib/nroute fly 2;
+#X text 107 307 list;
+#X text 162 307 - evaluated list. Can consists of floats and symbols
+;
+#X text 108 357 symbol;
+#X text 163 337 - value to match;
+#X text 163 357 - value to match;
+#X text 163 381 - list index position of the element to match;
+#X obj 79 449 cnv 17 3 17 empty empty 1 5 9 0 16 -228856 -162280 0
+;
+#X text 107 449 list;
+#X text 161 421 - outputs the list if there is a match;
+#X text 161 449 - outputs the list if there isn't a match;
+#X text 85 497 default values for match value and list index position
+, f 61;
+#X connect 16 0 31 2;
+#X connect 19 0 31 1;
+#X connect 20 0 31 0;
+#X connect 21 0 31 0;
+#X connect 22 0 31 1;
+#X connect 23 0 32 2;
+#X connect 26 0 32 1;
+#X connect 27 0 32 1;
+#X connect 28 0 32 0;
+#X connect 29 0 32 0;
+#X connect 30 0 32 0;
+#X connect 31 0 17 0;
+#X connect 31 1 18 0;
+#X connect 32 0 24 0;
+#X connect 32 1 25 0;

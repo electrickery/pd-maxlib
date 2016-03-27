@@ -1,28 +1,26 @@
-#N canvas 0 26 439 308 12;
-#X floatatom 83 266 5 0 0 0 - - -;
-#X obj 83 35 notein;
-#X floatatom 112 217 5 0 0 0 - - -;
-#X floatatom 127 191 5 0 0 0 - - -;
-#X floatatom 142 166 5 0 0 0 - - -;
-#X floatatom 24 33 5 0 0 0 - - -;
-#X symbolatom 97 242 7 0 0 0 - - -;
-#X text 139 267 MIDI note number;
-#X text 166 217 pitch class;
-#X text 181 191 interval to last note;
-#X text 197 166 register;
-#X text 153 33 pitch :: get info about pitch;
-#X text 169 243 note name (symbol);
-#X text 221 54 use creation argument to;
-#X text 221 71 set assumed first note;
-#X text 227 104 of the first interval );
-#X text 218 89 ( needed for calculation;
-#X obj 83 94 stripnote;
-#X obj 83 137 pitch 72;
-#N canvas 295 203 494 344 META 0;
+#N canvas 510 80 557 515 10;
+#X obj 0 0 cnv 15 552 40 empty empty pitch 3 12 0 18 -204280 -1 0;
+#X obj 0 295 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 364 cnv 3 550 3 empty empty outlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 506 cnv 3 550 3 empty empty arguments 8 12 0 13 -228856 -1
+0;
+#X obj 79 375 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X obj 79 308 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X obj 0 547 cnv 15 552 21 empty empty empty 20 12 0 14 -233017 -33289
+0;
+#N canvas 238 349 428 75 Related_objects 0;
+#X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
+#X text 6 1 Related Objects;
+#X restore 206 549 pd Related_objects;
+#N canvas 680 595 379 261 META 0;
 #X text 12 225 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
-Wilkes for Pd version 0.42.;
+Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
+#X text 12 206 AUTHOR Olaf Matthes <olaf.matthes@gmx.de>;
 #X text 12 25 LICENSE GPL v2;
-#X text 12 205 AUTHOR Olaf Matthes <olaf.matthes@gmx.de>;
 #X text 12 45 DESCRIPTION get info about pitch;
 #X text 12 5 KEYWORDS control analysis MIDI;
 #X text 12 65 INLET_0 float;
@@ -32,14 +30,57 @@ Wilkes for Pd version 0.42.;
 #X text 12 165 OUTLET_3 float;
 #X text 12 185 OUTLET_4 float;
 #X text 12 125 OUTLET_1 symbol;
-#X restore 375 273 pd META;
-#X connect 1 0 17 0;
-#X connect 1 1 17 1;
-#X connect 5 0 18 0;
-#X connect 17 0 18 0;
-#X connect 17 1 18 1;
-#X connect 18 0 0 0;
-#X connect 18 1 6 0;
-#X connect 18 2 2 0;
-#X connect 18 3 3 0;
-#X connect 18 4 4 0;
+#X restore 502 551 pd META;
+#X obj 79 336 cnv 17 3 17 empty empty 1 5 9 0 16 -228856 -162280 0
+;
+#X text 108 337 float;
+#X obj 79 403 cnv 17 3 17 empty empty 1 5 9 0 16 -228856 -162280 0
+;
+#X obj 502 4 pitch;
+#X text 7 23 get info about pitch, f 76;
+#X floatatom 103 277 5 0 0 0 - - -, f 5;
+#X obj 103 46 notein;
+#X floatatom 146 241 5 0 0 0 - - -, f 5;
+#X floatatom 168 223 5 0 0 0 - - -, f 5;
+#X floatatom 190 205 5 0 0 0 - - -, f 5;
+#X floatatom 219 49 5 0 0 0 - - -, f 5;
+#X symbolatom 124 259 7 0 0 0 - - -, f 7;
+#X obj 103 78 stripnote;
+#X obj 103 163 maxlib/pitch 72;
+#X msg 268 52 74;
+#X msg 269 75 72;
+#X msg 270 98 70;
+#X text 107 307 float;
+#X text 162 307 - note number;
+#X text 163 337 - note velocity;
+#X obj 79 428 cnv 17 3 17 empty empty 2 5 9 0 16 -228856 -162280 0
+;
+#X obj 79 457 cnv 17 3 17 empty empty 3 5 9 0 16 -228856 -162280 0
+;
+#X obj 79 484 cnv 17 3 17 empty empty 4 5 9 0 16 -228856 -162280 0
+;
+#X text 107 375 float;
+#X text 107 403 symbol;
+#X text 107 429 float;
+#X text 107 484 float;
+#X text 161 375 - outputs the MIDI note number;
+#X text 161 403 - outputs the note name;
+#X text 161 429 - outputs the pitch class;
+#X text 107 457 float;
+#X text 161 457 - outputs the intervat to the last note;
+#X text 161 484 - outputs the note register;
+#X text 85 525 default value for the 0th note. Needed for calculation
+of the first interval, f 76;
+#X connect 15 0 21 0;
+#X connect 15 1 21 1;
+#X connect 19 0 22 0;
+#X connect 21 0 22 0;
+#X connect 21 1 22 1;
+#X connect 22 0 14 0;
+#X connect 22 1 20 0;
+#X connect 22 2 16 0;
+#X connect 22 3 17 0;
+#X connect 22 4 18 0;
+#X connect 23 0 22 0;
+#X connect 24 0 22 0;
+#X connect 25 0 22 0;

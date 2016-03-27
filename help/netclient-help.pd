@@ -1,63 +1,161 @@
-#N canvas 0 26 733 465 12;
-#X floatatom 49 333 5 0 0 0 - - -;
-#X floatatom 87 298 5 0 0 0 - - -;
-#X symbolatom 164 251 10 0 0 0 - - -;
-#X text 102 332 received data;
-#X text 140 298 number of connections;
-#X msg 49 54 print;
-#X floatatom 125 272 5 0 0 0 - - -;
-#X text 183 276 socket number;
-#X msg 103 179 broadcast hallo world!;
-#X text 288 179 send to all clients;
-#X text 143 49 written by Olaf Matthes <olaf.matthes@gmx.de>;
-#X obj 49 223 netserver 3000;
-#X text 137 120 send message to client no. 1;
-#X text 256 251 client's IP address;
-#X obj 477 189 netclient;
-#X msg 498 116 connect localhost 3000;
-#X msg 511 143 disconnect;
-#X msg 477 84 send 23;
-#X floatatom 544 218 5 0 0 0 - - -;
-#X msg 83 91 send 380 17.3;
-#X floatatom 477 296 5 0 0 0 - - -;
-#X obj 600 281 print anything;
-#X obj 538 309 print list;
-#X obj 477 245 route float list;
-#X msg 98 142 client 1 23;
-#X text 204 91 "send <socketnumber> <data>";
-#X text 110 70 send message on specified socket;
-#X text 200 143 "client <clientnumber> <data>";
-#X text 48 379 This example demonstrates how to set up a client/server
-connection. Data sent by the client get's received and displayed by
-the server imediately. Or just try it the other way round...;
-#X text 38 15 netclient :: simple client that connects to netserver
-or;
-#X text 142 32 to pd's native netreceive object;
-#N canvas 518 27 494 344 META 0;
-#X text 12 165 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
-Wilkes for Pd version 0.42.;
+#N canvas 516 81 557 515 10;
+#X obj 0 0 cnv 15 552 40 empty empty netclient 3 12 0 18 -204280 -1
+0;
+#X obj 0 308 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 390 cnv 3 550 3 empty empty outlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 466 cnv 3 550 3 empty empty arguments 8 12 0 13 -228856 -1
+0;
+#X obj 79 400 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X obj 79 320 cnv 17 3 50 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X obj 0 551 cnv 15 552 21 empty empty empty 20 12 0 14 -233017 -33289
+0;
+#N canvas 234 351 428 75 Related_objects 0;
+#X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
+#X text 6 1 Related Objects;
+#X restore 207 553 pd Related_objects;
+#N canvas 428 558 379 261 META 0;
+#X text 12 146 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
+Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
+#X text 12 127 AUTHOR Olaf Matthes <olaf.matthes@gmx.de>;
 #X text 12 25 LICENSE GPL v2;
-#X text 12 145 AUTHOR Olaf Matthes <olaf.matthes@gmx.de>;
-#X text 12 45 DESCRIPTION simple client that connects to netserver
-or to pd's native netreceive object;
 #X text 12 5 KEYWORDS control network;
-#X text 12 85 INLET_0 send connect disconnect;
-#X text 12 105 OUTLET_0 list;
-#X text 12 125 OUTLET_1 float;
-#X restore 671 437 pd META;
-#X connect 5 0 11 0;
-#X connect 8 0 11 0;
-#X connect 11 0 0 0;
-#X connect 11 1 1 0;
-#X connect 11 2 6 0;
-#X connect 11 3 2 0;
-#X connect 14 0 23 0;
-#X connect 14 1 18 0;
-#X connect 15 0 14 0;
+#X text 12 105 OUTLET_1 float;
+#X text 12 45 DESCRIPTION simple client that connects to netserver
+;
+#X text 12 65 INLET_0 send connect disconnect;
+#X text 12 85 OUTLET_0 list;
+#X restore 502 555 pd META;
+#X obj 0 508 cnv 3 550 3 empty empty more_info 8 12 0 13 -228856 -1
+0;
+#X text 7 23 simple client that connects to netserver or to pd's native
+netreceive object, f 76;
+#X obj 487 4 netclient;
+#X text 107 339 disconnect;
+#X text 107 359 send;
+#X text 176 340 - disconnect current connection;
+#X text 107 319 connect h p;
+#X text 175 319 - connect to host h on port p;
+#X text 177 359 - send anything;
+#X msg 101 109 disconnect;
+#X floatatom 88 264 5 0 0 0 - - -, f 5;
+#X obj 181 263 print anything;
+#X obj 134 283 print list;
+#X obj 88 226 route float list;
+#N canvas 553 342 450 364 netserver 0;
+#X msg 47 49 print;
+#X msg 101 174 broadcast hallo world!;
+#X text 286 174 send to all clients;
+#X text 135 115 send message to client no. 1;
+#X msg 81 86 send 380 17.3;
+#X msg 96 137 client 1 23;
+#X text 202 86 "send <socketnumber> <data>";
+#X text 108 65 send message on specified socket;
+#X text 198 138 "client <clientnumber> <data>";
+#X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
+#X text 6 1 netserver;
+#X obj 100 45 inlet;
+#X obj 90 328 outlet;
+#X obj 176 328 outlet;
+#X obj 47 328 outlet;
+#X obj 133 328 outlet;
+#X obj 47 218 maxlib/netserver 3001;
+#X connect 0 0 16 0;
+#X connect 1 0 16 0;
+#X connect 4 0 16 0;
+#X connect 5 0 16 0;
+#X connect 11 0 16 0;
 #X connect 16 0 14 0;
-#X connect 17 0 14 0;
-#X connect 19 0 11 0;
-#X connect 23 0 20 0;
-#X connect 23 1 22 0;
-#X connect 23 2 21 0;
-#X connect 24 0 11 0;
+#X connect 16 1 12 0;
+#X connect 16 2 15 0;
+#X connect 16 3 13 0;
+#X restore 342 106 pd netserver;
+#X floatatom 342 200 5 0 0 0 - - -, f 5;
+#X floatatom 365 182 5 0 0 0 - - -, f 5;
+#X floatatom 388 164 5 0 0 0 - - -, f 5;
+#X symbolatom 411 145 10 0 0 0 - - -, f 10;
+#X obj 88 170 maxlib/netclient;
+#X obj 79 427 cnv 17 3 17 empty empty 1 5 9 0 16 -228856 -162280 0
+;
+#X text 476 144 client IP;
+#X text 424 164 socket;
+#X text 401 182 number of connections;
+#X text 380 200 received data;
+#X msg 94 87 connect localhost 3001;
+#X obj 347 127 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 370 127 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 395 126 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 418 126 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 362 81 broadcast hallo world!;
+#X msg 274 81 send \$1 17.3;
+#X obj 274 60 f;
+#X obj 255 60 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 94 246 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X text 107 427 float;
+#X obj 181 209 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X text 161 427 - the connect state. 0 = disconnected \, 1 = connected
+;
+#X text 107 400 anything;
+#X text 161 400 - the received value;
+#X text 85 484 used protocol. 0 = tcp (packet mode) \, 1 = udp (streaming
+mode), f 64;
+#N canvas 605 409 450 300 counter 0;
+#X obj 115 116 f 0;
+#X obj 142 115 + 1;
+#X obj 115 87 metro 500;
+#X msg 184 84 0;
+#X obj 140 63 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X floatatom 140 140 5 0 0 0 - - -, f 5;
+#X obj 115 176 outlet;
+#X obj 115 28 inlet;
+#X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
+#X text 6 1 counter;
+#X connect 0 0 1 0;
+#X connect 0 0 5 0;
+#X connect 0 0 6 0;
+#X connect 1 0 0 1;
+#X connect 2 0 0 0;
+#X connect 3 0 0 1;
+#X connect 4 0 2 0;
+#X connect 7 0 2 0;
+#X restore 88 43 pd counter;
+#X msg 88 65 send \$1;
+#X obj 71 44 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X text 86 525 the netclient/netsend set is not entirely stable an
+can crash pd., f 69;
+#X connect 18 0 28 0;
+#X connect 22 0 19 0;
+#X connect 22 0 43 0;
+#X connect 22 1 21 0;
+#X connect 22 2 20 0;
+#X connect 23 0 24 0;
+#X connect 23 0 35 0;
+#X connect 23 1 25 0;
+#X connect 23 1 36 0;
+#X connect 23 2 26 0;
+#X connect 23 2 37 0;
+#X connect 23 3 27 0;
+#X connect 23 3 38 0;
+#X connect 26 0 41 1;
+#X connect 28 0 22 0;
+#X connect 28 1 45 0;
+#X connect 34 0 28 0;
+#X connect 39 0 23 0;
+#X connect 40 0 23 0;
+#X connect 41 0 40 0;
+#X connect 42 0 41 0;
+#X connect 50 0 51 0;
+#X connect 51 0 28 0;
+#X connect 52 0 50 0;
