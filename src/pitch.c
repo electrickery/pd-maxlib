@@ -25,7 +25,7 @@
 #include "m_pd.h"
 #include <stdio.h>
 
-static char *version = "pitch v0.1b, written by Olaf Matthes <olaf.matthes@gmx.de>";
+static char *version = "pitch v0.2, written by Olaf Matthes <olaf.matthes@gmx.de>";
  
 typedef struct pitch
 {
@@ -76,6 +76,10 @@ static void pitch_float(t_pitch *x, t_floatarg f) {
 	outlet_float(x->x_outpitchval, pitch);
 }
 
+static void pitch_ft1(t_pitch *x, t_floatarg f) {
+}
+
+
 static t_class *pitch_class;
 
 static void *pitch_new(t_floatarg f)
@@ -99,7 +103,7 @@ void pitch_setup(void)
     pitch_class = class_new(gensym("pitch"), (t_newmethod)pitch_new,
     	0, sizeof(t_pitch), 0, A_DEFFLOAT, 0);
     class_addfloat(pitch_class, pitch_float);
-    
+    class_addmethod(pitch_class, (t_method)pitch_ft1, gensym("ft1"), 0);
     logpost(NULL, 4, version);
 }
 #else
