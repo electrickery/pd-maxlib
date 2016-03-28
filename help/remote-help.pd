@@ -1,29 +1,47 @@
-#N canvas 0 26 484 292 12;
-#X text 9 9 remote :: send data to any receive object;
-#X obj 32 224 remote;
-#X obj 216 222 receive bla;
-#X obj 321 222 receive foo;
-#X obj 216 250 print bla;
-#X obj 321 250 print foo;
-#X msg 32 104 bla 17.3 23;
-#X msg 76 183 foo 13 \, bla 4;
-#X text 148 75 use message: <name> <data>;
-#X text 253 91 with data of any type;
-#X text 89 26 written by Olaf Matthes <olaf.matthes@gmx.de>;
-#X msg 61 147 foo five is 2 more than 3;
-#X msg 294 146 \; bla 17.3 23;
-#X text 296 184 this does the same...;
-#N canvas 293 158 494 344 META 0;
-#X text 12 105 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
-Wilkes for Pd version 0.42.;
+#N canvas 501 79 557 515 10;
+#X obj 0 0 cnv 15 552 40 empty empty remote 3 12 0 18 -204280 -1 0
+;
+#X obj 0 359 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 403 cnv 3 550 3 empty empty outlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 442 cnv 3 550 3 empty empty arguments 8 12 0 13 -228856 -1
+0;
+#X obj 79 370 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X obj 0 476 cnv 15 552 21 empty empty empty 20 12 0 14 -233017 -33289
+0;
+#N canvas 240 348 428 75 Related_objects 0;
+#X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
+#X text 6 1 Related Objects;
+#X restore 206 478 pd Related_objects;
+#N canvas 495 584 379 261 META 0;
+#X text 12 120 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
+Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
+#X text 12 86 AUTHOR Olaf Matthes <olaf.matthes@gmx.de> originally
+written by James McCartney for Max;
 #X text 12 25 LICENSE GPL v2;
-#X text 12 85 AUTHOR Olaf Matthes <olaf.matthes@gmx.de>;
 #X text 12 5 KEYWORDS control nonlocal;
 #X text 12 45 DESCRIPTION send data to any receive object;
 #X text 12 65 INLET_0 anything;
-#X restore 423 267 pd META;
-#X connect 2 0 4 0;
-#X connect 3 0 5 0;
-#X connect 6 0 1 0;
-#X connect 7 0 1 0;
-#X connect 11 0 1 0;
+#X restore 502 480 pd META;
+#X obj 500 4 remote;
+#X text 8 23 send data to any receive object;
+#X obj 305 218 receive bla;
+#X obj 410 218 receive foo;
+#X obj 305 246 print bla;
+#X obj 410 246 print foo;
+#X msg 81 74 bla 17.3 23;
+#X msg 94 123 foo 13 \, bla 4;
+#X msg 87 98 foo five is 2 more than 3;
+#X msg 383 110 \; bla 17.3 23;
+#X text 385 148 this does the same...;
+#X obj 81 253 maxlib/remote;
+#X text 107 369 list;
+#X text 181 369 - first element is target \, the rest is the sent message
+;
+#X connect 10 0 12 0;
+#X connect 11 0 13 0;
+#X connect 14 0 19 0;
+#X connect 15 0 19 0;
+#X connect 16 0 19 0;

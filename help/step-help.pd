@@ -1,26 +1,24 @@
-#N canvas 0 26 510 321 12;
-#X floatatom 33 229 5 0 0 0 - - -;
-#X text 72 7 step :: output sequence of numbers (similar to 'line')
+#N canvas 495 79 557 515 10;
+#X obj 0 0 cnv 15 552 40 empty empty step 3 12 0 18 -204280 -1 0;
+#X obj 0 283 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
 ;
-#X text 138 25 written by Olaf Matthes (olaf.matthes@gmx.de);
-#X text 222 250 stepsize :: step between two numbers;
-#X msg 33 76 23 6000 2;
-#X msg 62 119 230;
-#X obj 101 282 line;
-#X text 98 117 send a single number to jump;
-#X text 121 77 send a triplet to step to a new value;
-#X text 22 282 see also:;
-#X msg 80 146 stop;
-#X text 127 147 "stop" message to stop output;
-#X text 121 92 <new value> <time> <step>;
-#X text 123 196 step <value> <stepsize>;
-#X text 221 234 value :: value to start with;
-#X obj 33 195 step 100 3;
-#N canvas 292 198 494 344 META 0;
-#X text 12 170 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
-Wilkes for Pd version 0.42.;
+#X obj 0 417 cnv 3 550 3 empty empty outlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 465 cnv 3 550 3 empty empty arguments 8 12 0 13 -228856 -1
+0;
+#X obj 79 298 cnv 17 3 50 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X obj 0 557 cnv 15 552 21 empty empty empty 20 12 0 14 -233017 -33289
+0;
+#N canvas 238 349 428 75 Related_objects 0;
+#X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
+#X text 6 1 Related Objects;
+#X restore 206 561 pd Related_objects;
+#N canvas 485 589 379 261 META 0;
+#X text 12 174 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
+Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
+#X text 12 153 AUTHOR Olaf Matthes <olaf.matthes@gmx.de>;
 #X text 12 25 LICENSE GPL v2;
-#X text 12 150 AUTHOR Olaf Matthes <olaf.matthes@gmx.de>;
 #X text 12 90 INLET_1 float;
 #X text 12 110 INLET_2 float;
 #X text 12 130 OUTLET_0 float;
@@ -28,8 +26,50 @@ Wilkes for Pd version 0.42.;
 );
 #X text 12 5 KEYWORDS control ramp;
 #X text 12 70 INLET_0 float list stop;
-#X restore 448 292 pd META;
-#X connect 4 0 15 0;
-#X connect 5 0 15 0;
-#X connect 10 0 15 0;
-#X connect 15 0 0 0;
+#X restore 502 560 pd META;
+#X obj 79 433 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X text 107 432 float;
+#X obj 79 358 cnv 17 3 17 empty empty 1 5 9 0 16 -228856 -162280 0
+;
+#X text 107 359 float;
+#X text 172 297 - input data;
+#X obj 497 4 split;
+#X floatatom 116 255 8 0 0 0 - - -, f 8;
+#X floatatom 224 75 5 0 0 0 - - -, f 5;
+#X floatatom 274 75 5 0 0 0 - - -, f 5;
+#X obj 79 385 cnv 17 3 17 empty empty 2 5 9 0 16 -228856 -162280 0
+;
+#X text 107 386 float;
+#X text 107 297 float;
+#X text 172 359 - lower limit;
+#X text 172 386 - upper limit;
+#X text 80 485 1: default lower limit \, 2: default upper limit;
+#X text 157 432 - in range values \, including border values;
+#X text 14 23 output sequence of numbers (similar to 'line'), f 86
+;
+#X obj 116 168 maxlib/step 100 3;
+#X msg 116 52 23 6000 2;
+#X msg 128 72 100 3000 2;
+#X msg 138 93 stop;
+#X msg 81 52 127;
+#X text 107 317 list;
+#X text 107 336 stop;
+#X text 172 336 - stop transition to new value;
+#X text 172 317 - <new value> <time> <step>;
+#X obj 221 256 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 10000 1;
+#X msg 81 73 0;
+#X obj 0 506 cnv 3 550 3 empty empty more_info 8 12 0 13 -228856 -1
+0;
+#X text 80 525 when sending two list successively \, the <time> of
+the second is interpreted as zero;
+#X connect 15 0 25 1;
+#X connect 16 0 25 2;
+#X connect 25 0 14 0;
+#X connect 25 0 34 0;
+#X connect 26 0 25 0;
+#X connect 27 0 25 0;
+#X connect 28 0 25 0;
+#X connect 29 0 25 0;
+#X connect 35 0 25 0;

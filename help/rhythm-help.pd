@@ -1,30 +1,23 @@
-#N canvas 0 26 533 403 12;
-#X obj 25 273 rhythm 0;
-#X floatatom 25 356 5 0 0 0 - - -;
-#X obj 25 59 notein;
-#X obj 348 237 makenote 100 100;
-#X msg 348 209 60;
-#X floatatom 54 328 5 0 0 0 - - -;
-#X text 81 360 beats per minute;
-#X text 111 331 beats in milliseconds;
-#X msg 79 113 reset;
-#X msg 90 146 model 0;
-#X msg 96 175 model 1;
-#X text 158 147 Large and Kolen adaptation model;
-#X text 164 174 Toiviainen adaptation model;
-#X text 53 21 rhythm :: detects the beat of rhythmic patterns;
-#X text 134 39 written by Olaf Matthes <olaf.matthes@gmx.de>;
-#X text 134 56 based on code written by Rober Rowe and published;
-#X text 133 72 in 'Mashine musicianship' \, Massachusetts \, 2001;
-#X text 115 275 creation: rhythm <adaptation model>;
-#X obj 84 303 bng 20 100 10 0 empty empty empty 0 -6 0 8 -262144 -42246
--1;
-#X text 115 304 beat pulse;
-#X text 132 114 reset all values \, forget rhythm and stop beat pulse
+#N canvas 501 79 557 515 10;
+#X obj 0 0 cnv 15 552 40 empty empty rhythm 3 12 0 18 -204280 -1 0
 ;
-#N canvas 293 158 494 344 META 0;
-#X text 12 215 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
-Wilkes for Pd version 0.42.;
+#X obj 0 332 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 434 cnv 3 550 3 empty empty outlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 520 cnv 3 550 3 empty empty arguments 8 12 0 13 -228856 -1
+0;
+#X obj 79 343 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X obj 0 554 cnv 15 552 21 empty empty empty 20 12 0 14 -233017 -33289
+0;
+#N canvas 240 348 428 75 Related_objects 0;
+#X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
+#X text 6 1 Related Objects;
+#X restore 206 556 pd Related_objects;
+#N canvas 489 587 379 261 META 0;
+#X text 12 209 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
+Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
 #X text 12 25 LICENSE GPL v2;
 #X text 12 85 INLET_1 float;
 #X text 12 105 OUTLET_0 float;
@@ -36,15 +29,56 @@ code written by Rober Rowe and published in 'Mashine Musicianship'
 \, Massachusetts \, 2001;
 #X text 12 65 INLET_0 float reset model;
 #X text 12 145 OUTLET_2 bang;
-#X restore 473 374 pd META;
-#X connect 0 0 1 0;
-#X connect 0 1 5 0;
-#X connect 0 2 18 0;
-#X connect 2 0 0 0;
-#X connect 2 1 0 1;
-#X connect 3 0 0 0;
-#X connect 3 1 0 1;
-#X connect 4 0 3 0;
-#X connect 8 0 0 0;
-#X connect 9 0 0 0;
-#X connect 10 0 0 0;
+#X restore 502 558 pd META;
+#X obj 79 403 cnv 17 3 17 empty empty 1 5 9 0 16 -228856 -162280 0
+;
+#X text 107 342 float;
+#X text 107 402 float;
+#X obj 79 450 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X obj 79 473 cnv 17 3 17 empty empty 1 5 9 0 16 -228856 -162280 0
+;
+#X text 107 449 float;
+#X text 107 472 float;
+#X text 8 23 detects the beat of rhythmic patterns;
+#X obj 500 4 rhythm;
+#X floatatom 25 294 5 0 0 0 - - -, f 5;
+#X obj 25 51 notein;
+#X obj 139 76 makenote 100 100;
+#X msg 139 53 60;
+#X floatatom 68 294 5 0 0 0 - - -, f 5;
+#X msg 259 76 reset;
+#X obj 112 289 bng 20 100 10 0 empty empty empty 0 -6 0 8 -262144 -42246
+-1;
+#X obj 25 202 maxlib/rhythm 0;
+#X text 80 534 <adaptation model> \, 0 = Large and Kolen \, 1 = Toiviainen
+;
+#X text 157 402 - note velocity;
+#X text 157 342 - note number;
+#X obj 79 497 cnv 17 3 17 empty empty 2 5 9 0 16 -228856 -162280 0
+;
+#X text 107 496 bang;
+#X text 157 496 - beat pulse;
+#X text 107 362 model n;
+#X text 157 362 - adaptation model: 0 = Large and Kolen \, 1 = Toiviainen
+;
+#X text 157 472 - beats in milli-seconds;
+#X text 157 449 - beats per minute;
+#X text 107 381 reset;
+#X text 157 381 - reset all values \, forget rhythm and stop beat pulse
+;
+#X text 168 52 <-- click at least twice;
+#X msg 74 75 model \$1;
+#X obj 74 52 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X connect 18 0 24 0;
+#X connect 18 1 24 1;
+#X connect 19 0 24 0;
+#X connect 19 1 24 1;
+#X connect 20 0 19 0;
+#X connect 22 0 24 0;
+#X connect 24 0 17 0;
+#X connect 24 1 21 0;
+#X connect 24 2 23 0;
+#X connect 38 0 24 0;
+#X connect 39 0 38 0;

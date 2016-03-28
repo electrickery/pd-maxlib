@@ -1,66 +1,97 @@
-#N canvas 0 26 623 545 12;
-#X floatatom 30 301 5 0 0 0 - - -;
-#X obj 30 12 notein;
-#X obj 193 202 bng 20 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
--1;
-#X msg 95 93 start;
-#X msg 104 118 stop;
-#X text 217 203 reset;
-#X text 145 92 start / stop score following;
-#X msg 111 146 start 4;
-#X text 176 146 start skipping first 4 notes;
-#X obj 193 286 bng 20 250 50 0 empty empty empty 0 -6 0 8 -262144 -258699
--1;
-#X text 217 287 error;
-#X text 148 24 score :: score follower that tries to match incoming
+#N canvas 517 79 557 515 10;
+#X obj 0 0 cnv 15 552 40 empty empty score 3 12 0 18 -204280 -1 0;
+#X obj 0 332 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
 ;
-#X text 221 41 MIDI data to a score stored in an array;
-#X text 219 57 outputs the index number of current position;
-#X obj 23 423 loadbang;
-#N canvas 0 0 450 300 (subpatch) 0;
-#X array sco_array 25 float 1;
+#X obj 0 465 cnv 3 550 3 empty empty outlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 537 cnv 3 550 3 empty empty arguments 8 12 0 13 -228856 -1
+0;
+#X obj 79 343 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X obj 0 633 cnv 15 552 21 empty empty empty 20 12 0 14 -233017 -33289
+0;
+#N canvas 238 349 428 75 Related_objects 0;
+#X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
+#X text 6 1 Related Objects;
+#X restore 206 637 pd Related_objects;
+#N canvas 489 587 379 261 META 0;
+#X text 12 209 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
+Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
+#X text 12 25 LICENSE GPL v2;
+#X text 12 85 INLET_1 float;
+#X text 12 105 OUTLET_0 float;
+#X text 12 125 OUTLET_1 float;
+#X text 12 5 KEYWORDS control analysis;
+#X text 12 45 DESCRIPTION detects the beat of rhythmic patterns;
+#X text 12 165 AUTHOR Olaf Matthes <olaf.matthes@gmx.de> \, based on
+code written by Rober Rowe and published in 'Mashine Musicianship'
+\, Massachusetts \, 2001;
+#X text 12 65 INLET_0 float reset model;
+#X text 12 145 OUTLET_2 bang;
+#X restore 502 636 pd META;
+#X obj 79 441 cnv 17 3 17 empty empty 2 5 9 0 16 -228856 -162280 0
+;
+#X text 107 342 float;
+#X obj 79 481 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X obj 79 504 cnv 17 3 17 empty empty 1 5 9 0 16 -228856 -162280 0
+;
+#X text 107 480 float;
+#X text 172 342 - note number;
+#X obj 500 4 score;
+#X text 8 23 score follower that tries to match incoming MIDI data
+to a score stored in an array, f 86;
+#X obj 252 103 bng 20 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
+-1;
+#X msg 87 58 start;
+#X msg 129 58 stop;
+#X msg 165 58 start 4;
+#X msg 175 81 set \$0-sco_array;
+#N canvas 0 50 450 300 (subpatch) 0;
+#X array \$0-sco_array 25 float 1;
 #A 0 60 61 62 63 64 65 66 67 68 69 70 71 72 71 70 69 68 67 66 65 64
 63 62 61 60;
 #X coords 0 127 24 0 200 140 1;
-#X restore 402 361 graph;
-#X obj 30 235 score sco_array 2 300;
-#X msg 130 173 set sco_array;
-#X msg 23 449 \; sco_array resize 25 \; sco_array read examples/score.txt
+#X restore 333 182 graph;
+#X obj 87 187 maxlib/score sco_array 2 300;
+#X floatatom 87 267 5 0 0 0 - - -, f 5;
+#X floatatom 87 307 5 0 0 0 - - -, f 5;
+#X obj 87 286 tabread \$0-sco_array;
+#X text 107 440 bang;
+#X text 172 440 - reset;
+#X obj 79 418 cnv 17 3 17 empty empty 1 5 9 0 16 -228856 -162280 0
+;
+#X text 107 419 float;
+#X text 172 419 - note velocity;
+#X text 107 360 start;
+#X text 172 360 - start score following;
+#X text 107 377 stop;
+#X text 172 377 - stop score following;
+#X text 172 395 - stop score following;
+#X text 107 395 set <name>;
+#N canvas 339 683 450 300 fill 0;
+#X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
+#X text 6 1 table filler;
+#X obj 23 62 loadbang;
+#X msg 23 88 \; \$0-sco_array resize 25 \; \$0-sco_array read examples/score.txt
 \;;
-#X text 250 174 set to array that contains the score;
-#X text 88 303 position on score;
-#X text 86 322 (x index of array);
-#X obj 30 356 tabread sco_array;
-#X floatatom 30 387 5 0 0 0 - - -;
-#X text 86 388 note from score;
-#X text 291 255 array: name of array containing score;
-#X text 235 234 USAGE: score <array> <skipitems> <skiptime>;
-#X text 292 272 skipitems: max. number of notes to skip;
-#X text 292 289 skip time: max. time [ms] to rewind;
-#X text 378 307 input data;
-#N canvas 292 198 494 344 META 0;
-#X text 12 205 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
-Wilkes for Pd version 0.42.;
-#X text 12 25 LICENSE GPL v2;
-#X text 12 185 AUTHOR Olaf Matthes <olaf.matthes@gmx.de>;
-#X text 12 105 INLET_1 float;
-#X text 12 45 DESCRIPTION score follower that tries to match incoming
-MIDI data to a score stored in an array;
-#X text 12 85 INLET_0 float start stop set;
-#X text 12 125 INLET_2 bang;
-#X text 12 145 OUTLET_0 float;
-#X text 12 165 OUTLET_0 bang;
-#X text 12 5 KEYWORDS control MIDI analysis;
-#X restore 563 517 pd META;
-#X connect 0 0 22 0;
-#X connect 1 0 16 0;
-#X connect 1 1 16 1;
-#X connect 2 0 16 2;
-#X connect 3 0 16 0;
-#X connect 4 0 16 0;
-#X connect 7 0 16 0;
-#X connect 14 0 18 0;
-#X connect 16 0 0 0;
-#X connect 16 1 9 0;
-#X connect 17 0 16 0;
+#X connect 2 0 3 0;
+#X restore 424 160 pd fill sco_array;
+#X text 107 503 bang;
+#X text 157 503 - error;
+#X text 157 480 - position on score (x index of array);
+#X text 80 551 1: <array> \, 2: <skipitems> \, 3: <skiptime>;
+#X obj 0 572 cnv 3 550 3 empty empty more_info 8 12 0 13 -228856 -1
+0;
+#X text 83 583 array: name of array containing score;
+#X text 84 597 skipitems: max. number of notes to skip;
+#X text 84 611 skip time: max. time [ms] to rewind;
+#X text 123 307 note from score;
+#X connect 16 0 22 2;
+#X connect 17 0 22 0;
+#X connect 18 0 22 0;
+#X connect 19 0 22 0;
+#X connect 20 0 22 0;
 #X connect 22 0 23 0;
+#X connect 23 0 25 0;
+#X connect 25 0 24 0;

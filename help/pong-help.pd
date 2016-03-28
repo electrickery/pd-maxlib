@@ -1,55 +1,68 @@
-#N canvas 527 80 450 521 10;
-#X text 24 14 a bouncing ball model!;
-#X text 53 45 Based on pong (for Max) version 1.5 written by Richard
-Dudas.;
-#N canvas 458 88 494 344 META 0;
-#X text 12 285 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
-Wilkes for Pd version 0.42.;
+#N canvas 488 79 557 515 10;
+#X obj 0 0 cnv 15 552 40 empty empty pong 3 12 0 18 -204280 -1 0;
+#X obj 0 332 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 593 cnv 3 550 3 empty empty outlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 698 cnv 3 550 3 empty empty arguments 8 12 0 13 -228856 -1
+0;
+#X obj 79 602 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X obj 79 343 cnv 17 3 105 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X obj 0 737 cnv 15 552 21 empty empty empty 20 12 0 14 -233017 -33289
+0;
+#N canvas 240 348 428 75 Related_objects 0;
+#X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
+#X text 6 1 Related Objects;
+#X restore 206 739 pd Related_objects;
+#N canvas 499 582 379 261 META 0;
+#X text 12 286 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
+Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
+#X text 12 267 AUTHOR Olaf Matthes <olaf.matthes@gmx.de>;
 #X text 12 25 LICENSE GPL v2;
-#X text 12 265 AUTHOR Olaf Matthes <olaf.matthes@gmx.de>;
-#X text 12 165 INLET_5;
-#X text 12 145 INLET_4;
-#X text 12 125 INLET_3;
-#X text 12 105 INLET_2;
-#X text 12 85 INLET_1;
-#X text 12 65 INLET_0;
-#X text 12 185 OUTLET_0;
-#X text 12 205 OUTLET_1;
-#X text 12 225 OUTLET_2;
-#X text 12 245 OUTLET_3;
 #X text 12 45 DESCRIPTION bouncing ball model;
 #X text 12 5 KEYWORDS control;
-#X restore 392 399 pd META;
-#X obj 158 482 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
--1 -1;
-#X floatatom 189 461 5 0 0 0 - - -, f 5;
-#X floatatom 220 387 8 0 0 0 - - -, f 8;
-#X floatatom 251 311 8 0 0 0 - - -, f 8;
-#X floatatom 176 87 5 0 0 0 - - -, f 5;
-#X floatatom 195 106 5 0 0 0 - - -, f 5;
-#X floatatom 213 126 5 0 0 0 - - -, f 5;
-#X floatatom 232 145 5 0 0 0 - - -, f 5;
-#X floatatom 251 164 5 0 0 0 - - -, f 5;
-#X msg 131 109 stop;
-#X obj 131 86 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+#X text 12 65 INLET_0 bang \, stop \, reset \, timegrain \, timewarp
+\, baseaccel;
+#X text 12 85 INLET_1 float;
+#X text 12 105 INLET_2 float;
+#X text 12 125 INLET_3 float;
+#X text 12 145 INLET_4 float;
+#X text 12 165 INLET_5 float;
+#X text 13 185 OUTLET_0 bang;
+#X text 12 205 OUTLET_1 float;
+#X text 12 225 OUTLET_2 float;
+#X text 12 245 OUTLET_3 float;
+#X restore 502 741 pd META;
+#X text 107 342 bang;
+#X obj 79 463 cnv 17 3 17 empty empty 1 5 9 0 16 -228856 -162280 0
+;
+#X text 107 462 float;
+#X obj 506 4 pong;
+#X text 8 23 a bouncing ball model!;
+#X floatatom 216 46 5 0 0 0 - - -, f 5;
+#X floatatom 235 65 5 0 0 0 - - -, f 5;
+#X floatatom 254 85 5 0 0 0 - - -, f 5;
+#X floatatom 274 104 5 0 0 0 - - -, f 5;
+#X floatatom 291 123 5 0 0 0 - - -, f 5;
+#X msg 156 81 stop;
+#X obj 156 60 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
-#X text 217 85 distance;
-#X text 236 103 velocity;
-#X text 254 123 damping;
-#X text 276 144 hand force;
-#X text 287 164 virtual hand (distance);
-#X text 222 461 hand;
-#X text 272 387 velocity;
-#X text 302 311 height;
-#X msg 29 102 timegrain \$1;
-#X floatatom 29 84 5 0 0 0 - - -, f 5;
-#X floatatom 29 127 5 0 0 0 - - -, f 5;
-#X msg 29 145 timewarp \$1;
-#X floatatom 29 170 5 0 0 0 - - -, f 5;
-#X msg 29 188 baseaccel \$1;
-#X msg 131 131 reset;
-#X text 270 265 arg = warp;
-#X text 174 481 bounce;
+#X msg 69 61 timegrain \$1;
+#X floatatom 33 62 5 0 0 0 - - -, f 5;
+#X floatatom 33 83 5 0 0 0 - - -, f 5;
+#X msg 69 82 timewarp \$1;
+#X floatatom 33 104 5 0 0 0 - - -, f 5;
+#X msg 69 103 baseaccel \$1;
+#X msg 156 103 reset;
+#X obj 156 302 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X floatatom 201 301 5 0 0 0 - - -, f 5;
+#X floatatom 246 260 8 0 0 0 - - -, f 8;
+#X floatatom 367 261 8 0 0 0 - - -, f 8;
+#X text 298 260 velocity;
+#X text 418 261 height;
 #N canvas 223 601 450 300 direction 0;
 #X obj 127 36 inlet;
 #X obj 142 238 outlet;
@@ -75,14 +88,14 @@ Wilkes for Pd version 0.42.;
 #X connect 11 2 9 0;
 #X connect 11 3 10 0;
 #X connect 11 4 3 0;
-#X restore 251 329 pd direction;
-#X obj 251 350 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X restore 367 279 pd direction;
+#X obj 367 300 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 285 350 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 401 300 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 320 351 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 436 301 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X text 282 364 equal;
+#X text 398 314 equal;
 #N canvas 773 603 450 300 direction 0;
 #X obj 127 36 inlet;
 #X obj 142 238 outlet;
@@ -108,42 +121,85 @@ Wilkes for Pd version 0.42.;
 #X connect 11 2 9 0;
 #X connect 11 3 10 0;
 #X connect 11 4 3 0;
-#X restore 220 406 pd direction;
-#X obj 220 427 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X restore 246 279 pd direction;
+#X obj 246 300 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 254 427 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 280 300 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 289 428 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 315 301 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X text 216 442 less;
-#X text 287 442 more;
-#X text 251 442 equal;
-#X text 318 364 higher;
-#X text 247 364 lower;
-#X obj 158 267 pong 1.23321e+07;
-#X connect 5 0 36 0;
-#X connect 6 0 31 0;
-#X connect 7 0 45 1;
-#X connect 8 0 45 2;
-#X connect 9 0 45 3;
-#X connect 10 0 45 4;
-#X connect 11 0 45 5;
-#X connect 12 0 45 0;
-#X connect 13 0 45 0;
-#X connect 22 0 45 0;
-#X connect 23 0 22 0;
-#X connect 24 0 25 0;
-#X connect 25 0 45 0;
-#X connect 26 0 27 0;
-#X connect 27 0 45 0;
-#X connect 28 0 45 0;
-#X connect 31 0 32 0;
-#X connect 31 1 33 0;
-#X connect 31 2 34 0;
-#X connect 36 0 37 0;
-#X connect 36 1 38 0;
-#X connect 36 2 39 0;
-#X connect 45 0 3 0;
-#X connect 45 1 4 0;
-#X connect 45 2 5 0;
-#X connect 45 3 6 0;
+#X text 242 315 less;
+#X text 313 315 more;
+#X text 277 315 equal;
+#X text 434 314 higher;
+#X text 363 314 lower;
+#X obj 156 177 maxlib/pong 1.23321e+07;
+#X text 86 719 warp;
+#X obj 79 489 cnv 17 3 17 empty empty 2 5 9 0 16 -228856 -162280 0
+;
+#X text 107 488 bang;
+#X obj 79 514 cnv 17 3 17 empty empty 3 5 9 0 16 -228856 -162280 0
+;
+#X text 107 513 float;
+#X obj 79 541 cnv 17 3 17 empty empty 4 5 9 0 16 -228856 -162280 0
+;
+#X text 107 540 bang;
+#X obj 79 566 cnv 17 3 17 empty empty 5 5 9 0 16 -228856 -162280 0
+;
+#X text 107 565 float;
+#X text 108 359 stop;
+#X text 181 342 - start bouncing;
+#X text 181 360 - stop bouncing;
+#X text 181 379 - pause bouncing;
+#X text 107 379 reset;
+#X text 107 416 timewarp n;
+#X text 107 398 timegrain n;
+#X text 107 434 baseaccel n;
+#X text 181 398 - timegrain value;
+#X text 181 416 - timewarp value;
+#X text 181 434 - baseaccel value;
+#X text 162 462 - distance;
+#X text 162 488 - velocity;
+#X text 162 513 - damping;
+#X text 162 540 - hand force;
+#X text 162 565 - virtual hand (distance);
+#X obj 79 625 cnv 17 3 17 empty empty 1 5 9 0 16 -228856 -162280 0
+;
+#X text 107 625 float;
+#X obj 79 647 cnv 17 3 17 empty empty 2 5 9 0 16 -228856 -162280 0
+;
+#X text 107 647 float;
+#X obj 79 669 cnv 17 3 17 empty empty 3 5 9 0 16 -228856 -162280 0
+;
+#X text 107 669 float;
+#X text 161 669 - height;
+#X text 161 647 - direction;
+#X text 161 625 - hand;
+#X text 161 602 - bounce;
+#X text 107 602 bang;
+#X connect 14 0 48 1;
+#X connect 15 0 48 2;
+#X connect 16 0 48 3;
+#X connect 17 0 48 4;
+#X connect 18 0 48 5;
+#X connect 19 0 48 0;
+#X connect 20 0 48 0;
+#X connect 21 0 48 0;
+#X connect 22 0 21 0;
+#X connect 23 0 24 0;
+#X connect 24 0 48 0;
+#X connect 25 0 26 0;
+#X connect 26 0 48 0;
+#X connect 27 0 48 0;
+#X connect 30 0 39 0;
+#X connect 31 0 34 0;
+#X connect 34 0 35 0;
+#X connect 34 1 36 0;
+#X connect 34 2 37 0;
+#X connect 39 0 40 0;
+#X connect 39 1 41 0;
+#X connect 39 2 42 0;
+#X connect 48 0 28 0;
+#X connect 48 1 29 0;
+#X connect 48 2 30 0;
+#X connect 48 3 31 0;

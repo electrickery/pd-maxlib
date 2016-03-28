@@ -1,34 +1,25 @@
-#N canvas 0 26 464 342 12;
-#X obj 23 223 pulse 120 1 4 0;
-#X floatatom 23 265 5 0 0 0 - - -;
-#X obj 138 265 bng 20 250 50 0 empty empty empty 0 -6 0 8 -262144 -258699
--1;
-#X msg 23 23 0;
-#X msg 48 80 1;
-#X floatatom 51 122 5 0 0 0 - - -;
-#X floatatom 138 197 5 0 0 0 - - -;
-#X floatatom 109 172 5 0 0 0 - - -;
-#X floatatom 80 147 5 0 0 0 - - -;
-#X msg 39 53 bang;
-#X text 55 23 stop;
-#X obj 313 18 metro;
-#X text 80 79 start;
-#X text 242 44 originally written by;
-#X text 240 62 James McCartney for Max;
-#X text 74 267 count;
-#X text 168 18 pulse :: a better;
-#X text 104 123 quarter notes per minute;
-#X text 190 199 number of beats to play;
-#X text 189 214 before turning off;
-#X text 77 54 toggles on/off;
-#X text 131 148 interval at which a bang is output;
-#X text 160 174 notes to count (default = quarter);
-#X text 166 264 pulse turned off automagically;
-#N canvas 474 26 494 344 META 0;
-#X text 12 225 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
-Wilkes for Pd version 0.42.;
+#N canvas 488 79 557 515 10;
+#X obj 0 0 cnv 15 552 40 empty empty pulse 3 12 0 18 -204280 -1 0;
+#X obj 0 332 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 491 cnv 3 550 3 empty empty outlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 555 cnv 3 550 3 empty empty arguments 8 12 0 13 -228856 -1
+0;
+#X obj 79 500 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X obj 79 343 cnv 17 3 30 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X obj 0 620 cnv 15 552 21 empty empty empty 20 12 0 14 -233017 -33289
+0;
+#N canvas 240 348 428 75 Related_objects 0;
+#X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
+#X text 6 1 Related Objects;
+#X restore 206 622 pd Related_objects;
+#N canvas 497 583 379 261 META 0;
+#X text 12 242 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
+Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
 #X text 12 25 LICENSE GPL v2;
-#X text 12 205 AUTHOR Olaf Matthes <olaf.matthes@gmx.de>;
 #X text 12 5 KEYWORDS control;
 #X text 12 45 DESCRIPTION a better metro;
 #X text 12 65 INLET_0 float bang;
@@ -38,13 +29,57 @@ Wilkes for Pd version 0.42.;
 #X text 12 145 INLET_4 float;
 #X text 12 165 OUTLET_0 float;
 #X text 12 185 OUTLET_1 bang;
-#X restore 401 307 pd META;
-#X connect 0 0 1 0;
-#X connect 0 1 2 0;
-#X connect 3 0 0 0;
-#X connect 4 0 0 0;
-#X connect 5 0 0 1;
-#X connect 6 0 0 4;
-#X connect 7 0 0 3;
-#X connect 8 0 0 2;
-#X connect 9 0 0 0;
+#X text 12 208 AUTHOR Olaf Matthes <olaf.matthes@gmx.de> originally
+written by James McCartney for Max;
+#X restore 502 624 pd META;
+#X text 107 342 bang;
+#X obj 79 383 cnv 17 3 17 empty empty 1 5 9 0 16 -228856 -162280 0
+;
+#X text 107 382 float;
+#X obj 79 409 cnv 17 3 17 empty empty 2 5 9 0 16 -228856 -162280 0
+;
+#X text 107 408 bang;
+#X obj 79 434 cnv 17 3 17 empty empty 3 5 9 0 16 -228856 -162280 0
+;
+#X text 107 433 float;
+#X obj 79 461 cnv 17 3 17 empty empty 4 5 9 0 16 -228856 -162280 0
+;
+#X obj 79 523 cnv 17 3 17 empty empty 1 5 9 0 16 -228856 -162280 0
+;
+#X text 107 500 bang;
+#X obj 506 4 pulse;
+#X floatatom 110 306 5 0 0 0 - - -, f 5;
+#X obj 239 302 bng 20 250 50 0 empty empty empty 0 -6 0 8 -262144 -258699
+-1;
+#X floatatom 142 81 5 0 0 0 - - -, f 5;
+#X floatatom 239 137 5 0 0 0 - - -, f 5;
+#X floatatom 206 119 5 0 0 0 - - -, f 5;
+#X floatatom 174 100 5 0 0 0 - - -, f 5;
+#X msg 129 51 bang;
+#X text 108 359 float;
+#X text 181 360 - 0 = stop \, 1 = start;
+#X text 181 342 - toggles the pulse;
+#X obj 110 51 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X text 8 23 an improved [tempo] \, which is an extended [metro] for
+Max;
+#X text 86 576 1: tempo in BPM \, 2: interval at which bang is output
+\, 3: notes to count (default = quarter \, 4: numbers to play before
+turning off.;
+#X text 107 523 bang;
+#X text 161 524 - pulse turned off automagically;
+#X text 161 500 - count;
+#X text 107 460 float;
+#X text 162 460 - number of beats to play before turning off;
+#X text 162 433 - notes to count (default = quarter);
+#X text 162 408 - interval at which a bang is output;
+#X text 162 382 - quarter notes per minute;
+#X obj 110 218 maxlib/pulse 120 1 4 0;
+#X connect 22 0 41 1;
+#X connect 23 0 41 4;
+#X connect 24 0 41 3;
+#X connect 25 0 41 2;
+#X connect 26 0 41 0;
+#X connect 30 0 41 0;
+#X connect 41 0 20 0;
+#X connect 41 1 21 0;

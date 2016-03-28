@@ -1,27 +1,23 @@
-#N canvas 0 26 514 431 12;
-#X floatatom 27 304 8 0 0 0 - - -;
-#X floatatom 27 73 5 0 0 0 - - -;
-#X text 196 28 written by <olaf.matthes@gmx.de>;
-#X floatatom 56 131 5 0 0 0 - - -;
-#X floatatom 85 152 5 0 0 0 - - -;
-#X text 84 71 input value;
-#X text 57 104 creation arguments can be changed dynamically:;
-#X text 35 341 creation arguments:;
-#X obj 27 249 split 6 40;
-#X text 111 130 lower limit;
-#X text 137 151 upper limit;
-#X text 35 378 All floats that fall below the lower limit or above
-the upper limit get routed to the 2nd outlet.;
-#X text 36 358 split <lower limit> <upper limit>;
-#X floatatom 102 276 5 0 0 0 - - -;
-#X text 154 276 floats 'out of range';
-#X text 122 11 split :: split incoming floats according to value;
-#X text 106 305 floats 'in range' (including borders!);
-#N canvas 292 198 494 344 META 0;
+#N canvas 495 79 557 515 10;
+#X obj 0 0 cnv 15 552 40 empty empty split 3 12 0 18 -204280 -1 0;
+#X obj 0 283 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 378 cnv 3 550 3 empty empty outlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 451 cnv 3 550 3 empty empty arguments 8 12 0 13 -228856 -1
+0;
+#X obj 79 298 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X obj 0 503 cnv 15 552 21 empty empty empty 20 12 0 14 -233017 -33289
+0;
+#N canvas 238 349 428 75 Related_objects 0;
+#X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
+#X text 6 1 Related Objects;
+#X restore 206 507 pd Related_objects;
+#N canvas 487 588 379 261 META 0;
 #X text 12 190 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
-Wilkes for Pd version 0.42.;
+Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
 #X text 12 25 LICENSE GPL v2;
-#X text 12 170 AUTHOR Olaf Matthes <olaf.matthes@gmx.de>;
 #X text 12 90 INLET_1 float;
 #X text 12 5 KEYWORDS control filter anything_op;
 #X text 12 45 DESCRIPTION split incoming floats according to value
@@ -30,9 +26,38 @@ Wilkes for Pd version 0.42.;
 #X text 12 110 INLET_2 float;
 #X text 12 130 OUTLET_0 float;
 #X text 12 150 OUTLET_1 float;
-#X restore 453 402 pd META;
-#X connect 1 0 8 0;
-#X connect 3 0 8 1;
-#X connect 4 0 8 2;
-#X connect 8 0 0 0;
-#X connect 8 1 13 0;
+#X text 12 169 AUTHOR Olaf Matthes <olaf.matthes@gmx.de>;
+#X restore 502 506 pd META;
+#X obj 79 394 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X text 107 393 float;
+#X obj 79 323 cnv 17 3 17 empty empty 1 5 9 0 16 -228856 -162280 0
+;
+#X text 107 324 float;
+#X text 172 297 - input data;
+#X obj 497 4 split;
+#X text 14 23 split :: split incoming floats according to value, f
+86;
+#X floatatom 78 255 8 0 0 0 - - -, f 8;
+#X floatatom 78 65 5 0 0 0 - - -, f 5;
+#X floatatom 127 67 5 0 0 0 - - -, f 5;
+#X floatatom 177 67 5 0 0 0 - - -, f 5;
+#X obj 78 168 maxlib/split 6 40;
+#X floatatom 177 255 8 0 0 0 - - -, f 8;
+#X obj 79 350 cnv 17 3 17 empty empty 2 5 9 0 16 -228856 -162280 0
+;
+#X text 107 351 float;
+#X text 107 297 float;
+#X text 172 324 - lower limit;
+#X text 172 351 - upper limit;
+#X obj 79 419 cnv 17 3 17 empty empty 1 5 9 0 16 -228856 -162280 0
+;
+#X text 107 418 float;
+#X text 157 418 - out of range values;
+#X text 80 475 1: default lower limit \, 2: default upper limit;
+#X text 157 393 - in range values \, including border values;
+#X connect 16 0 19 0;
+#X connect 17 0 19 1;
+#X connect 18 0 19 2;
+#X connect 19 0 15 0;
+#X connect 19 1 20 0;

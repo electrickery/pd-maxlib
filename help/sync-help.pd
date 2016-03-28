@@ -1,47 +1,24 @@
-#N canvas 0 26 761 574 12;
-#X text 78 16 sync :: extended trigger object based;
-#X text 143 35 on sync from jMax;
-#X floatatom 18 485 5 0 0 0 - - -;
-#X floatatom 39 457 5 0 0 0 - - -;
-#X floatatom 61 433 5 0 0 0 - - -;
-#X floatatom 18 124 5 0 0 0 - - -;
-#X floatatom 39 152 5 0 0 0 - - -;
-#X floatatom 61 177 5 0 0 0 - - -;
-#X msg 205 143 mode any;
-#X msg 187 116 mode all;
-#X msg 216 169 mode left;
-#X msg 229 198 mode right;
-#X msg 243 226 mode none;
-#X text 295 142 any input triggers the outputs;
-#X text 305 169 trigger output when left inlet changes;
-#X text 325 199 trigger output when right inlet changes;
-#X text 333 228 never trigger output;
-#X obj 18 404 sync 3;
-#X text 146 415 the creation argument determines the number of inlets
-/ outlets sync will have.;
-#X obj 149 462 sync 23 17.3;
-#X text 147 490 alternatively it's possible to specify the number of
-inlets / outlets by giving initial values for every outlet. these values
-will be output in case no input has been received in the corresponding
-inlet until the time when the output is triggered.;
-#X text 274 116 all inputs have to change to trigger output (default)
+#N canvas 495 79 557 515 10;
+#X obj 0 0 cnv 15 552 40 empty empty sync 3 12 0 18 -204280 -1 0;
+#X obj 0 283 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
 ;
-#X msg 223 270 trigger 2;
-#X msg 230 335 require 1;
-#X text 324 320 additionally another input can be defined to be required
-for the trigger event to take place. i.e. the second inlet (inlet #1)
-from the left must have been changed since the last triggering occured.
+#X obj 0 525 cnv 3 550 3 empty empty outlets 8 12 0 13 -228856 -1 0
 ;
-#X text 324 265 use this message to make the n-th input (counting from
-0 to <number of inputs - 1>) a triggering input. only one input at
-a time can be triggering!;
-#X text 212 90 the easy way:;
-#X msg 228 299 trigger 1;
-#N canvas 415 162 494 344 META 0;
-#X text 12 210 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
-Wilkes for Pd version 0.42.;
+#X obj 0 594 cnv 3 550 3 empty empty arguments 8 12 0 13 -228856 -1
+0;
+#X obj 79 298 cnv 17 3 50 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X obj 0 711 cnv 15 552 21 empty empty empty 20 12 0 14 -233017 -33289
+0;
+#N canvas 236 350 428 75 Related_objects 0;
+#X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
+#X text 6 1 Related Objects;
+#X restore 206 715 pd Related_objects;
+#N canvas 481 591 379 261 META 0;
+#X text 12 213 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
+Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
+#X text 12 192 AUTHOR Olaf Matthes <olaf.matthes@gmx.de>;
 #X text 12 25 LICENSE GPL v2;
-#X text 12 190 AUTHOR Olaf Matthes <olaf.matthes@gmx.de>;
 #X text 12 150 OUTLET_1 float;
 #X text 12 5 KEYWORDS control;
 #X text 12 45 DESCRIPTION extended trigger object based on sync from
@@ -51,18 +28,75 @@ jMax;
 #X text 12 110 INLET_2 float;
 #X text 12 130 OUTLET_0 float;
 #X text 12 170 OUTLET_2 float;
-#X restore 699 546 pd META;
-#X connect 5 0 17 0;
-#X connect 6 0 17 1;
-#X connect 7 0 17 2;
-#X connect 8 0 17 0;
-#X connect 9 0 17 0;
-#X connect 10 0 17 0;
-#X connect 11 0 17 0;
-#X connect 12 0 17 0;
-#X connect 17 0 2 0;
-#X connect 17 1 3 0;
-#X connect 17 2 4 0;
-#X connect 22 0 17 0;
-#X connect 23 0 17 0;
-#X connect 27 0 17 0;
+#X restore 502 714 pd META;
+#X obj 79 541 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X obj 79 566 cnv 17 3 17 empty empty n 5 9 0 16 -228856 -162280 0
+;
+#X obj 503 4 sync;
+#X text 14 23 extended trigger object based on sync from jMax, f 86
+;
+#X text 169 297 - input value;
+#X text 107 439 require n;
+#X text 107 397 trigger n;
+#X text 107 317 mode m;
+#X text 180 347 left: trigger output when left inlet changes;
+#X text 180 362 right: trigger output when right inlet changes;
+#X text 180 378 none: never trigger output;
+#X text 172 395 - use this message to make the n-th input (counting
+from 0 to <number of inputs - 1>) a triggering input. only one input
+at a time can be triggering!;
+#X text 172 438 - additionally another input can be defined to be required
+for the trigger event to take place. i.e. the second inlet (inlet #1)
+from the left must have been changed since the last triggering occured.
+;
+#X obj 79 497 cnv 17 3 17 empty empty n 5 9 0 16 -228856 -162280 0
+;
+#X text 107 297 anything;
+#X text 107 496 anything;
+#X text 157 496 - additional inlet values;
+#X text 159 567 - additional outlet values;
+#X text 107 567 anything;
+#X text 107 540 anything;
+#X text 157 540 - output value;
+#X text 80 614 1: <number of inlets/outlets> \, 2-n: <default values
+for outlets>, f 64;
+#X obj 83 171 maxlib/sync 3;
+#X floatatom 83 263 5 0 0 0 - - -, f 5;
+#X floatatom 120 263 5 0 0 0 - - -, f 5;
+#X floatatom 158 263 5 0 0 0 - - -, f 5;
+#X floatatom 83 67 5 0 0 0 - - -, f 5;
+#X floatatom 120 67 5 0 0 0 - - -, f 5;
+#X floatatom 158 67 5 0 0 0 - - -, f 5;
+#X msg 248 55 any;
+#X msg 277 55 left;
+#X msg 312 55 right;
+#X msg 353 55 none;
+#X msg 218 78 mode \$1;
+#X msg 218 55 all;
+#X text 181 332 any: any input triggers the outputs;
+#X text 169 316 - all: all input triggers the outputs (default);
+#X obj 0 635 cnv 3 550 3 empty empty more_info 8 12 0 13 -228856 -1
+0;
+#X text 80 653 alternatively it's possible to specify the number of
+inlets / outlets by giving initial values for every outlet. these values
+will be output in case no input has been received in the corresponding
+inlet until the time when the output is triggered., f 64;
+#X msg 283 100 trigger 2;
+#X msg 218 122 require 1;
+#X msg 218 100 trigger 1;
+#X connect 30 0 31 0;
+#X connect 30 1 32 0;
+#X connect 30 2 33 0;
+#X connect 34 0 30 0;
+#X connect 35 0 30 1;
+#X connect 36 0 30 2;
+#X connect 37 0 41 0;
+#X connect 38 0 41 0;
+#X connect 39 0 41 0;
+#X connect 40 0 41 0;
+#X connect 41 0 30 0;
+#X connect 42 0 41 0;
+#X connect 47 0 30 0;
+#X connect 48 0 30 0;
+#X connect 49 0 30 0;
