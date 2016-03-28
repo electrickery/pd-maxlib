@@ -302,7 +302,7 @@ static void subst_load(t_subst *x, t_symbol *s)
 
 	if ((b = (t_garray *)pd_findbyclass(s, garray_class)))
 	{
-		post("subst: array set to \"%s\"", s->s_name);
+		post("subst: loading array from \"%s\"", s->s_name);
 	} else {
 		post("subst: no array \"%s\" (error %d)", s->s_name, b);
 		return;
