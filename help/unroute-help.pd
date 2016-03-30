@@ -1,42 +1,115 @@
-#N canvas 0 26 481 371 12;
-#X obj 64 343 print;
-#X msg 64 89 1 \$1;
-#X msg 112 110 2 \$1;
-#X msg 163 116 3 \$1;
-#X floatatom 64 62 5 0 0 0 - - -;
-#X floatatom 112 85 5 0 0 0 - - -;
-#X floatatom 163 91 5 0 0 0 - - -;
-#X obj 64 232 route 1 2 3 4;
-#X obj 64 314 unroute one 2 three 4;
-#X text 52 13 unroute :: merges all inputs into one output;
-#X text 138 30 and prepends an identifier;
-#X text 138 47 written by Olaf Matthes <olaf.matthes@gmx.de>;
-#X msg 194 170 4 this came through 4;
-#X msg 209 196 3 drei;
-#X msg 174 146 4 25 467 23.6;
-#N canvas 293 158 494 344 META 0;
-#X text 12 165 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
-Wilkes for Pd version 0.42.;
-#X text 12 25 LICENSE GPL v2;
+#N canvas 495 79 557 515 10;
+#X obj 0 0 cnv 15 552 40 empty empty unroute 3 12 0 18 -204280 -1 0
+;
+#X obj 0 271 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 343 cnv 3 550 3 empty empty outlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 396 cnv 3 550 3 empty empty arguments 8 12 0 13 -228856 -1
+0;
+#X obj 79 286 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X obj 0 509 cnv 15 552 21 empty empty empty 20 12 0 14 -233017 -33289
+0;
+#N canvas 234 351 428 75 Related_objects 0;
+#X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
+#X text 6 1 Related Objects;
+#X restore 206 513 pd Related_objects;
+#N canvas 534 609 379 261 META 0;
+#X text 12 166 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
+Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
 #X text 12 145 AUTHOR Olaf Matthes <olaf.matthes@gmx.de>;
+#X text 12 25 LICENSE GPL v2;
 #X text 12 5 KEYWORDS control list_op;
 #X text 12 45 DESCRIPTION merges all inputs into one output and prepends
 an identifier;
 #X text 12 85 INLET_0 anything;
 #X text 12 105 INLET_N anything;
 #X text 12 125 OUTLET_0 list;
-#X restore 420 344 pd META;
-#X connect 1 0 7 0;
-#X connect 2 0 7 0;
-#X connect 3 0 7 0;
-#X connect 4 0 1 0;
-#X connect 5 0 2 0;
-#X connect 6 0 3 0;
-#X connect 7 0 8 0;
-#X connect 7 1 8 1;
-#X connect 7 2 8 2;
-#X connect 7 3 8 3;
-#X connect 8 0 0 0;
-#X connect 12 0 7 0;
-#X connect 13 0 7 0;
-#X connect 14 0 7 0;
+#X restore 502 512 pd META;
+#X obj 79 359 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X obj 79 314 cnv 17 3 17 empty empty n 5 9 0 16 -228856 -162280 0
+;
+#X text 107 358 bang;
+#X text 173 285 - triggers the local time being printed at the console
+;
+#X text 170 313 - output at the thime specified by the nth triplet
+;
+#X text 107 313 bang;
+#X obj 487 4 unroute;
+#X text 14 23 merges all inputs into one output and prepends an identifier
+;
+#X obj 84 243 print;
+#X msg 84 82 1 \$1;
+#X msg 132 82 2 \$1;
+#X msg 183 82 3 \$1;
+#X floatatom 84 55 5 0 0 0 - - -, f 5;
+#X floatatom 132 55 5 0 0 0 - - -, f 5;
+#X floatatom 183 57 5 0 0 0 - - -, f 5;
+#X obj 84 117 route 1 2 3 4;
+#X msg 230 82 4 this came through 4;
+#X msg 230 108 3 drei;
+#X msg 228 58 4 25 467 23.6;
+#X obj 84 188 maxlib/unroute one 2 three 4;
+#X text 107 285 anything;
+#X obj 84 139 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 106 139 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 154 139 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 130 139 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X text 80 416 any argument results in an inlet. any message received
+on an inlet will be output with the corresponding argument prepended
+, f 64;
+#X text 170 357 - outputs the argument corresponding with the inlet
+followed by the input message;
+#X obj -1 446 cnv 3 550 3 empty empty more_info 8 12 0 13 -228856 -1
+0;
+#N canvas 336 718 450 300 fun 0;
+#X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
+#X text 6 1 Fun with floats;
+#X obj 108 153 maxlib/unroute a b c d;
+#X obj 108 190 print;
+#X msg 108 106 1;
+#X msg 151 106 2;
+#X msg 194 106 3;
+#X msg 237 106 4;
+#X msg 96 74 1 2 3;
+#X msg 139 74 2 3 4;
+#X msg 182 74 3 4 5;
+#X msg 225 74 4 5 6;
+#X text 65 236 Single floats on all but the first inlet will have 'float'
+prepended;
+#X connect 2 0 3 0;
+#X connect 4 0 2 0;
+#X connect 5 0 2 1;
+#X connect 6 0 2 2;
+#X connect 7 0 2 3;
+#X connect 8 0 2 0;
+#X connect 9 0 2 1;
+#X connect 10 0 2 2;
+#X connect 11 0 2 3;
+#X restore 175 485 pd fun with floats;
+#X text 79 467 With single float messages \, the behaviour becomes
+a bit irregular. See:, f 64;
+#X connect 17 0 23 0;
+#X connect 18 0 23 0;
+#X connect 19 0 23 0;
+#X connect 20 0 17 0;
+#X connect 21 0 18 0;
+#X connect 22 0 19 0;
+#X connect 23 0 27 0;
+#X connect 23 0 29 0;
+#X connect 23 1 27 1;
+#X connect 23 1 30 0;
+#X connect 23 2 27 2;
+#X connect 23 2 32 0;
+#X connect 23 3 31 0;
+#X connect 23 3 27 3;
+#X connect 24 0 23 0;
+#X connect 25 0 23 0;
+#X connect 26 0 23 0;
+#X connect 27 0 16 0;

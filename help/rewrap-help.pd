@@ -1,4 +1,4 @@
-#N canvas 501 79 557 515 10;
+#N canvas 499 80 557 515 10;
 #X obj 0 0 cnv 15 552 40 empty empty rewrap 3 12 0 18 -204280 -1 0
 ;
 #X obj 0 332 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
@@ -35,8 +35,6 @@ Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
 #X floatatom 143 122 5 0 0 0 - - -, f 5;
 #X floatatom 196 123 5 0 0 0 - - -, f 5;
 #X floatatom 196 303 5 0 0 0 - - -, f 5;
-#X text 255 302 wrap period;
-#X text 142 302 output;
 #X obj 91 215 maxlib/rewrap 6 40;
 #X text 87 496 1: <lower limit> \, 2: <upper limit>;
 #X obj 79 366 cnv 17 3 17 empty empty 1 5 9 0 16 -228856 -162280 0
@@ -72,7 +70,7 @@ Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
 #X obj 270 98 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #X floatatom 139 200 5 0 0 0 - - -, f 5;
-#X obj 136 90 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 136 90 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X msg 231 124 -1;
 #X msg 270 123 1;
@@ -97,11 +95,11 @@ Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
 #X obj 184 56 loadbang;
 #X obj 91 81 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
 ;
-#X connect 11 0 16 1;
-#X connect 12 0 16 2;
-#X connect 16 0 10 0;
-#X connect 16 1 13 0;
-#X connect 32 0 16 0;
-#X connect 33 0 32 1;
-#X connect 34 0 33 0;
-#X connect 35 0 32 0;
+#X connect 11 0 14 1;
+#X connect 12 0 14 2;
+#X connect 14 0 10 0;
+#X connect 14 1 13 0;
+#X connect 30 0 14 0;
+#X connect 31 0 30 1;
+#X connect 32 0 31 0;
+#X connect 33 0 30 0;

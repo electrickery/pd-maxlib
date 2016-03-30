@@ -1,27 +1,63 @@
-#N canvas 0 26 549 368 12;
-#X obj 29 242 bng 20 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
--1;
-#X obj 29 295 print good morning;
-#X obj 29 202 timebang 7 10 13 19 47 50;
-#X obj 224 235 print good night;
-#X text 32 13 timebang :: send out bangs at given times of day;
-#X text 130 34 written by Olaf Matthes <olaf.matthes@gmx.de>;
-#X text 31 119 creation arguments: triples of hour minute and second
-for;
-#X text 191 137 the times of day you want a bang to occur;
-#X text 191 156 each time will get it's own outlet;
-#X text 184 297 this gets banged at 7:10:13 in the morning;
-#X text 224 257 this gets banged at 19:47:50;
-#N canvas 304 317 494 344 META 0;
-#X text 12 125 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
-Wilkes for Pd version 0.42.;
+#N canvas 495 79 557 515 10;
+#X obj 0 0 cnv 15 552 40 empty empty timebang 3 12 0 18 -204280 -1
+0;
+#X obj 0 271 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 343 cnv 3 550 3 empty empty outlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 418 cnv 3 550 3 empty empty arguments 8 12 0 13 -228856 -1
+0;
+#X obj 79 286 cnv 17 3 45 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X obj 0 477 cnv 15 552 21 empty empty empty 20 12 0 14 -233017 -33289
+0;
+#N canvas 236 350 428 75 Related_objects 0;
+#X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
+#X text 6 1 Related Objects;
+#X restore 206 481 pd Related_objects;
+#N canvas 538 607 379 261 META 0;
+#X text 12 128 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
+Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
+#X text 12 107 AUTHOR Olaf Matthes <olaf.matthes@gmx.de>;
 #X text 12 25 LICENSE GPL v2;
-#X text 12 105 AUTHOR Olaf Matthes <olaf.matthes@gmx.de>;
 #X text 12 5 KEYWORDS control;
 #X text 12 65 INLET_0 bang;
 #X text 12 85 OUTLET_N bang;
 #X text 12 45 DESCRIPTION send out bangs at given times of day;
-#X restore 491 339 pd META;
-#X connect 0 0 1 0;
-#X connect 2 0 0 0;
-#X connect 2 1 3 0;
+#X restore 502 480 pd META;
+#X obj 79 359 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X obj 79 385 cnv 17 3 17 empty empty n 5 9 0 16 -228856 -162280 0
+;
+#X text 107 358 bang;
+#X obj 487 4 timebang;
+#X text 14 23 send out bangs at given times of day, f 44;
+#X obj 86 216 bng 20 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
+-1;
+#X obj 86 242 print good morning;
+#X obj 275 241 print good night;
+#X obj 275 215 bng 20 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
+-1;
+#X text 107 285 bang;
+#X obj 86 56 bng 20 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
+-1;
+#X msg 123 56 set 19 57 0 20 1 2;
+#X obj 86 149 maxlib/timebang 7 10 13 19 50 30;
+#X text 173 285 - triggers the local time being printed at the console
+;
+#X text 107 305 set <list>;
+#X text 173 305 - specifies a new set of 'h m s' triplets. This must
+be the same number as specifies in the arguments.;
+#X text 170 357 - output at the thime specified by the first triplet
+;
+#X text 170 384 - output at the thime specified by the nth triplet
+;
+#X text 107 384 bang;
+#X text 80 438 any number it 'h m s' triplets. Each triplet will cause
+a outlet to be created., f 64;
+#X connect 13 0 14 0;
+#X connect 16 0 15 0;
+#X connect 18 0 20 0;
+#X connect 19 0 20 0;
+#X connect 20 0 13 0;
+#X connect 20 1 16 0;

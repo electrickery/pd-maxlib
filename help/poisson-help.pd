@@ -1,4 +1,4 @@
-#N canvas 488 79 557 515 10;
+#N canvas 486 80 557 515 10;
 #X obj 0 0 cnv 15 552 40 empty empty poisson 3 12 0 18 -204280 -1 0
 ;
 #X obj 0 332 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
@@ -35,7 +35,7 @@ Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
 #X floatatom 182 93 5 0 0 0 - - -, f 5;
 #N canvas 0 50 450 250 (subpatch) 0;
 #X array \$0-a1 100 float 2;
-#X coords 0 -5 100 5 200 140 1 0 0;
+#X coords 0 10 100 0 200 140 1 0 0;
 #X restore 337 59 graph;
 #X obj 77 74 metro 100;
 #X obj 77 53 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
@@ -45,8 +45,6 @@ Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
 #X obj 79 368 cnv 17 3 17 empty empty 1 5 9 0 16 -228856 -162280 0
 ;
 #X text 107 367 float;
-#X text 321 59 5;
-#X text 321 187 -5;
 #X text 107 406 float;
 #X text 161 406 - next random number;
 #N canvas 1 79 450 300 arrayWrite 0;
@@ -76,10 +74,12 @@ Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
 #X text 8 23 Poisson distributed random numbers;
 #X text 162 367 - lambda \, value that is most likely to appear;
 #X text 86 458 default value for lambda;
-#X connect 9 0 26 0;
-#X connect 11 0 26 1;
+#X text 321 59 10;
+#X text 327 187 0;
+#X connect 9 0 24 0;
+#X connect 11 0 24 1;
 #X connect 13 0 9 0;
 #X connect 14 0 13 0;
-#X connect 24 0 23 1;
-#X connect 26 0 10 0;
-#X connect 26 0 23 0;
+#X connect 22 0 21 1;
+#X connect 24 0 10 0;
+#X connect 24 0 21 0;

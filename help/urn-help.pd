@@ -1,30 +1,61 @@
-#N canvas 0 0 462 312 12;
-#X obj 59 162 urn 8;
-#X msg 117 92 clear;
-#X floatatom 59 221 5 0 0 0 - - -;
-#X msg 59 65 bang;
-#X obj 149 221 bng 20 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
--1;
-#X text 104 65 choose next number;
-#X text 169 93 clear / refill urn;
-#X floatatom 109 130 5 0 0 0 - - -;
-#X text 161 130 change number of items in urn;
-#X text 29 10 urn :: urn selection model;
-#X text 181 221 bang if urn is empty;
-#N canvas 293 158 494 344 META 0;
+#N canvas 493 80 557 515 10;
+#X obj 0 0 cnv 15 552 40 empty empty urn 3 12 0 18 -204280 -1 0;
+#X obj 0 283 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 360 cnv 3 550 3 empty empty outlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 421 cnv 3 550 3 empty empty arguments 8 12 0 13 -228856 -1
+0;
+#X obj 79 295 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X obj 0 477 cnv 15 552 21 empty empty empty 20 12 0 14 -233017 -33289
+0;
+#N canvas 234 351 428 75 Related_objects 0;
+#X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
+#X text 6 1 Related Objects;
+#X restore 206 481 pd Related_objects;
+#N canvas 532 610 379 261 META 0;
 #X text 12 165 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
-Wilkes for Pd version 0.42.;
-#X text 12 25 LICENSE GPL v2;
+Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
 #X text 12 145 AUTHOR Olaf Matthes <olaf.matthes@gmx.de>;
+#X text 12 25 LICENSE GPL v2;
 #X text 12 5 KEYWORDS control random;
 #X text 12 45 DESCRIPTION urn selection model;
 #X text 12 65 INLET_0 bang clear;
 #X text 12 85 INLET_1 float;
 #X text 12 105 OUTLET_0 float;
 #X text 12 125 OUTLET_1 bang;
-#X restore 390 274 pd META;
-#X connect 0 0 2 0;
-#X connect 0 1 4 0;
-#X connect 1 0 0 0;
-#X connect 3 0 0 0;
-#X connect 7 0 0 1;
+#X restore 502 480 pd META;
+#X obj 79 376 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X obj 79 336 cnv 17 3 17 empty empty 1 5 9 0 16 -228856 -162280 0
+;
+#X obj 514 4 urn;
+#X text 14 23 urn selection model;
+#X msg 123 64 clear;
+#X floatatom 84 230 5 0 0 0 - - -, f 5;
+#X msg 84 63 bang;
+#X obj 153 230 bng 20 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
+-1;
+#X floatatom 153 87 5 0 0 0 - - -, f 5;
+#X obj 84 160 maxlib/urn 8;
+#X text 107 294 bang;
+#X text 173 294 - choose next number;
+#X text 107 313 clear;
+#X text 173 313 - clear / refill urn;
+#X text 107 335 float;
+#X text 170 335 - change number of items in urn;
+#X text 107 375 float;
+#X text 170 374 - produces values between 0 and the argument on a bang
+;
+#X obj 79 400 cnv 17 3 17 empty empty 1 5 9 0 16 -228856 -162280 0
+;
+#X text 107 399 bang;
+#X text 170 399 - output when the urn is empty;
+#X text 80 441 1: the number of values initially in the urn, f 64
+;
+#X connect 12 0 17 0;
+#X connect 14 0 17 0;
+#X connect 16 0 17 1;
+#X connect 17 0 13 0;
+#X connect 17 1 15 0;
