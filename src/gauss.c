@@ -30,7 +30,7 @@
 
 #define fran()         (t_float)rand()/(t_float)RAND_MAX
 
-static char *version = "gauss v0.1, generates a Gaussian distributed random variable\n"
+static char *version = "gauss v0.2, generates a Gaussian distributed random variable\n"
                        "            with mean 'mu' and standard deviation 'sigma',\n"
                        "            written by Olaf Matthes <olaf.matthes@gmx.de>";
 
@@ -72,7 +72,6 @@ void gauss_setup(void)
     rand_gauss_class = class_new(gensym("gauss"), (t_newmethod)rand_gauss_new, 0,
     	sizeof(t_rand_gauss), 0, A_DEFFLOAT, A_DEFFLOAT, 0);
     class_addbang(rand_gauss_class, rand_gauss_bang);
-	class_sethelpsymbol(rand_gauss_class, gensym("gauss-help.pd"));
     logpost(NULL, 4, version);
 }
 #else

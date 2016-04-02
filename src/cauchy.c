@@ -33,7 +33,7 @@
 #define M_PI           3.1415927
 #endif
 
-static char *version = "cauchy v0.1, generates a Cauchy distributed random variable\n"
+static char *version = "cauchy v0.2, generates a Cauchy distributed random variable\n"
                        "             with a spread governed by to parameter 'aplha',\n"
                        "             written by Olaf Matthes <olaf.matthes@gmx.de>";
 
@@ -75,7 +75,6 @@ void cauchy_setup(void)
     rand_cauchy_class = class_new(gensym("cauchy"), (t_newmethod)rand_cauchy_new, 0,
     	sizeof(t_rand_cauchy), 0, A_DEFFLOAT, 0);
     class_addbang(rand_cauchy_class, rand_cauchy_bang);
-	class_sethelpsymbol(rand_cauchy_class, gensym("cauchy-help.pd"));
     logpost(NULL, 4, version);
 #else
 void maxlib_cauchy_setup(void)

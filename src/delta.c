@@ -28,7 +28,7 @@
 
 #define MAXSIZE 32
 
-static char *version = "delta v0.1, written by Olaf Matthes <olaf.matthes@gmx.de>";
+static char *version = "delta v0.2, written by Olaf Matthes <olaf.matthes@gmx.de>";
  
 typedef struct delta
 {
@@ -127,7 +127,6 @@ void maxlib_delta_setup(void)
     class_addfloat(delta_class, delta_float);
 	class_addbang(delta_class, (t_method)delta_bang);
 	class_addmethod(delta_class, (t_method)delta_clear, gensym("clear"), 0);
-    class_sethelpsymbol(delta_class, gensym("maxlib/delta-help.pd"));
 #ifndef MAXLIB
     
     logpost(NULL, 4, version);

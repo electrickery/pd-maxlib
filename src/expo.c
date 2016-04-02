@@ -30,7 +30,7 @@
 
 #define fran()         (t_float)rand()/(t_float)RAND_MAX
 
-static char *version = "expo v0.1, generates exponentially distributed random variable\n"
+static char *version = "expo v0.2, generates exponentially distributed random variable\n"
                        "           written by Olaf Matthes <olaf.matthes@gmx.de>";
 
 /* -------------------------- rand_expo ------------------------------ */
@@ -71,7 +71,6 @@ void expo_setup(void)
     rand_expo_class = class_new(gensym("expo"), (t_newmethod)rand_expo_new, 0,
     	sizeof(t_rand_expo), 0, A_DEFFLOAT, 0);
     class_addbang(rand_expo_class, rand_expo_bang);
-	class_sethelpsymbol(rand_expo_class, gensym("expo-help.pd"));
     logpost(NULL, 4, version);
 }
 #else

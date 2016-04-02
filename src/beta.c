@@ -33,7 +33,7 @@
 #define M_PI           3.1415927
 #endif
 
-static char *version = "beta v0.1, generates a beta distributed random variable\n"
+static char *version = "beta v0.2, generates a beta distributed random variable\n"
                        "           written by Olaf Matthes <olaf.matthes@gmx.de>";
 
 /* -------------------------- rand_beta ------------------------------ */
@@ -92,7 +92,6 @@ void beta_setup(void)
     rand_beta_class = class_new(gensym("beta"), (t_newmethod)rand_beta_new, 0,
     	sizeof(t_rand_beta), 0, A_DEFFLOAT, A_DEFFLOAT, 0);
     class_addbang(rand_beta_class, rand_beta_bang);
-	class_sethelpsymbol(rand_beta_class, gensym("beta-help.pd"));
     logpost(NULL, 4, version);
 }
 #else

@@ -30,7 +30,7 @@
 
 #define fran()         (t_float)rand()/(t_float)RAND_MAX
 
-static char *version = "bilex v0.1, generates bilinear exponentially distributed random\n"
+static char *version = "bilex v0.2, generates bilinear exponentially distributed random\n"
                        "            variable, written by Olaf Matthes <olaf.matthes@gmx.de>";
 
 /* -------------------------- rand_bilex ------------------------------ */
@@ -76,7 +76,6 @@ void bilex_setup(void)
     rand_bilex_class = class_new(gensym("bilex"), (t_newmethod)rand_bilex_new, 0,
     	sizeof(t_rand_bilex), 0, A_DEFFLOAT, 0);
     class_addbang(rand_bilex_class, rand_bilex_bang);
-	class_sethelpsymbol(rand_bilex_class, gensym("bilex-help.pd"));
     logpost(NULL, 4, version);
 }
 #else

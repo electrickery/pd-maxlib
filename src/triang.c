@@ -30,7 +30,7 @@
 
 #define fran()         (t_float)rand()/(t_float)RAND_MAX
 
-static char *version = "triang v0.1, generates triangularly distributed random variable\n"
+static char *version = "triang v0.2, generates triangularly distributed random variable\n"
                        "             written by Olaf Matthes <olaf.matthes@gmx.de>";
 
 /* -------------------------- rand_triang ------------------------------ */
@@ -72,7 +72,6 @@ void maxlib_triang_setup(void)
 #endif
     class_addbang(rand_triang_class, rand_triang_bang);
 #ifndef MAXLIB
-	class_sethelpsymbol(rand_triang_class, gensym("triang-help.pd"));
     logpost(NULL, 4, version);
 #else
 	class_sethelpsymbol(rand_triang_class, gensym("maxlib/triang-help.pd"));

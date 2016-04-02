@@ -33,7 +33,7 @@
 #define M_PI           3.1415927
 #endif
 
-static char *version = "weibull v0.1, generates a weibull distributed random variable\n"
+static char *version = "weibull v0.2, generates a weibull distributed random variable\n"
                        "              written by Olaf Matthes <olaf.matthes@gmx.de>";
 
 /* -------------------------- rand_weibull ------------------------------ */
@@ -87,7 +87,6 @@ void maxlib_weibull_setup(void)
 #endif
 	class_addbang(rand_weibull_class, rand_weibull_bang);
 #ifndef MAXLIB
-	class_sethelpsymbol(rand_weibull_class, gensym("weibull-help.pd"));
     logpost(NULL, 4, version);
 #else
 	class_sethelpsymbol(rand_weibull_class, gensym("maxlib/weibull-help.pd"));

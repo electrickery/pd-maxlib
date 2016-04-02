@@ -34,9 +34,9 @@
 #define M_PI           3.1415927
 #endif
 
-static char *version = "arbran v0.1c, generates a random variable that conforms to the\n"
-                       "              piecewise probability density in two arrays\n"
-                       "              written by Olaf Matthes <olaf.matthes@gmx.de>";
+static char *version = "arbran v0.2, generates a random variable that conforms to the\n"
+                       "             piecewise probability density in two arrays\n"
+                       "             written by Olaf Matthes <olaf.matthes@gmx.de>";
 
 /* -------------------------- rand_arbran ------------------------------ */
 
@@ -184,7 +184,6 @@ void maxlib_arbran_setup(void)
 	class_addmethod(rand_arbran_class, (t_method)rand_arbran_pdfscale, gensym("pdfscale"), 0);
 	class_addmethod(rand_arbran_class, (t_method)rand_arbran_setarrays, gensym("set"), A_SYMBOL, A_SYMBOL, 0);
 #ifndef MAXLIB
-	class_sethelpsymbol(rand_arbran_class, gensym("arbran-help.pd"));
     logpost(NULL, 4, version);
 #else
 	class_addcreator((t_newmethod)rand_arbran_new, gensym("arbran"), A_SYMBOL, A_SYMBOL, 0);

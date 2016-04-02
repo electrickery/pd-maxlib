@@ -33,7 +33,7 @@
 #define M_PI           3.1415927
 #endif
 
-static char *version = "poisson v0.1, generates a poisson distributed random variable\n"
+static char *version = "poisson v0.2, generates a poisson distributed random variable\n"
                        "              written by Olaf Matthes <olaf.matthes@gmx.de>";
 
 /* -------------------------- rand_poisson ------------------------------ */
@@ -76,7 +76,6 @@ void poisson_setup(void)
     rand_poisson_class = class_new(gensym("poisson"), (t_newmethod)rand_poisson_new, 0,
     	sizeof(t_rand_poisson), 0, A_DEFFLOAT, 0);
     class_addbang(rand_poisson_class, rand_poisson_bang);
-	class_sethelpsymbol(rand_poisson_class, gensym("poisson-help.pd"));
     logpost(NULL, 4, version);
 }
 #else
