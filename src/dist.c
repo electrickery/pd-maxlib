@@ -257,7 +257,7 @@ void maxlib_dist_setup(void)
     dist_class = class_new(gensym("maxlib_dist"), (t_newmethod)dist_new, 0,
     	sizeof(t_dist), 0, A_GIMME, 0);
 #endif
-    class_addcreator((t_newmethod)dist_new, gensym("d"), A_GIMME, 0);
+//    class_addcreator((t_newmethod)dist_new, gensym("d"), A_GIMME, 0);
     class_addbang(dist_class, dist_bang);
     class_addfloat(dist_class, dist_float);
     class_addsymbol(dist_class, dist_symbol);
