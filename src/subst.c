@@ -149,6 +149,11 @@ static int subst_calc(t_subst *x, int n)
 	t_garray *A = x->x_buf;
 	int npoints;
 	t_word *vec;
+        
+        if (!A) {
+                post("subst::calc: array not defined");
+                return 0;
+        }
 
 	if(x->x_length <= 1)
 	{
