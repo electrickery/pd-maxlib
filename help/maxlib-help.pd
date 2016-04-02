@@ -1,4 +1,4 @@
-#N canvas 263 232 1161 819 10;
+#N canvas 361 79 1161 819 10;
 #X obj 307 260 average;
 #X obj 18 150 beat;
 #X obj 18 175 borax;
@@ -127,5 +127,4 @@
 #X text 831 527 blocks denied floats or symbols;
 #X obj 2 2 cnv 15 552 40 empty empty maxlib_1.5_Music_Analysis_eXtensions_LIBrary
 3 12 0 18 -204280 -1 0;
-#X text 30 26 comment;
 #X obj 1042 757 maxlib-meta;

@@ -11,8 +11,10 @@ F.J. Kraan
 fjkraan@xs4all.nl
 2016-02-19
 
+----
+
 Release notes:
-- Changed version to 1.6,
+- Changed version to 1.5.6,
 - Fixed help symbol for arbran, beta, bilex, cauchy, delta, expo, gauss, linear, poisson, triang, weibull
 - Added checks for missing arrays: arbran, subst,
 - Removed alias 'd' for dist,
@@ -22,3 +24,6 @@ Release notes:
 ToDo:
 - Fix instability of netclient, netserver (or remove all net* objects),
 - Change array code to support delayed loading (arbran, subst, ..),
+
+2016-04-02
+
