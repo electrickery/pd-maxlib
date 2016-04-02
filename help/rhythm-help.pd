@@ -1,4 +1,4 @@
-#N canvas 501 79 557 515 10;
+#N canvas 499 80 557 515 10;
 #X obj 0 0 cnv 15 552 40 empty empty rhythm 3 12 0 18 -204280 -1 0
 ;
 #X obj 0 332 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
@@ -42,15 +42,15 @@ code written by Rober Rowe and published in 'Mashine Musicianship'
 #X text 107 472 float;
 #X text 8 23 detects the beat of rhythmic patterns;
 #X obj 500 4 rhythm;
-#X floatatom 25 294 5 0 0 0 - - -, f 5;
-#X obj 25 51 notein;
-#X obj 139 76 makenote 100 100;
-#X msg 139 53 60;
-#X floatatom 68 294 5 0 0 0 - - -, f 5;
-#X msg 259 76 reset;
-#X obj 112 289 bng 20 100 10 0 empty empty empty 0 -6 0 8 -262144 -42246
+#X floatatom 109 298 5 0 0 0 - - -, f 5;
+#X obj 109 55 notein;
+#X obj 223 80 makenote 100 100;
+#X msg 223 57 60;
+#X floatatom 152 298 5 0 0 0 - - -, f 5;
+#X msg 343 80 reset;
+#X obj 196 293 bng 20 100 10 0 empty empty empty 0 -6 0 8 -262144 -42246
 -1;
-#X obj 25 202 maxlib/rhythm 0;
+#X obj 109 206 maxlib/rhythm 0;
 #X text 80 534 <adaptation model> \, 0 = Large and Kolen \, 1 = Toiviainen
 ;
 #X text 157 402 - note velocity;
@@ -67,10 +67,10 @@ code written by Rober Rowe and published in 'Mashine Musicianship'
 #X text 107 381 reset;
 #X text 157 381 - reset all values \, forget rhythm and stop beat pulse
 ;
-#X text 168 52 <-- click at least twice;
-#X msg 74 75 model \$1;
-#X obj 74 52 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
-;
+#X text 252 56 <-- click at least twice;
+#X msg 158 79 model \$1;
+#X obj 158 56 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
 #X connect 18 0 24 0;
 #X connect 18 1 24 1;
 #X connect 19 0 24 0;

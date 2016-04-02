@@ -1,4 +1,4 @@
-#N canvas 502 79 557 534 10;
+#N canvas 500 80 557 534 10;
 #X obj 0 0 cnv 15 552 40 empty empty allow 3 12 0 18 -204280 -1 0;
 #X obj 0 353 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
 ;
@@ -12,11 +12,12 @@
 ;
 #X obj 0 495 cnv 15 552 21 empty empty empty 20 12 0 14 -233017 -33289
 0;
-#N canvas 242 347 428 75 Related_objects 0;
+#N canvas 240 348 428 75 Related_objects 0;
 #X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
 #X text 6 1 Related Objects;
+#X obj 9 30 maxlib/deny;
 #X restore 206 497 pd Related_objects;
-#N canvas 517 573 379 261 META 0;
+#N canvas 515 574 379 261 META 0;
 #X text 12 25 LICENSE GPL v2;
 #X text 12 45 DESCRIPTION let only 'allowed' floats or symbols through
 ;

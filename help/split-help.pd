@@ -1,4 +1,4 @@
-#N canvas 495 79 557 515 10;
+#N canvas 493 80 557 515 10;
 #X obj 0 0 cnv 15 552 40 empty empty split 3 12 0 18 -204280 -1 0;
 #X obj 0 283 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
 ;
@@ -36,8 +36,6 @@ Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
 #X text 107 324 float;
 #X text 172 297 - input data;
 #X obj 497 4 split;
-#X text 14 23 split :: split incoming floats according to value, f
-86;
 #X floatatom 78 255 8 0 0 0 - - -, f 8;
 #X floatatom 78 65 5 0 0 0 - - -, f 5;
 #X floatatom 127 67 5 0 0 0 - - -, f 5;
@@ -56,8 +54,9 @@ Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
 #X text 157 418 - out of range values;
 #X text 80 475 1: default lower limit \, 2: default upper limit;
 #X text 157 393 - in range values \, including border values;
-#X connect 16 0 19 0;
-#X connect 17 0 19 1;
-#X connect 18 0 19 2;
-#X connect 19 0 15 0;
-#X connect 19 1 20 0;
+#X text 14 23 split incoming floats according to value, f 86;
+#X connect 15 0 18 0;
+#X connect 16 0 18 1;
+#X connect 17 0 18 2;
+#X connect 18 0 14 0;
+#X connect 18 1 19 0;

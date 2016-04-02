@@ -1,4 +1,4 @@
-#N canvas 517 79 557 515 10;
+#N canvas 515 80 557 515 10;
 #X obj 0 0 cnv 15 552 40 empty empty score 3 12 0 18 -204280 -1 0;
 #X obj 0 332 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
 ;
@@ -46,7 +46,6 @@ to a score stored in an array, f 86;
 #X msg 87 58 start;
 #X msg 129 58 stop;
 #X msg 165 58 start 4;
-#X msg 175 81 set \$0-sco_array;
 #N canvas 0 50 450 300 (subpatch) 0;
 #X array \$0-sco_array 25 float 1;
 #A 0 60 61 62 63 64 65 66 67 68 69 70 71 72 71 70 69 68 67 66 65 64
@@ -69,13 +68,15 @@ to a score stored in an array, f 86;
 #X text 172 377 - stop score following;
 #X text 172 395 - stop score following;
 #X text 107 395 set <name>;
-#N canvas 339 683 450 300 fill 0;
+#N canvas 337 684 450 300 fill 0;
 #X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
 #X text 6 1 table filler;
 #X obj 23 62 loadbang;
-#X msg 23 88 \; \$0-sco_array resize 25 \; \$0-sco_array read examples/score.txt
+#X obj 23 91 \$0;
+#X msg 23 117 \; \$1-sco_array resize 25 \; \$1-sco_array read examples/score.txt
 \;;
 #X connect 2 0 3 0;
+#X connect 3 0 4 0;
 #X restore 424 160 pd fill sco_array;
 #X text 107 503 bang;
 #X text 157 503 - error;
@@ -87,11 +88,17 @@ to a score stored in an array, f 86;
 #X text 84 597 skipitems: max. number of notes to skip;
 #X text 84 611 skip time: max. time [ms] to rewind;
 #X text 123 307 note from score;
-#X connect 16 0 22 2;
-#X connect 17 0 22 0;
-#X connect 18 0 22 0;
-#X connect 19 0 22 0;
-#X connect 20 0 22 0;
-#X connect 22 0 23 0;
-#X connect 23 0 25 0;
-#X connect 25 0 24 0;
+#X msg 175 81 set \$1-sco_array;
+#X obj 252 59 \$0;
+#X obj 224 60 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X connect 16 0 21 2;
+#X connect 17 0 21 0;
+#X connect 18 0 21 0;
+#X connect 19 0 21 0;
+#X connect 21 0 22 0;
+#X connect 22 0 24 0;
+#X connect 24 0 23 0;
+#X connect 46 0 21 0;
+#X connect 47 0 46 0;
+#X connect 48 0 47 0;
