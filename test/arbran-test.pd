@@ -1,0 +1,22 @@
+#N canvas 129 590 720 466 10;
+#X obj 41 105 bng 20 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
+-1;
+#X msg 110 108 pdfscale;
+#X obj 41 202 maxlib/arbran \$0-a1 \$0-a2;
+#N canvas 0 50 450 300 (subpatch) 0;
+#X array \$0-a1 6 float 1;
+#A 0 1.1 2.67143 3.24285 3.1 4.38571 8.67143;
+#X coords 0 10 5 0 140 100 1 0 0;
+#X restore 237 61 graph;
+#N canvas 0 50 450 300 (subpatch) 0;
+#X array \$0-a2 6 float 1;
+#A 0 0.0229077 0.204366 0.486501 0.0632986 0.204028 0.025319;
+#X coords 0 1 5 0 140 100 1 0 0;
+#X restore 389 61 graph;
+#X text 221 61 10;
+#X text 227 147 0;
+#X text 379 147 0;
+#X text 379 60 1;
+#X text 154 267 comment;
+#X connect 0 0 2 0;
+#X connect 1 0 2 0;

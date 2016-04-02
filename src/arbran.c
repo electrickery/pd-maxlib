@@ -34,7 +34,7 @@
 #define M_PI           3.1415927
 #endif
 
-static char *version = "arbran v0.1b, generates a random variable that conforms to the\n"
+static char *version = "arbran v0.1c, generates a random variable that conforms to the\n"
                        "              piecewise probability density in two arrays\n"
                        "              written by Olaf Matthes <olaf.matthes@gmx.de>";
 
@@ -58,14 +58,14 @@ static void rand_arbran_pdfscale(t_rand_arbran *x)
 	t_int k = 0;
 	t_word *tp, *tx;
 	int ix, ip;
-	if (!garray_getfloatwords(bx, &ix, &tx))
+	if (!bx || !garray_getfloatwords(bx, &ix, &tx))
 	{
-		post("arbran: couldn't read from array!");
+		post("arbran::pdfscale: couldn't read from first array!");
 		return;
 	}
-	if (!garray_getfloatwords(bp, &ip, &tp))
+	if (!bp || !garray_getfloatwords(bp, &ip, &tp))
 	{
-		post("arbran: couldn't read from array!");
+		post("arbran::pdfscale: couldn't read from second array!");
 		return;
 	}
 
@@ -88,14 +88,14 @@ static void rand_arbran_bang(t_rand_arbran *x)
 	t_int k = 0;
 	t_word *tp, *tx;
 	int ix, ip;
-	if (!garray_getfloatwords(bx, &ix, &tx))
+	if (!bx || !garray_getfloatwords(bx, &ix, &tx))
 	{
-		post("arbran: couldn't read from array!");
+		post("arbran::bang: couldn't read from first array!");
 		return;
 	}
-	if (!garray_getfloatwords(bp, &ip, &tp))
+	if (!bp || !garray_getfloatwords(bp, &ip, &tp))
 	{
-		post("arbran: couldn't read from array!");
+		post("arbran::bang: couldn't read from second array!");
 		return;
 	}
 
