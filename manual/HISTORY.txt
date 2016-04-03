@@ -1,5 +1,22 @@
 version history of maxlib library for pure-data
 
+v 1.5.6 (02 April 2016)
+- Transition to https://github.com/electrickery/pd-maxlib
+- Fixed help symbol for arbran, beta, bilex, cauchy, delta, expo, gauss, linear, poisson, triang, weibull
+- Added checks for missing arrays: arbran, subst
+- Removed alias 'd' for dist
+- Removed error for second inlet of pitch. Have to find out its usage
+- Applied sourceforge patch 1199 for garray_getfloatwords issue
+- Applied standard format to help-patches
+
+v 1.5.5 (17 January 2013)
+- updates and bugfixes up to Pd-extended 0.43 
+
+v 1.5.4 (29 December 2011)
+- numerous updates and bugfixes
+
+(transition to Pd-extended repository)
+
 v 1.5.2 (17. december 2003):
 - modified netclient for not to drop received data: use of syspollfn
   instead of clock to poll for incoming data, circular recv buffer

@@ -7,13 +7,15 @@ The initial changes were adding/recreating some separate directories for source 
 
 See the original README.txt for more information.
 
-F.J. Kraan
+Please note that Olaf does not maintain this code any longer, so questions and bug-reports should be directed towards me.
+
+Fred Jan Kraan
 fjkraan@xs4all.nl
-2016-02-19
+2016-04-02
 
 ----
 
-Release notes:
+Release notes 1.5.6:
 - Changed version to 1.5.6,
 - Fixed help symbol for arbran, beta, bilex, cauchy, delta, expo, gauss, linear, poisson, triang, weibull
 - Added checks for missing arrays: arbran, subst,
@@ -25,5 +27,5 @@ ToDo:
 - Fix instability of netclient, netserver (or remove all net* objects),
 - Change array code to support delayed loading (arbran, subst, ..),
 
-2016-04-02
+More complete version history is found in manual/HISTORY.txt
 
