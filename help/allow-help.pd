@@ -1,4 +1,4 @@
-#N canvas 500 80 557 534 10;
+#N canvas 498 81 557 534 10;
 #X obj 0 0 cnv 15 552 40 empty empty allow 3 12 0 18 -204280 -1 0;
 #X obj 0 353 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
 ;
@@ -17,16 +17,17 @@
 #X text 6 1 Related Objects;
 #X obj 9 30 maxlib/deny;
 #X restore 206 497 pd Related_objects;
-#N canvas 515 574 379 261 META 0;
+#N canvas 513 575 379 261 META 0;
 #X text 12 25 LICENSE GPL v2;
 #X text 12 45 DESCRIPTION let only 'allowed' floats or symbols through
 ;
 #X text 12 65 INLET_0 float symbol;
 #X text 12 85 OUTLET_0 float symbol;
-#X text 12 105 AUTHOR Olaf Matthes <olaf.matthes@gmx.de>;
+#X text 12 105 AUTHOR Olaf Matthes;
 #X text 12 5 KEYWORDS control filter;
-#X text 12 125 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
+#X text 12 146 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
 Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
+#X text 12 125 MAINTAINER Fred Jan Kraan <fjkraan@xs4all.nl>;
 #X restore 502 499 pd META;
 #X msg 133 82 dog;
 #X msg 133 105 bird;

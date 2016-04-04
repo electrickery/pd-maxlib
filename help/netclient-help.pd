@@ -20,7 +20,7 @@
 #N canvas 428 558 379 261 META 0;
 #X text 12 146 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
 Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
-#X text 12 127 AUTHOR Olaf Matthes <olaf.matthes@gmx.de>;
+#X text 12 127 AUTHOR Olaf Matthes;
 #X text 12 25 LICENSE GPL v2;
 #X text 12 5 KEYWORDS control network;
 #X text 12 105 OUTLET_1 float;

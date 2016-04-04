@@ -1,4 +1,4 @@
-#N canvas 426 79 557 534 10;
+#N canvas 424 80 557 534 10;
 #X obj 0 0 cnv 15 552 40 empty empty ignore 3 12 0 18 -204280 -1 0
 ;
 #X obj 0 326 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
@@ -17,9 +17,9 @@
 #X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
 #X text 6 1 Related Objects;
 #X restore 206 495 pd Related_objects;
-#N canvas 512 679 379 261 META 0;
-#X text 12 140 AUTHOR Olaf Matthes <olaf.matthes@gmx.de>;
-#X text 12 160 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
+#N canvas 510 680 379 261 META 0;
+#X text 12 140 AUTHOR Olaf Matthes;
+#X text 13 179 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
 Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
 #X text 12 25 LICENSE GPL v2;
 #X text 12 100 INLET_1 float;
@@ -28,6 +28,7 @@ Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
 #X text 12 45 DESCRIPTION lets information through only when it was
 present at input longer than N ms;
 #X text 12 80 INLET_0 float;
+#X text 13 160 MAINTAINER Fred Jan Kraan <fjkraan@xs4all.nl>;
 #X restore 502 497 pd META;
 #X obj 0 462 cnv 3 550 3 empty empty more_info 8 12 0 13 -228856 -1
 0;

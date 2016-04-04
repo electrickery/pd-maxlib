@@ -1,4 +1,4 @@
-#N canvas 480 79 557 534 10;
+#N canvas 478 80 557 534 10;
 #X obj 0 0 cnv 15 552 40 empty empty limit 3 12 0 18 -204280 -1 0;
 #X obj 0 295 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
 ;
@@ -16,8 +16,8 @@
 #X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
 #X text 6 1 Related Objects;
 #X restore 206 524 pd Related_objects;
-#N canvas 508 681 379 261 META 0;
-#X text 12 197 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
+#N canvas 506 682 379 261 META 0;
+#X text 12 217 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
 Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
 #X text 12 25 LICENSE GPL v2;
 #X text 12 160 OUTLET_0 float;
@@ -28,7 +28,8 @@ allows for compression / expansion;
 #X text 12 100 INLET_1 float;
 #X text 12 120 INLET_2 float;
 #X text 12 140 INLET_3 float;
-#X text 12 180 AUTHOR Olaf Matthes <olaf.matthes@gmx.de>;
+#X text 12 180 AUTHOR Olaf Matthes;
+#X text 12 199 MAINTAINER Fred Jan Kraan <fjkraan@xs4all.nl>;
 #X restore 502 526 pd META;
 #X obj 0 479 cnv 3 550 3 empty empty more_info 8 12 0 13 -228856 -1
 0;

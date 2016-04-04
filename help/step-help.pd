@@ -1,4 +1,4 @@
-#N canvas 495 79 557 515 10;
+#N canvas 493 80 557 515 10;
 #X obj 0 0 cnv 15 552 40 empty empty step 3 12 0 18 -204280 -1 0;
 #X obj 0 283 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
 ;
@@ -14,10 +14,10 @@
 #X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
 #X text 6 1 Related Objects;
 #X restore 206 561 pd Related_objects;
-#N canvas 485 589 379 261 META 0;
-#X text 12 174 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
+#N canvas 483 590 379 261 META 0;
+#X text 12 188 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
 Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
-#X text 12 153 AUTHOR Olaf Matthes <olaf.matthes@gmx.de>;
+#X text 12 151 AUTHOR Olaf Matthes;
 #X text 12 25 LICENSE GPL v2;
 #X text 12 90 INLET_1 float;
 #X text 12 110 INLET_2 float;
@@ -26,6 +26,7 @@ Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
 );
 #X text 12 5 KEYWORDS control ramp;
 #X text 12 70 INLET_0 float list stop;
+#X text 12 171 MAINTAINER Fred Jan Kraan <fjkraan@xs4all.nl>;
 #X restore 502 560 pd META;
 #X obj 79 433 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
 ;
@@ -58,7 +59,7 @@ Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
 #X text 172 336 - stop transition to new value;
 #X text 172 317 - <new value> <time> <step>;
 #X obj 221 256 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 10000 1;
+-1 -1 0 1;
 #X msg 81 73 0;
 #X obj 0 506 cnv 3 550 3 empty empty more_info 8 12 0 13 -228856 -1
 0;

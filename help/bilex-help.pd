@@ -1,4 +1,4 @@
-#N canvas 500 81 557 489 10;
+#N canvas 498 82 557 489 10;
 #X obj 0 0 cnv 15 552 40 empty empty bilex 3 12 0 18 -204280 -1 0;
 #X obj 0 312 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
 ;
@@ -14,17 +14,18 @@
 #X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
 #X text 6 1 Related Objects;
 #X restore 206 453 pd Related_objects;
-#N canvas 933 383 379 261 META 0;
-#X text 12 145 AUTHOR Olaf Matthes <olaf.matthes@gmx.de>;
-#X text 12 165 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
-Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
+#N canvas 931 384 379 261 META 0;
+#X text 12 142 AUTHOR Olaf Matthes;
 #X text 12 25 LICENSE GPL v2;
-#X text 12 125 OUTLET_0 float;
+#X text 12 122 OUTLET_0 float;
 #X text 12 5 KEYWORDS control random;
-#X text 12 85 INLET_0 bang;
-#X text 12 105 INLET_1 float;
+#X text 12 82 INLET_0 bang;
+#X text 12 102 INLET_1 float;
 #X text 12 45 DESCRIPTION bilinear exponetionally distributed random
 numbers;
+#X text 12 183 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
+Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
+#X text 12 162 MAINTAINER Fred Jan Kraan <fjkraan@xs4all.nl>;
 #X restore 502 453 pd META;
 #X text 107 323 bang;
 #X text 163 323 - calculate next output value;

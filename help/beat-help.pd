@@ -1,4 +1,4 @@
-#N canvas 683 80 571 534 10;
+#N canvas 681 81 571 534 10;
 #X obj 0 0 cnv 15 552 40 empty empty beat 3 12 0 18 -204280 -1 0;
 #X obj 0 317 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
 ;
@@ -14,9 +14,9 @@
 #X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
 #X text 6 1 Related Objects;
 #X restore 206 678 pd Related_objects;
-#N canvas 933 383 379 261 META 0;
-#X text 12 165 AUTHOR Olaf Matthes <olaf.matthes@gmx.de>;
-#X text 12 185 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
+#N canvas 931 384 379 261 META 0;
+#X text 12 165 AUTHOR Olaf Matthes;
+#X text 12 207 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
 Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
 #X text 12 25 LICENSE GPL v2;
 #X text 12 85 INLET_1 float;
@@ -26,6 +26,7 @@ Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
 #X text 12 45 DESCRIPTION beat tracker;
 #X text 12 65 INLET_0 float reset print;
 #X text 12 145 OUTLET_2 bang;
+#X text 12 185 MAINTAINER Fred Jan Kraan <fjkraan@xs4all.nl>;
 #X restore 502 678 pd META;
 #X obj 79 413 cnv 17 3 17 empty empty 1 5 9 0 16 -228856 -162280 0
 ;
@@ -79,7 +80,7 @@ Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
 #X connect 9 0 5 0;
 #X connect 11 0 9 0;
 #X restore 233 78 pd random rhythm;
-#X obj 233 54 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 233 54 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X floatatom 81 295 8 0 0 0 - - -, f 8;
 #X obj 81 54 notein;

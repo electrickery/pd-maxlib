@@ -1,4 +1,4 @@
-#N canvas 361 79 1161 819 10;
+#N canvas 359 80 1161 819 10;
 #X obj 307 260 average;
 #X obj 18 150 beat;
 #X obj 18 175 borax;
@@ -25,7 +25,6 @@
 #X obj 403 525 speedlim;
 #X obj 403 603 step;
 #X obj 660 318 subst;
-#X text 5 44 written by Olaf Matthes <olaf.matthes@gmx.de>;
 #X text 71 125 chord detection;
 #X text 68 150 beat tracking;
 #X text 77 201 beat detection;
@@ -63,8 +62,6 @@
 #X obj 14 661 netrec;
 #X text 73 662 netreceive with extra info about sender;
 #X obj 307 364 delta;
-#X text 4 61 download at http://www.akustische-kunst.org/puredata/maxlib
-;
 #X obj 656 173 listfifo;
 #X text 734 172 first in first out for lists;
 #X text 703 147 first in first out for floats;
@@ -128,3 +125,6 @@
 #X obj 2 2 cnv 15 552 40 empty empty maxlib_1.5_Music_Analysis_eXtensions_LIBrary
 3 12 0 18 -204280 -1 0;
 #X obj 1042 757 maxlib-meta;
+#X text 5 44 written by Olaf Matthes;
+#X text 4 61 this version maintained by Fred Jan Kraan <fjkraan@xs4all.nl>
+, f 62;

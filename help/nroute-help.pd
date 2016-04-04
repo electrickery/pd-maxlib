@@ -1,4 +1,4 @@
-#N canvas 563 79 557 515 10;
+#N canvas 561 80 557 515 10;
 #X obj 0 0 cnv 15 552 40 empty empty nroute 3 12 0 18 -204280 -1 0
 ;
 #X obj 0 295 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
@@ -17,10 +17,10 @@
 #X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
 #X text 6 1 Related Objects;
 #X restore 206 525 pd Related_objects;
-#N canvas 682 594 379 261 META 0;
-#X text 12 191 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
+#N canvas 680 595 379 261 META 0;
+#X text 12 208 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
 Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
-#X text 12 172 AUTHOR Olaf Matthes <olaf.matthes@gmx.de>;
+#X text 12 169 AUTHOR Olaf Matthes;
 #X text 12 25 LICENSE GPL v2;
 #X text 12 5 KEYWORDS control;
 #X text 12 67 INLET_0 bang float;
@@ -29,6 +29,7 @@ Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
 #X text 12 147 OUTLET_1 float;
 #X text 12 107 INLET_2 float;
 #X text 12 45 DESCRIPTION routes list on specified list element;
+#X text 12 189 MAINTAINER Fred Jan Kraan <fjkraan@xs4all.nl>;
 #X restore 502 527 pd META;
 #X text 107 421 list;
 #X obj 79 336 cnv 17 3 17 empty empty 1 5 9 0 16 -228856 -162280 0

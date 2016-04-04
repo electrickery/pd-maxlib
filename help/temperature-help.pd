@@ -1,4 +1,4 @@
-#N canvas 495 79 557 515 10;
+#N canvas 493 80 557 515 10;
 #X obj 0 0 cnv 15 552 40 empty empty temperature 3 12 0 18 -204280
 -1 0;
 #X obj 0 307 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
@@ -15,16 +15,17 @@
 #X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
 #X text 6 1 Related Objects;
 #X restore 206 481 pd Related_objects;
-#N canvas 479 592 379 261 META 0;
-#X text 12 149 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
+#N canvas 477 593 379 261 META 0;
+#X text 12 167 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
 Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
-#X text 12 128 AUTHOR Olaf Matthes <olaf.matthes@gmx.de>;
+#X text 12 128 AUTHOR Olaf Matthes;
 #X text 12 25 LICENSE GPL v2;
 #X text 12 105 OUTLET_0 float;
 #X text 12 85 INLET_1 float;
 #X text 12 45 DESCRIPTION output number of input changes in N ms;
 #X text 12 65 INLET_0 anything;
 #X text 12 5 KEYWORDS control analysis;
+#X text 12 148 MAINTAINER Fred Jan Kraan <fjkraan@xs4all.nl>;
 #X restore 502 480 pd META;
 #X obj 79 399 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
 ;
@@ -44,7 +45,7 @@ for outlets>, f 64;
 #X msg 123 115 foo;
 #X obj 87 184 maxlib/temperature 500;
 #X obj 123 91 metro 500;
-#X obj 123 69 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 123 69 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X msg 169 66 200;
 #X msg 198 67 500;

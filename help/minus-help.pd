@@ -1,4 +1,4 @@
-#N canvas 491 80 557 515 10;
+#N canvas 489 81 557 515 10;
 #X obj 0 0 cnv 15 552 40 empty empty minus 3 12 0 18 -204280 -1 0;
 #X obj 0 295 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
 ;
@@ -16,10 +16,8 @@
 #X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
 #X text 6 1 Related Objects;
 #X restore 206 552 pd Related_objects;
-#N canvas 499 582 379 261 META 0;
-#X text 12 186 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
-Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
-#X text 12 167 AUTHOR Olaf Matthes <olaf.matthes@gmx.de>;
+#N canvas 497 583 379 261 META 0;
+#X text 12 167 AUTHOR Olaf Matthes;
 #X text 12 25 LICENSE GPL v2;
 #X text 12 5 KEYWORDS control;
 #X text 12 45 DESCRIPTION like [-] but calculates result when leftmost
@@ -28,6 +26,9 @@ or second inlet is changed;
 #X text 12 105 INLET_1 float;
 #X text 12 145 OUTLET_0 float;
 #X text 12 125 INLET_N float;
+#X text 12 204 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
+Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
+#X text 12 186 MAINTAINER Fred Jan Kraan <fjkraan@xs4all.nl>;
 #X restore 502 554 pd META;
 #X obj 0 492 cnv 3 550 3 empty empty more_info 8 12 0 13 -228856 -1
 0;

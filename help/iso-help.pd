@@ -1,4 +1,4 @@
-#N canvas 426 79 557 534 10;
+#N canvas 424 80 557 534 10;
 #X obj 0 0 cnv 15 552 40 empty empty iso 3 12 0 18 -204280 -1 0;
 #X obj 0 392 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
 ;
@@ -16,9 +16,9 @@
 #X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
 #X text 6 1 Related Objects;
 #X restore 206 675 pd Related_objects;
-#N canvas 510 680 379 261 META 0;
-#X text 12 160 AUTHOR Olaf Matthes <olaf.matthes@gmx.de>;
-#X text 12 180 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
+#N canvas 508 681 379 261 META 0;
+#X text 12 166 AUTHOR Olaf Matthes;
+#X text 12 206 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
 Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
 #X text 12 25 LICENSE GPL v2;
 #X text 12 125 OUTLET_0 float;
@@ -29,6 +29,7 @@ hook duty;
 #X text 12 105 INLET_1 list;
 #X text 12 145 OUTLET_1 float;
 #X text 12 5 KEYWORDS control;
+#X text 12 186 MAINTAINER Fred Jan Kraan <fjkraan@xs4all.nl>;
 #X restore 502 677 pd META;
 #X obj 79 578 cnv 17 3 17 empty empty 1 5 9 0 16 -228856 -162280 0
 ;
@@ -79,7 +80,7 @@ the last N milliseconds;
 > 1;
 #X text 162 550 - duration multiplier \; duty < 1 - staccato \, duty
 > 1 - legato;
-#X text 96 653;
+#X text 96 653 comment;
 #X connect 14 0 22 0;
 #X connect 15 0 22 1;
 #X connect 16 0 30 0;

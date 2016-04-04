@@ -1,4 +1,4 @@
-#N canvas 510 80 557 515 10;
+#N canvas 508 81 557 515 10;
 #X obj 0 0 cnv 15 552 40 empty empty pitch 3 12 0 18 -204280 -1 0;
 #X obj 0 295 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
 ;
@@ -16,10 +16,10 @@
 #X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
 #X text 6 1 Related Objects;
 #X restore 206 549 pd Related_objects;
-#N canvas 680 595 379 261 META 0;
-#X text 12 225 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
+#N canvas 678 596 379 261 META 0;
+#X text 12 240 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
 Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
-#X text 12 206 AUTHOR Olaf Matthes <olaf.matthes@gmx.de>;
+#X text 12 204 AUTHOR Olaf Matthes;
 #X text 12 25 LICENSE GPL v2;
 #X text 12 45 DESCRIPTION get info about pitch;
 #X text 12 5 KEYWORDS control analysis MIDI;
@@ -30,6 +30,7 @@ Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
 #X text 12 165 OUTLET_3 float;
 #X text 12 185 OUTLET_4 float;
 #X text 12 125 OUTLET_1 symbol;
+#X text 12 223 MAINTAINER Fred Jan Kraan <fjkraan@xs4all.nl>;
 #X restore 502 551 pd META;
 #X obj 79 336 cnv 17 3 17 empty empty 1 5 9 0 16 -228856 -162280 0
 ;

@@ -1,4 +1,4 @@
-#N canvas 509 80 557 534 10;
+#N canvas 507 81 557 534 10;
 #X obj 0 0 cnv 15 552 40 empty empty divmod 3 12 0 18 -204280 -1 0
 ;
 #X obj 0 278 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
@@ -17,10 +17,9 @@
 #X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
 #X text 6 1 Related Objects;
 #X restore 206 497 pd Related_objects;
-#N canvas 513 575 379 261 META 0;
-#X text 12 174 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
+#N canvas 511 576 379 261 META 0;
+#X text 12 196 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
 Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
-#X text 12 155 AUTHOR Olaf Matthes <olaf.matthes@gmx.de>;
 #X text 12 25 LICENSE GPL v2;
 #X text 12 5 KEYWORDS control nonlocal;
 #X text 12 75 INLET_0 bang float;
@@ -29,6 +28,8 @@ Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
 #X text 12 45 DESCRIPTION calculate division and modulo outputs results
 even when right inlet changes;
 #X text 12 135 OUTLET_1 float;
+#X text 12 155 AUTHOR Olaf Matthes;
+#X text 12 175 MAINTAINER Fred Jan Kraan <fjkraan@xs4all.nl>;
 #X restore 502 499 pd META;
 #X obj 0 445 cnv 3 550 3 empty empty more_info 8 12 0 13 -228856 -1
 0;

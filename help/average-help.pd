@@ -1,4 +1,4 @@
-#N canvas 493 79 571 534 10;
+#N canvas 491 80 571 534 10;
 #X obj 0 0 cnv 15 552 40 empty empty average 3 12 0 18 -204280 -1 0
 ;
 #X obj 0 317 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
@@ -15,10 +15,10 @@
 #X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
 #X text 6 1 Related Objects;
 #X restore 206 551 pd Related_objects;
-#N canvas 935 382 379 261 META 0;
+#N canvas 933 383 379 261 META 0;
 #X text 12 25 LICENSE GPL v2;
-#X text 12 156 AUTHOR Olaf Matthes <olaf.matthes@gmx.de>;
-#X text 12 176 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
+#X text 12 156 AUTHOR Olaf Matthes;
+#X text 12 195 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
 Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
 #X text 12 5 KEYWORDS control;
 #X text 12 45 DESCRIPTION calculates the average of the last N items
@@ -27,6 +27,7 @@ Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
 #X text 12 97 INLET_1 float;
 #X text 12 137 OUTLET_1 float;
 #X text 12 117 OUTLET_0 float;
+#X text 12 176 MAINTAINER Fred Jan Kraan <fjkraan@xs4all.nl>;
 #X restore 502 551 pd META;
 #X obj 79 413 cnv 17 3 17 empty empty 1 5 9 0 16 -228856 -162280 0
 ;
@@ -62,7 +63,7 @@ Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
 #X obj 108 107 random 100;
 #X obj 108 84 metro 100;
 #X floatatom 108 130 5 0 0 0 - - -, f 5;
-#X obj 108 63 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 108 63 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 108 231 maxlib/average 10;
 #N canvas 0 50 450 250 (subpatch) 0;

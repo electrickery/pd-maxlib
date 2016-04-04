@@ -1,4 +1,4 @@
-#N canvas 501 79 557 515 10;
+#N canvas 499 80 557 515 10;
 #X obj 0 0 cnv 15 552 40 empty empty remote 3 12 0 18 -204280 -1 0
 ;
 #X obj 0 359 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
@@ -15,15 +15,16 @@
 #X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
 #X text 6 1 Related Objects;
 #X restore 206 478 pd Related_objects;
-#N canvas 495 584 379 261 META 0;
-#X text 12 120 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
+#N canvas 493 585 379 261 META 0;
+#X text 12 137 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
 Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
-#X text 12 86 AUTHOR Olaf Matthes <olaf.matthes@gmx.de> originally
+#X text 12 86 AUTHOR Olaf Matthes originally
 written by James McCartney for Max;
 #X text 12 25 LICENSE GPL v2;
 #X text 12 5 KEYWORDS control nonlocal;
 #X text 12 45 DESCRIPTION send data to any receive object;
 #X text 12 65 INLET_0 anything;
+#X text 12 118 MAINTAINER Fred Jan Kraan <fjkraan@xs4all.nl>;
 #X restore 502 480 pd META;
 #X obj 500 4 remote;
 #X text 8 23 send data to any receive object;

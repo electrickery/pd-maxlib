@@ -1,4 +1,4 @@
-#N canvas 504 79 571 534 10;
+#N canvas 502 80 571 534 10;
 #X obj 0 0 cnv 15 552 40 empty empty arraycopy 3 12 0 18 -204280 -1
 0;
 #X obj 0 317 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
@@ -15,15 +15,16 @@
 #X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
 #X text 6 1 Related Objects;
 #X restore 206 588 pd Related_objects;
-#N canvas 937 381 379 261 META 0;
+#N canvas 935 382 379 261 META 0;
 #X text 12 25 LICENSE GPL v2;
-#X text 12 105 AUTHOR Olaf Matthes <olaf.matthes@gmx.de>;
-#X text 12 125 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
-Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
+#X text 12 105 AUTHOR Olaf Matthes;
 #X text 12 45 DESCRIPTION copy data from one array to another;
 #X text 12 65 INLET_0 bang copy print;
 #X text 12 85 INLET_1 symbol;
 #X text 12 5 KEYWORDS control array;
+#X text 12 149 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
+Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
+#X text 13 127 MAINTAINER Fred Jan Kraan <fjkraan@xs4all.nl>;
 #X restore 502 588 pd META;
 #X obj 0 527 cnv 3 550 3 empty empty more_info 8 12 0 13 -228856 -1
 0;
@@ -147,7 +148,7 @@ Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
 argument overwrite the destination array.;
 #X msg 139 196 print \$1;
 #X msg 139 224 bang;
-#X obj 139 177 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 139 177 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #N canvas 0 50 450 300 (subpatch) 0;
 #X array \$0-a3 20 float 1;

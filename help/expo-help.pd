@@ -1,25 +1,25 @@
-#N canvas 501 84 557 515 10;
+#N canvas 499 85 557 515 10;
 #X obj 0 0 cnv 15 552 40 empty empty expo 3 12 0 18 -204280 -1 0;
-#X obj 0 317 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
+#X obj 0 337 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
 ;
-#X obj 0 375 cnv 3 550 3 empty empty outlets 8 12 0 13 -228856 -1 0
+#X obj 0 395 cnv 3 550 3 empty empty outlets 8 12 0 13 -228856 -1 0
 ;
-#X obj 0 415 cnv 3 550 3 empty empty arguments 8 12 0 13 -228856 -1
+#X obj 0 435 cnv 3 550 3 empty empty arguments 8 12 0 13 -228856 -1
 0;
-#X obj 79 384 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
+#X obj 79 404 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
 ;
-#X obj 79 328 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
+#X obj 79 348 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
 ;
-#X obj 0 458 cnv 15 552 21 empty empty empty 20 12 0 14 -233017 -33289
+#X obj 0 478 cnv 15 552 21 empty empty empty 20 12 0 14 -233017 -33289
 0;
 #N canvas 242 347 428 75 Related_objects 0;
 #X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
 #X text 6 1 Related Objects;
-#X restore 206 460 pd Related_objects;
-#N canvas 509 577 379 261 META 0;
-#X text 12 144 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
+#X restore 206 480 pd Related_objects;
+#N canvas 507 578 379 261 META 0;
+#X text 12 166 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
 Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
-#X text 12 125 AUTHOR Olaf Matthes <olaf.matthes@gmx.de>;
+#X text 12 125 AUTHOR Olaf Matthes;
 #X text 12 25 LICENSE GPL v2;
 #X text 12 5 KEYWORDS control random;
 #X text 12 45 DESCRIPTION exponetionally distributed random numbers
@@ -27,9 +27,10 @@ Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
 #X text 12 65 INLET_0 bang;
 #X text 12 85 INLET_1 float;
 #X text 12 105 OUTLET_0 float;
-#X restore 502 462 pd META;
-#X text 107 384 bang;
-#X text 161 384 - falling edge detected (from <= 0 to > 0);
+#X text 12 145 MAINTAINER Fred Jan Kraan <fjkraan@xs4all.nl>;
+#X restore 502 482 pd META;
+#X text 107 404 bang;
+#X text 161 404 - falling edge detected (from <= 0 to > 0);
 #X text 8 23 exponetionally distributed random numbers;
 #X obj 513 4 expo;
 #X obj 77 96 bng 20 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
@@ -51,13 +52,13 @@ Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
 #X obj 77 74 metro 100;
 #X obj 77 53 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
 ;
-#X text 107 327 bang;
-#X text 162 327 - trigger next random number;
-#X text 86 436 default value for lambda;
-#X obj 79 353 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
+#X text 107 347 bang;
+#X text 162 347 - trigger next random number;
+#X text 86 456 default value for lambda;
+#X obj 79 373 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
 ;
-#X text 107 352 float;
-#X text 162 352 - new value for lambda;
+#X text 107 372 float;
+#X text 162 372 - new value for lambda;
 #X text 333 121 10;
 #X connect 13 0 16 0;
 #X connect 15 0 16 1;
