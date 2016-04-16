@@ -1,0 +1,115 @@
+#N canvas 519 81 557 515 10;
+#X obj 0 0 cnv 15 552 40 empty empty pwrap 3 12 0 18 -204280 -1 0;
+#X obj 0 328 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 411 cnv 3 550 3 empty empty outlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 468 cnv 3 550 3 empty empty arguments 8 12 0 13 -228856 -1
+0;
+#X obj 0 556 cnv 15 552 21 empty empty empty 20 12 0 14 -233017 -33289
+0;
+#N canvas 232 352 428 75 Related_objects 0;
+#X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
+#X text 6 1 Related Objects;
+#X obj 6 27 wrap;
+#X obj 78 27 maxlib/rewrap;
+#X obj 42 27 clip;
+#X obj 168 27 maxlib/scale;
+#X restore 206 560 pd Related_objects;
+#N canvas 528 612 379 261 META 0;
+#X text 12 139 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
+Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
+#X text 12 104 AUTHOR Olaf Matthes;
+#X text 12 25 LICENSE GPL v2;
+#X text 12 5 KEYWORDS control random;
+#X text 12 85 OUTLET_0 float;
+#X text 12 45 DESCRIPTION get velocity of digits per second;
+#X text 12 65 INLET_0 bang float;
+#X text 12 122 MAINTAINER Fred Jan Kraan <fjkraan@xs4all.nl>;
+#X restore 502 559 pd META;
+#X obj 79 424 cnv 17 3 35 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X text 107 423 float;
+#X floatatom 120 296 5 0 0 0 - - -, f 5;
+#X floatatom 169 123 5 0 0 0 - - -, f 5;
+#X floatatom 219 123 5 0 0 0 - - -, f 5;
+#X floatatom 219 297 5 0 0 0 - - -, f 5;
+#N canvas 1 79 450 300 updowncounter 0;
+#X obj 126 34 inlet;
+#X obj 231 33 inlet;
+#X obj 126 233 outlet;
+#X obj 278 35 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 126 128 metro 100;
+#X obj 126 167 f;
+#X obj 154 167 + 1;
+#X obj 231 68 moses 1;
+#X obj 231 97 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 270 98 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X floatatom 139 200 5 0 0 0 - - -, f 5;
+#X obj 136 90 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X msg 231 124 -1;
+#X msg 270 123 1;
+#X connect 0 0 4 0;
+#X connect 1 0 7 0;
+#X connect 3 0 7 0;
+#X connect 4 0 5 0;
+#X connect 5 0 6 0;
+#X connect 5 0 2 0;
+#X connect 5 0 10 0;
+#X connect 6 0 5 1;
+#X connect 7 0 8 0;
+#X connect 7 1 9 0;
+#X connect 8 0 12 0;
+#X connect 9 0 13 0;
+#X connect 11 0 4 0;
+#X connect 12 0 6 1;
+#X connect 13 0 6 1;
+#X restore 120 101 pd updowncounter;
+#X obj 213 80 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 213 56 loadbang;
+#X obj 120 81 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 79 338 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X obj 79 361 cnv 17 3 17 empty empty 1 5 9 0 16 -228856 -162280 0
+;
+#X obj 79 384 cnv 17 3 17 empty empty 2 5 9 0 16 -228856 -162280 0
+;
+#X text 107 337 float;
+#X text 107 360 float;
+#X text 107 383 float;
+#X text 157 337 - input value;
+#X text 157 360 - lower limit;
+#X text 157 383 - upper limit;
+#X text 170 422 - output value;
+#X text 107 447 float;
+#X text 170 447 - number of wraps;
+#X text 93 485 1: <lower limit> \, 2: <upper limit>;
+#X obj 83 243 vsl 10 64 0 50 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X text 95 238 50;
+#X text 96 298 0;
+#X text 14 23 parameterized wrap - floats into a range;
+#X floatatom 88 124 8 0 0 0 - - -, f 8;
+#X obj 0 504 cnv 3 550 3 empty empty more_info 8 12 0 13 -228856 -1
+0;
+#X text 93 519 pwrap was previously called 'wrap' \, but was renamed
+as there is a Pd-vanilla object with that name., f 62;
+#X obj 505 4 pwrap;
+#X text 232 80 down/up;
+#X obj 120 204 maxlib/pwrap 6 40;
+#X connect 10 0 39 1;
+#X connect 11 0 39 2;
+#X connect 13 0 34 0;
+#X connect 13 0 39 0;
+#X connect 14 0 13 1;
+#X connect 15 0 14 0;
+#X connect 16 0 13 0;
+#X connect 39 0 9 0;
+#X connect 39 0 30 0;
+#X connect 39 1 12 0;

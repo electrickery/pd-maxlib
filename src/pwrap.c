@@ -20,13 +20,18 @@
 /*                                                                              */
 /* Based on PureData by Miller Puckette and others.                             */
 /*                                                                              */
+/* Changes in version 1.5.6 by fjkraan:                                         */
+/* Renamed wrap to pwrap to fix the name conflict with the Pd-vanilla           */
+/* object 'wrap'.                                                               */
+/*                                                                              */
 /* ---------------------------------------------------------------------------- */
+
 
 #include "m_pd.h"
 #include <stdio.h>
 #include <math.h>
 
-static char *version = "wrap v0.1, written by Olaf Matthes <olaf.matthes@gmx.de>";
+static char *version = "pwrap v0.1, written by Olaf Matthes <olaf.matthes@gmx.de>";
  
 typedef struct wrap
 {
@@ -118,9 +123,9 @@ static void *wrap_new(t_floatarg fmin, t_floatarg fmax)
 }
 
 #ifndef MAXLIB
-void wrap_setup(void)
+void pwrap_setup(void)
 {
-    wrap_class = class_new(gensym("wrap"), (t_newmethod)wrap_new,
+    wrap_class = class_new(gensym("pwrap"), (t_newmethod)wrap_new,
     	0, sizeof(t_wrap), 0, A_DEFFLOAT, A_DEFFLOAT, 0);
 #else
 void maxlib_wrap_setup(void)
