@@ -16,7 +16,8 @@ fjkraan@xs4all.nl
 ----
 
 Release notes 1.5.7:
-- Windows only: add pthreadGC2.dll copy to install directory
+- Windows only: add pthreadGC2.dll copy to install directory to Makefile
+- help-patches: minor updates to arbran-help, rewrap-help, score-help
 
 Release notes 1.5.6:
 - Changed version to 1.5.6,
