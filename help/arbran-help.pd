@@ -1,4 +1,4 @@
-#N canvas 231 81 557 534 10;
+#N canvas 229 82 557 534 10;
 #X obj 0 0 cnv 15 552 40 empty empty arbran 3 12 0 18 -204280 -1 0
 ;
 #X obj 0 326 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
@@ -25,7 +25,7 @@
 #X obj 85 25 cauchy;
 #X obj 292 25 urn;
 #X restore 206 498 pd Related_objects;
-#N canvas 314 818 379 261 META 1;
+#N canvas 308 620 379 261 META 0;
 #X text 12 136 AUTHOR Olaf Matthes;
 #X text 12 174 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
 Wilkes for Pd version 0.42. Updated by Fred Jan Kraan 2016-02.;
