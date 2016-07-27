@@ -122,5 +122,5 @@
 #X text 14 791 [maxlib/netclient];
 #X text 18 724 These objects are phased out because of stability problems
 and redundancy (use mrpeach tcp* and udp* objects):;
-#X text 4 61 this version (1.5.6) maintained by Fred Jan Kraan <fjkraan@xs4all.nl>
+#X text 4 61 this version (1.5.7) maintained by Fred Jan Kraan <fjkraan@xs4all.nl>
 , f 62;
