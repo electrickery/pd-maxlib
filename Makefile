@@ -87,10 +87,8 @@ ifeq (MINGW,$(findstring MINGW,$(uname)))
   datafiles += pthreadGC2.dll
 endif
 
-externalsdir = ..
-# include Makefile.pdlibbuilder from parent or current directory 
--include $(externalsdir)/Makefile.pdlibbuilder 
+externalsdir = ../..
 
-ifndef Makefile.pdlibbuilder 
-include Makefile.pdlibbuilder 
-endif
+PDLIBBUILDER_DIR=.
+include $(firstword $(wildcard $(PDLIBBUILDER_DIR)/Makefile.pdlibbuilder \
+  $(externalsdir)/Makefile.pdlibbuilder))
