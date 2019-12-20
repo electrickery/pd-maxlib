@@ -1,5 +1,13 @@
 version history of maxlib library for pure-data
 
+v 1.5.8 (20 December 2019)
+- Added an objects.txt file making objects findable via Find Externals ...
+- Updated Makefile for cross-compile environment
+
+v 1.5.7 (14 October 2015)
+- Windows only: add pthreadGC2.dll copy to install directory to Makefile
+- help-patches: minor updates to arbran-help, rewrap-help, score-help
+
 v 1.5.6 (02 April 2016)
 - Transition to https://github.com/electrickery/pd-maxlib
 - Fixed help symbol for arbran, beta, bilex, cauchy, delta, expo, gauss, linear, poisson, triang, weibull

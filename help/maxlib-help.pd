@@ -1,4 +1,4 @@
-#N canvas 621 80 1161 819 10;
+#N canvas 223 76 948 819 10;
 #X obj 403 561 ignore;
 #X obj 403 536 iso;
 #X obj 403 483 pulse;
@@ -65,7 +65,7 @@
 #X text 92 687 blocks denied floats or symbols;
 #X obj 2 2 cnv 15 552 40 empty empty maxlib_1.5_Music_Analysis_eXtensions_LIBrary
 3 12 0 18 -204280 -1 0;
-#X obj 1042 757 maxlib-meta;
+#X obj 845 752 maxlib-meta;
 #X text 5 44 written by Olaf Matthes;
 #X obj 15 125 maxlib/chord;
 #X obj 15 150 maxlib/beat;
@@ -122,5 +122,5 @@
 #X text 14 791 [maxlib/netclient];
 #X text 18 724 These objects are phased out because of stability problems
 and redundancy (use mrpeach tcp* and udp* objects):;
-#X text 4 61 this version (1.5.7) maintained by Fred Jan Kraan <fjkraan@xs4all.nl>
+#X text 4 61 this version (1.5.8) maintained by Fred Jan Kraan <fjkraan@xs4all.nl>
 , f 62;

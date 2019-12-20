@@ -11,9 +11,12 @@ Please note that Olaf does not maintain this code any longer, so questions and b
 
 Fred Jan Kraan
 fjkraan@xs4all.nl
-2016-07-26
+2019-12-20
 
 ----
+Release notes 1.5.8:
+- Added an objects.txt file making objects findable via Find Externals ...
+- Updated Makefile for cross-compile environment
 
 Release notes 1.5.7:
 - Windows only: add pthreadGC2.dll copy to install directory to Makefile
