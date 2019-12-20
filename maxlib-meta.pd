@@ -3,6 +3,7 @@
 #X text 10 10 META this is a prototype of a libdir meta file;
 #X text 10 30 NAME maxlib;
 #X text 10 50 AUTHOR Olaf Matthes <olaf.matthes@gmx.de>;
-#X text 10 70 LICENSE GNU GPL;
-#X text 10 90 VERSION 1.5.6;
+#X text 10 70 MAINTAINER Fred Jan Kraan <fjkraan@xs4all.nl>;
+#X text 10 90 LICENSE GNU GPL;
+#X text 10 110 VERSION 1.5.7;
 #X restore 10 10 pd META;
