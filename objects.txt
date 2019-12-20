@@ -1,0 +1,63 @@
+allow       lets only 'allowed' floats or symbols through
+arbran      two array piecewise probability density random number
+arraycopy   copy data from one array to another
+average     average of last N values
+beat        beat tracker
+beta        beta distributed random numbers
+bilex       bilinear exponentially distributed random numbers
+borax       analyse incoming midi notes
+cauchy      Cauchy distributed random numbers;
+chord       tries to detect chords
+delta       calculate 1st or 2nd order difference;
+deny        blocks denied floats or symbols;
+dist        send data to a list of receive objects
+divide      like '/' but calculates result when leftmost or second
+divmod      calculate division and modulo outputs results;
+edge        detect rising or falling edge in floats;
+expo        exponetionally distributed random numbers;
+fifo        first in first out buffer for floats;
+gauss       Gauss distributed random numbers;
+gestalt     gestalt detection for monophonic melodies;
+history     calculates the average of the floats received the last
+ignore      lets information through only when it was present at input
+iso         queues up lists of pitches and attack points, f 75;
+lifo        last in first out buffer for floats
+limit       limits input to lie between boundaries allows for compression
+linear      linearly distributed random numbers;
+listfifo    first in first out buffer for lists;
+listfunnel  send values out as a list with source index;
+match       outputs a list when a list of input values matches the creation of arguments
+minus       like '-' but calculates result when leftmost or second
+mlife       a cellular automata object
+multi       like '*' but calculates result when leftmost or second inlet is changed
+nchange     a 'new' [change]
+netclient   simple client that connects to netserver or to pd's native netreceive object
+netdist     distribute data to several [netreceive]
+netrec      a netreceive with additional information
+netserver   simple server that allows connections from netclient or to pd's native netsend object
+nroute      route if Nth argument is matched
+pitch       get info about pitch
+plus        like '+' but calculates result when leftmost or second inlet is changed
+poisson     Poisson distributed random numbers;
+pong        a bouncing ball model!;
+pulse       an improved [tempo] \, which is an extended [metro] for
+pwrap       parameterized wrap - floats into a range
+remote      send data to any receive object;
+rewrap      wraps floats back and forth into a range;
+rhythm      detects the beat of rhythmic patterns;
+scale       scale input from an input range to an output range;
+score       score follower that tries to match incoming MIDI data
+speedlim    lets information through only every N milliseconds, f
+split       split incoming floats according to value
+step        output sequence of numbers (similar to 'line')
+subst       self-similar substitution / diminuition of rows
+sync        extended trigger object based on sync from jMax
+temperature output number of input changes in N ms
+tilt        meassure 'tilt' of input
+timebang    send out bangs at given times of day
+triang      triangularly distributed random numbers;
+unroute     merges all inputs into one output and prepends an identifier
+urn         urn selection model
+velocity    get velocity of digits per second
+weibull     Weibull distributed random numbers;
+wrap        wrap floats into a range
