@@ -31,10 +31,6 @@ minus       like '-' but calculates result when leftmost or second
 mlife       a cellular automata object
 multi       like '*' but calculates result when leftmost or second inlet is changed
 nchange     a 'new' [change]
-netclient   simple client that connects to netserver or to pd's native netreceive object
-netdist     distribute data to several [netreceive]
-netrec      a netreceive with additional information
-netserver   simple server that allows connections from netclient or to pd's native netsend object
 nroute      route if Nth argument is matched
 pitch       get info about pitch
 plus        like '+' but calculates result when leftmost or second inlet is changed
