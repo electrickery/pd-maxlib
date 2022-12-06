@@ -10,10 +10,14 @@ See the original README.txt for more information.
 Please note that Olaf does not maintain this code any longer, so questions and bug-reports should be directed towards me.
 
 Fred Jan Kraan
-fjkraan@xs4all.nl
-2019-12-20
+fjkraan@electrickery.nl
+2022-12-06
 
 ----
+Release notes 1.6.0:
+- Made the location of Makefile.pd-lib-builder conform tips-tricks.md
+- Updated maintainer email address
+
 Release notes 1.5.8:
 - Added an objects.txt file making objects findable via Find Externals ...
 - Updated Makefile for cross-compile environment

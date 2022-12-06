@@ -87,8 +87,5 @@ ifeq (MINGW,$(findstring MINGW,$(uname)))
   datafiles += pthreadGC2.dll
 endif
 
-externalsdir = ../..
-
-PDLIBBUILDER_DIR ?= .
-include $(firstword $(wildcard $(PDLIBBUILDER_DIR)/Makefile.pdlibbuilder \
-  $(externalsdir)/Makefile.pdlibbuilder))
+PDLIBBUILDER_DIR=pd-lib-builder/
+include $(PDLIBBUILDER_DIR)/Makefile.pdlibbuilder
