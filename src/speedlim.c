@@ -139,7 +139,7 @@ static void speedlim_anything(t_speedlim *x, t_symbol *s, int ac, t_atom *av)
 			     SPEEDLIM_INISIZE, x->x_messini);
 	x->x_selector = s;
 	x->x_natoms = ac;
-	if (ac)
+	if (ac && av)
 	    memcpy(x->x_message, av, ac * sizeof(*x->x_message));
     }
 }
