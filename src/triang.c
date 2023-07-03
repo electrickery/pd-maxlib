@@ -72,7 +72,7 @@ void maxlib_triang_setup(void)
 #endif
     class_addbang(rand_triang_class, rand_triang_bang);
 #ifndef MAXLIB
-    logpost(NULL, 4, version);
+    logpost(NULL, 4, "%s", version);
 #else
 	class_sethelpsymbol(rand_triang_class, gensym("maxlib/triang-help.pd"));
 #endif

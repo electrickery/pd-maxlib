@@ -306,7 +306,7 @@ void maxlib_arraycopy_setup(void)
 	// class_addlist(arraycopy_class, arraycopy_list);
 #ifndef MAXLIB
     
-    logpost(NULL, 4, version);
+    logpost(NULL, 4, "%s", version);
 #else
     class_sethelpsymbol(arraycopy_class, gensym("maxlib/arraycopy-help.pd"));
 #endif

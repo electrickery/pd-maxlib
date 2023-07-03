@@ -252,7 +252,7 @@ void history_setup(void)
     class_addfloat(history_class, history_float);
 	class_addmethod(history_class, (t_method)history_time, gensym("time"), A_FLOAT, 0);
     
-    logpost(NULL, 4, version);
+    logpost(NULL, 4, "%s", version);
 }
 #else
 void maxlib_history_setup(void)

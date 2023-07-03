@@ -129,7 +129,7 @@ void maxlib_delta_setup(void)
 	class_addmethod(delta_class, (t_method)delta_clear, gensym("clear"), 0);
 #ifndef MAXLIB
     
-    logpost(NULL, 4, version);
+    logpost(NULL, 4, "%s", version);
 #else
 	class_addcreator((t_newmethod)delta_new, gensym("delta"), A_DEFFLOAT, 0);
     class_sethelpsymbol(delta_class, gensym("maxlib/delta-help.pd"));

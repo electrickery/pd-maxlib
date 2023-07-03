@@ -195,7 +195,7 @@ void iso_setup(void) {
     class_addbang(iso_class, iso_bang);
 	class_addlist(iso_class, iso_pitch);
     
-	logpost(NULL, 4, version);
+	logpost(NULL, 4, "%s", version);
 }
 #else
 void maxlib_iso_setup(void) {

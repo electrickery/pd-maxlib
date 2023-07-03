@@ -72,7 +72,7 @@ void gauss_setup(void)
     rand_gauss_class = class_new(gensym("gauss"), (t_newmethod)rand_gauss_new, 0,
     	sizeof(t_rand_gauss), 0, A_DEFFLOAT, A_DEFFLOAT, 0);
     class_addbang(rand_gauss_class, rand_gauss_bang);
-    logpost(NULL, 4, version);
+    logpost(NULL, 4, "%s", version);
 }
 #else
 void maxlib_gauss_setup(void)

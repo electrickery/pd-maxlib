@@ -123,7 +123,7 @@ void scale_setup(void)
     class_addfloat(scale_class, scale_float);
     class_addbang(scale_class, scale_bang);
     
-    logpost(NULL, 4, version);
+    logpost(NULL, 4, "%s", version);
 #else
 void maxlib_scale_setup(void)
 {

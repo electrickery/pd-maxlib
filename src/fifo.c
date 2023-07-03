@@ -81,7 +81,7 @@ void fifo_setup(void)
     class_addfloat(fifo_class, fifo_int);
 	class_addbang(fifo_class, fifo_bang);
     
-    logpost(NULL, 4, version);
+    logpost(NULL, 4, "%s", version);
 }
 #else
 void maxlib_fifo_setup(void)

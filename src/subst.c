@@ -408,7 +408,7 @@ void subst_setup(void)
 	class_addlist(subst_class, subst_list);
 	class_addbang(subst_class, subst_bang);
     
-    logpost(NULL, 4, version);
+    logpost(NULL, 4, "%s", version);
 }
 #else
 void maxlib_subst_setup(void)
