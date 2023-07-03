@@ -239,7 +239,8 @@ static int subst_calc(t_subst *x, int n)
 		{
 			while(npoints--)
 			{
-				vec[i++].w_float = atom_getfloat(x->x_row + i);
+				vec[i].w_float = atom_getfloat(x->x_row + i);
+				i++;
 			}
 		}
 		else				// update 
@@ -247,7 +248,8 @@ static int subst_calc(t_subst *x, int n)
 			npoints -= l;
 			while (l--)
 			{
-				vec[i++].w_float = atom_getfloat(x->x_row + i);
+				vec[i].w_float = atom_getfloat(x->x_row + i);
+				i++;
 			}
 			while (npoints--) 
 				vec[i++].w_float = 0;
