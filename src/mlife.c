@@ -250,7 +250,7 @@ static void ml_int(t_maxlife *mlp, t_floatarg dummy)
 		else if(mlp->universe[i] == 0)
 			outlet_float(mlp->out[i-view_start+1], 0);
 		else
-			error("mlife: corrupted data in universe[] array!");
+			pd_error(mlp, "mlife: corrupted data in universe[] array!");
 	}
 
 	ml_nextgeneration(mlp);
@@ -387,7 +387,7 @@ static void ml_randseed(t_maxlife *mlp, t_floatarg start)
 	//if((start < 1) || (start > mlp->size-(long)INTSIZE))
 	if(start < 1)
 	{
-		error("Randseed start parameter must be between 1 and %ld", mlp->size);
+		pd_error(mlp, "Randseed start parameter must be between 1 and %ld", mlp->size);
 		return;
 	}
 

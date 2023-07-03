@@ -228,9 +228,9 @@ static int subst_calc(t_subst *x, int n)
 
 	// write to array
 	if(x->x_array)if (!(A = (t_garray *)pd_findbyclass(x->x_array, garray_class)))
-		error("subst: %s: no such array", x->x_array->s_name);
+		pd_error(x, "subst: %s: no such array", x->x_array->s_name);
 	else if (!garray_getfloatwords(A, &npoints, &vec))
-		error("subst: %s: bad template ", x->x_array->s_name);
+		pd_error(x, "subst: %s: bad template ", x->x_array->s_name);
 	else
 	{
 		i = 0;
