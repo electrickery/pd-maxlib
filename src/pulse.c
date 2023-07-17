@@ -157,8 +157,7 @@ static void pulse_tick(Pulse *x)
 static void pulse_tempo(Pulse *x, t_floatarg t)
 {
 	double time, msecdur, tickdur, fracremain;
-	t_int fracnumer, fracquotient, oldtempo;
-	oldtempo = x->p_tempo;
+	t_int fracnumer, fracquotient;
 	x->p_tempo = (t<5) ? 5 : ((t>500) ? 500 : t);
 	if (x->p_onoff) {
 		/* calculate fraction of the beat we have done */
@@ -282,7 +281,7 @@ void pulse_setup(void)
     class_addfloat(pulse_class, pulse_onoff);
     class_addbang(pulse_class, pulse_bang);
     
-    logpost(NULL, 4, version);
+    logpost(NULL, 4, "%s", version);
 }
 #else
 void maxlib_pulse_setup(void)

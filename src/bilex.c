@@ -76,7 +76,7 @@ void bilex_setup(void)
     rand_bilex_class = class_new(gensym("bilex"), (t_newmethod)rand_bilex_new, 0,
     	sizeof(t_rand_bilex), 0, A_DEFFLOAT, 0);
     class_addbang(rand_bilex_class, rand_bilex_bang);
-    logpost(NULL, 4, version);
+    logpost(NULL, 4, "%s", version);
 }
 #else
 void maxlib_bilex_setup(void)

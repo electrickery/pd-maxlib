@@ -71,7 +71,7 @@ void expo_setup(void)
     rand_expo_class = class_new(gensym("expo"), (t_newmethod)rand_expo_new, 0,
     	sizeof(t_rand_expo), 0, A_DEFFLOAT, 0);
     class_addbang(rand_expo_class, rand_expo_bang);
-    logpost(NULL, 4, version);
+    logpost(NULL, 4, "%s", version);
 }
 #else
 void maxlib_expo_setup(void)

@@ -128,10 +128,10 @@ static void *nroute_new(t_symbol *s, int argc, t_atom *argv)
 
 	x->pos = 1;
 	x->match.a_type = A_NULL;
-	if (argc > 2) { error ("nroute: extra arguments"); return 0; }
+	if (argc > 2) { pd_error (0, "nroute: extra arguments"); return 0; }
 	if (argc > 1) {
 		if (argv[1].a_type == A_FLOAT) x->pos = argv[1].a_w.w_float;
-		else { post ("nroute: second argument must be (int) position"); return 0; }
+		else { pd_error (0, "nroute: second argument must be (int) position"); return 0; }
 	}
 	if (argc > 0) {
 		x->match.a_type = argv[0].a_type;
@@ -172,7 +172,7 @@ void maxlib_nroute_setup(void)
 	class_addanything(proxy_class, nroute_setmatch);
 #ifndef MAXLIB
     
-    logpost(NULL, 4, version);
+    logpost(NULL, 4, "%s", version);
 #else
     class_sethelpsymbol(nroute_class, gensym("maxlib/nroute-help.pd"));
 #endif

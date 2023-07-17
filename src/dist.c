@@ -111,18 +111,12 @@ static void dist_anything(t_dist *x, t_symbol *s, int argc, t_atom *argv)
 static void dist_send(t_dist *x, t_symbol *s, int argc, t_atom *argv)
 {
 	int i;
-	t_atom av[MAX_ARG];		/* the 'new' t_atom without first element */
 	t_int ac = argc - 1;    /* the 'new' number of arguments */
 
 	if(ac > MAX_ARG)
 	{
 		post("dist: too many arguments!");
 		return;
-	}
-
-	for(i = 1; i < argc; i++)
-	{
-		av[i - 1] = argv[i];	/* just copy, don't care about types */
 	}
 		/* send only argument-part to receivers */
 	for(i = 0; i <= x->x_rec; i++)
@@ -271,7 +265,7 @@ void maxlib_dist_setup(void)
     class_addanything(dist_class, dist_anything);
 #ifndef MAXLIB
 	
-    logpost(NULL, 4, version);
+    logpost(NULL, 4, "%s", version);
 #else
 	class_addcreator((t_newmethod)dist_new, gensym("dist"), A_GIMME, 0);
 	class_sethelpsymbol(dist_class, gensym("maxlib/dist-help.pd"));

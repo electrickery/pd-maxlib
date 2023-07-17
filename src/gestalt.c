@@ -69,7 +69,7 @@ static void gestalt_float(t_gestalt *x, t_floatarg f)
 		if(pitch < 1) pitch = 0;
 		if(pitch > 127) pitch = 127;
 
-		interval = abs(pitch - x->x_lastpitch);
+		interval = abs(pitch - (int)x->x_lastpitch);
 		gestalt = (clock_gettimesince(x->x_lastontime)/x->x_reftime) + interval;
 
 		x->x_lastpitch = pitch;
@@ -106,7 +106,7 @@ void gestalt_setup(void)
 	class_addmethod(gestalt_class, (t_method)gestalt_ft1, gensym("ft1"), A_FLOAT, 0);
 	class_addmethod(gestalt_class, (t_method)gestalt_ft2, gensym("ft2"), A_FLOAT, 0);
     
-    logpost(NULL, 4, version);
+    logpost(NULL, 4, "%s", version);
 }
 #else
 void maxlib_gestalt_setup(void)

@@ -87,7 +87,7 @@ void maxlib_weibull_setup(void)
 #endif
 	class_addbang(rand_weibull_class, rand_weibull_bang);
 #ifndef MAXLIB
-    logpost(NULL, 4, version);
+    logpost(NULL, 4, "%s", version);
 #else
 	class_sethelpsymbol(rand_weibull_class, gensym("maxlib/weibull-help.pd"));
 #endif

@@ -124,26 +124,26 @@ typedef struct chord
   t_outlet *x_outchordinversion;    /* inversion of the chord (root = 0, 1st = 1, 2nd = 2) */
   t_outlet *x_outchordnotes;        /* list with note numbers belonging to the chord */
 
-  t_int    x_pitch;
-  t_int    x_pc[12];                /* pitch class array */
-  t_int    x_abs_pc[12];            /* pitch class array: absolute MIDI note numbers */
-  t_int    x_velo;
-  t_int    x_alloctable[MAX_POLY];  /* a table used to store all playing notes */
-  t_int    x_poly;                  /* number of notes currently playing */
+  int    x_pitch;
+  int    x_pc[12];                /* pitch class array */
+  int    x_abs_pc[12];            /* pitch class array: absolute MIDI note numbers */
+  int    x_velo;
+  int    x_alloctable[MAX_POLY];  /* a table used to store all playing notes */
+  int    x_poly;                  /* number of notes currently playing */
   t_atom   x_chordlist[12];			/* list that stores the note numbers for output */
-  t_int    x_split;                 /* highes note number to process */
+  int    x_split;                 /* highes note number to process */
 
-  t_int    x_chord_type;			/* chord's type (number between 0 and 68) */
-  t_int    x_chord_root;            /* chord's root (pitch class) */
-  t_int    x_chord_bass;            /* chord's bass note (MIDI note number) */
-  t_int    x_chord_inversion;       /* chord's state of inversion (root, 1st, 2nd) */
+  int    x_chord_type;			/* chord's type (number between 0 and 68) */
+  int    x_chord_root;            /* chord's root (pitch class) */
+  int    x_chord_bass;            /* chord's bass note (MIDI note number) */
+  int    x_chord_inversion;       /* chord's state of inversion (root, 1st, 2nd) */
 
 } t_chord;
 
 /* functions */
-static void chord_kick_out_member(t_chord *x, t_int number, t_int *members);
-static void chord_chord_finder(t_chord *x, t_int num_pcs);
-static void chord_draw_chord_type(t_chord *x, t_int num_pcs);
+static void chord_kick_out_member(t_chord *x, int number, int *members);
+static void chord_chord_finder(t_chord *x, int num_pcs);
+static void chord_draw_chord_type(t_chord *x, int num_pcs);
 
 
 static void chord_unison(t_chord *x)
@@ -412,7 +412,7 @@ static void chord_quintad(t_chord *x)
 	static t_type_root quintads[8][8][8][8];
 	register int i, j, k, l;
 	register t_type_root *t;
-	t_int members[5];
+	int members[5];
 	int interval1, interval2, interval3, interval4;
 	int *st;
 	int maj9[5][4] = {{1,1,2,3}, {0,1,1,2}, {3,0,1,1}, {2,3,0,1}, {1,2,3,0}};
@@ -963,7 +963,7 @@ static void chord_sextad(t_chord *x)
 	register int i, j, k, l, m;
 	register t_type_root *t;
 	register int* st;
-	t_int members[6];
+	int members[6];
 	int interval1, interval2, interval3, interval4, interval5;
 
 	int D9b3[6][5] =
@@ -1189,7 +1189,7 @@ static void chord_sextad(t_chord *x)
 		chord_kick_out_member(x, 6, members);
 }
 
-static int chord_accidental(t_int pc)
+static int chord_accidental(int pc)
 {
 	switch (pc) {
 		case  0:
@@ -1440,7 +1440,7 @@ static int chord_name_thirteenth(t_chord *x, char* chord, int c, int rootName)
 
 
 
-static void chord_spell_chord(t_chord *x, char *chord, t_int num_pcs)
+static void chord_spell_chord(t_chord *x, char *chord, int num_pcs)
 {
 	int rootName = 0;			// keep index of root name class
 	int c     = 0;				// pointer to current character
@@ -1503,7 +1503,7 @@ static void chord_spell_chord(t_chord *x, char *chord, t_int num_pcs)
 }
 
 
-static void chord_draw_chord_type(t_chord *x, t_int num_pcs)
+static void chord_draw_chord_type(t_chord *x, int num_pcs)
 {
 	char   chord[255];				/* output string */
 	int i, j;
@@ -1628,7 +1628,7 @@ static void chord_draw_chord_type(t_chord *x, t_int num_pcs)
 	outlet_float(x->x_outchordval, x->x_chord_bass);
 }
 
-static void chord_kick_out_member(t_chord *x, t_int number, t_int *members)
+static void chord_kick_out_member(t_chord *x, int number, int *members)
 {
 	int *distances;
 	int minDistance = 1000;
@@ -1663,7 +1663,7 @@ static void chord_kick_out_member(t_chord *x, t_int number, t_int *members)
 	x->x_pc[members[badMember]] = 1;			// replace most dissonant member
 }
 
-static void chord_chord_finder(t_chord *x, t_int num_pcs)
+static void chord_chord_finder(t_chord *x, int num_pcs)
 {
 	int i;
 	x->x_chord_type = kNone;
@@ -1689,12 +1689,12 @@ static void chord_chord_finder(t_chord *x, t_int num_pcs)
 
 static void chord_float(t_chord *x, t_floatarg f)
 {
-	t_int velo = x->x_velo;
-	t_int allloc = 0;
-	t_int num_pc = 0;	/* number of pitch classes present */
+	int velo = x->x_velo;
+	int allloc = 0;
+	int num_pc = 0;	/* number of pitch classes present */
 	int i, j, k, l;
 
-	x->x_pitch = (t_int)f;
+	x->x_pitch = (int)f;
 
 	if(x->x_pitch <= x->x_split)
 	{
@@ -1775,7 +1775,7 @@ static void chord_float(t_chord *x, t_floatarg f)
 
 static void chord_ft1(t_chord *x, t_floatarg f)
 {
-	x->x_velo = (t_int)f;
+	x->x_velo = (int)f;
 }
 
 static t_class *chord_class;
@@ -1791,7 +1791,7 @@ static void *chord_new(t_floatarg f)
 	x->x_outchordinversion = outlet_new(&x->x_ob, gensym("float"));
 	x->x_outchordnotes = outlet_new(&x->x_ob, gensym("float"));
 
-	x->x_split = (t_int)f;
+	x->x_split = (int)f;
 	if(x->x_split == 0)x->x_split = 128;
 	for(i = 0; i < MAX_POLY; i++)x->x_alloctable[i] = -1;
     
@@ -1813,7 +1813,7 @@ void maxlib_chord_setup(void)
     class_addmethod(chord_class, (t_method)chord_ft1, gensym("ft1"), A_FLOAT, 0);
 #ifndef MAXLIB
     
-    logpost(NULL, 4, version);
+    logpost(NULL, 4, "%s", version);
 #else
 	class_addcreator((t_newmethod)chord_new, gensym("chord"), A_DEFFLOAT, 0);
     class_sethelpsymbol(chord_class, gensym("maxlib/chord-help.pd"));

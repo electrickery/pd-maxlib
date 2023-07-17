@@ -295,7 +295,7 @@ void netdist_setup(void)
 	class_addmethod(netdist_class, (t_method)netdist_clear, gensym("clear"), 0);
 	class_addmethod(netdist_class, (t_method)netdist_print, gensym("print"), 0);
 	
-    logpost(NULL, 4, version);
+    logpost(NULL, 4, "%s", version);
 }
 #else
 void maxlib_netdist_setup(void)

@@ -92,7 +92,7 @@ void beta_setup(void)
     rand_beta_class = class_new(gensym("beta"), (t_newmethod)rand_beta_new, 0,
     	sizeof(t_rand_beta), 0, A_DEFFLOAT, A_DEFFLOAT, 0);
     class_addbang(rand_beta_class, rand_beta_bang);
-    logpost(NULL, 4, version);
+    logpost(NULL, 4, "%s", version);
 }
 #else
 void maxlib_beta_setup(void)

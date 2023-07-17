@@ -45,7 +45,6 @@ typedef struct _remote
 static void remote_anything(t_remote *x, t_symbol *s, int argc, t_atom *argv)
 {
 	int i;
-	t_atom av[MAX_ARG];		/* the 'new' t_atom without first element */
 	t_int ac = argc - 1;    /* the 'new' number of arguments */
 	char mysym[MAXPDSTRING];
 	t_symbol *target;
@@ -59,11 +58,6 @@ static void remote_anything(t_remote *x, t_symbol *s, int argc, t_atom *argv)
 	{
 		post("remote: too many arguments!");
 		return;
-	}
-
-	for(i = 1; i < argc; i++)
-	{
-		av[i - 1] = argv[i];	/* just copy, don't care about types */
 	}
 		/* send only argument-part to receivers */
 	if(x->x_prepend)
@@ -94,7 +88,7 @@ void remote_setup(void)
     	sizeof(t_remote), 0, A_DEFSYM, 0);
     class_addanything(remote_class, remote_anything);
 	
-    logpost(NULL, 4, version);
+    logpost(NULL, 4, "%s", version);
 }
 #else
 void maxlib_remote_setup(void)

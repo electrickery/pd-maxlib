@@ -104,7 +104,7 @@ void pitch_setup(void)
     	0, sizeof(t_pitch), 0, A_DEFFLOAT, 0);
     class_addfloat(pitch_class, pitch_float);
     class_addmethod(pitch_class, (t_method)pitch_ft1, gensym("ft1"), 0);
-    logpost(NULL, 4, version);
+    logpost(NULL, 4, "%s", version);
 }
 #else
 void maxlib_pitch_setup(void)

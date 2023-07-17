@@ -228,9 +228,9 @@ static int subst_calc(t_subst *x, int n)
 
 	// write to array
 	if(x->x_array)if (!(A = (t_garray *)pd_findbyclass(x->x_array, garray_class)))
-		error("subst: %s: no such array", x->x_array->s_name);
+		pd_error(x, "subst: %s: no such array", x->x_array->s_name);
 	else if (!garray_getfloatwords(A, &npoints, &vec))
-		error("subst: %s: bad template ", x->x_array->s_name);
+		pd_error(x, "subst: %s: bad template ", x->x_array->s_name);
 	else
 	{
 		i = 0;
@@ -239,7 +239,8 @@ static int subst_calc(t_subst *x, int n)
 		{
 			while(npoints--)
 			{
-				vec[i++].w_float = atom_getfloat(x->x_row + i);
+				vec[i].w_float = atom_getfloat(x->x_row + i);
+				i++;
 			}
 		}
 		else				// update 
@@ -247,7 +248,8 @@ static int subst_calc(t_subst *x, int n)
 			npoints -= l;
 			while (l--)
 			{
-				vec[i++].w_float = atom_getfloat(x->x_row + i);
+				vec[i].w_float = atom_getfloat(x->x_row + i);
+				i++;
 			}
 			while (npoints--) 
 				vec[i++].w_float = 0;
@@ -408,7 +410,7 @@ void subst_setup(void)
 	class_addlist(subst_class, subst_list);
 	class_addbang(subst_class, subst_bang);
     
-    logpost(NULL, 4, version);
+    logpost(NULL, 4, "%s", version);
 }
 #else
 void maxlib_subst_setup(void)
