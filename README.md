@@ -11,9 +11,12 @@ Please note that Olaf does not maintain this code any longer, so questions and b
 
 Fred Jan Kraan
 fjkraan@electrickery.nl
-2022-12-06
+2023-07-17
 
 ----
+Release notes 1.7.0 (pending):
+- Fixed the ambiguous code in subst, and added some checks and comments.
+
 Release notes 1.6.0:
 - Made the location of Makefile.pd-lib-builder conform tips-tricks.md
 - Updated maintainer email address

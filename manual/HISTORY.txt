@@ -1,5 +1,12 @@
 version history of maxlib library for pure-data
 
+v 1.7.0 (pending):
+- Fixed the ambiguous code in subst, and added some checks and comments.
+
+v 1.6.0:
+- Made the location of Makefile.pd-lib-builder conform tips-tricks.md
+- Updated maintainer email address
+
 v 1.5.8 (20 December 2019)
 - Added an objects.txt file making objects findable via Find Externals ...
 - Updated Makefile for cross-compile environment
@@ -92,7 +99,7 @@ v 0.8 (4th july 2002):
 - some small changes to speedlim
 
 v 0.7 (24th june 2002):
-- fixed a bug in average, thanks to Jo„o Miguel Pais
+- fixed a bug in average, thanks to Jo√£o Miguel Pais
 - new chord algorhythm: supports up to 67 chord types now
 
 v 0.6 (7th june 2002):

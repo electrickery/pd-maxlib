@@ -24,13 +24,14 @@
 #include "m_pd.h"
 
 
-static char *version = "subst v0.1, self-similar substitution of rows (list or array)\n"
+static char *version = "subst v0.1.1, self-similar substitution of rows (list or array)\n"
                        "            written by Olaf Matthes <olaf.matthes@gmx.de>";
 
 #undef DEBUG
 //#define DEBUG
 
 #define MAXSIZE 1024
+#define MINORDER 2
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -84,11 +85,11 @@ static int sum_intv(t_atom *argv, int argc, int a, int b)
 	return(summe);
 }
 //----- Anzahl Partialreihen mit Interval d  -------------------------------
-static int no_part(t_atom *argv, int argc, int a, int b, int d)		// nn
+/*static int no_part(t_atom *argv, int argc, int a, int b, int d)		// nn
 {
 	int i,j,r = 0;
 
-    if(a = b)return(0);
+    if(a == b)return(0);
 
     for(i = a; i < b; i++)
     {
@@ -99,24 +100,24 @@ static int no_part(t_atom *argv, int argc, int a, int b, int d)		// nn
             }
     }
     return(r);
-}
+} */
 
 //----- n-te Partialreihe der Länge l mit Interval d -----------------------
-static int n_part_intv(t_atom *argv, int argc, int a, int b, int l, int d, int n) // nn
+/*static int n_part_intv(t_atom *argv, int argc, int a, int b, int l, int d, int n) // nn
 {
 	int i,j, r = 0;
     if(n > no_part(argv, argc, a, b, d))
 		return(-1);
-    for(i = 1; i = (b - a); i++)
+    for(i = 1; i == (b - a); i++)
     {
-        for(j = 1; j = b; j++)
+        for(j = 1; j == b; j++)
         {
         	if(sum_intv(argv, argc, i, j) == d) 
 				r++;
         }
     }
     return(r);
-}
+} */
 //----- Test, ob Partialreihe der Ordnung o mit Interval d existiert ----------
 static int check_part_intv(t_atom *argv, int argc, int o, int d)
 {
@@ -150,14 +151,14 @@ static int subst_calc(t_subst *x, int n)
 	int npoints;
 	t_word *vec;
         
-        if (!A) {
-                post("subst::calc: array not defined");
-                return 0;
-        }
+    if (!A) {
+        post("subst::calc: array not defined");
+        return 0;
+    }
 
 	if(x->x_length <= 1)
 	{
-		post("subst: need some data first!");
+		post("subst::calc: need some data first!");
 		return(-1);
 	}
     srand((unsigned int)clock_getlogicaltime());
@@ -174,20 +175,20 @@ static int subst_calc(t_subst *x, int n)
 	else intv = sum_intv(x->x_row, x->x_length, n, n + 1);
 
 #ifdef DEBUG
-    post("subst: substitution of %dth interval (%d halftones)", n+1, intv);
+    post("subst::calc: substitution of %dth interval (%d halftones)", n+1, intv);
 #endif
 
     /* for-Schleife für möglichst lange Substitutionen
     for(j=anzahlReihe(alteReihe);j>2;j--)				*/
     for(j = x->x_order; j < x->x_length; j++)	// prefer lower orders (min. 2)
     {							// search for possible order...
-            s = check_part_intv(x->x_row, x->x_length, j, intv);
-            if(s != -1)			// check if there is a partial row with the interval we want
-            {
-                o = j;			// save actual order, might be larger then x->x_order
-                break;			// ... do it!
-            }
-            if(o == j)break;	// found one
+        s = check_part_intv(x->x_row, x->x_length, j, intv);
+        if(s != -1)			// check if there is a partial row with the interval we want
+        {
+            o = j;			// save actual order, might be larger then x->x_order
+            break;			// ... do it!
+        }
+        if(o == j)break;	// found one
     }
 
     for(i = 0; i < x->x_length; i++)
@@ -203,16 +204,16 @@ static int subst_calc(t_subst *x, int n)
                 SETFLOAT(newrow + (i + k), (atom_getintarg((i + k - 1), 1024, newrow) 
 					+ sum_intv(x->x_row, x->x_length, s+k-1, s+k)));
 #ifdef DEBUG
-                post("subst: new interval[%d]: %d ", k, sum_intv(x->x_row, x->x_length, s+k-1, s+k));
+                post("subst::calc: new interval[%d]: %d ", k, sum_intv(x->x_row, x->x_length, s+k-1, s+k));
 #endif
             }
-            post("subst: replaced interval %d (%d halftones) with %d new intervals", n, intv, o);
+            post("subst::calc: replaced interval %d (%d halftones) with %d new intervals", n, intv, o);
         }
         else if((i == n) && (s == -1))	// not partial row found
         {
             o = 1;		// order is 1 -> now substitution
             newrow[i] = x->x_row[i];	// copy the next value of the row
-            post("subst: coundn't find any partial rows to fit in!");
+            post("subst::calc: couldn't find any partial rows to fit in!");
         }
 
         if(i>n)		// behind substitution
@@ -226,36 +227,48 @@ static int subst_calc(t_subst *x, int n)
 	for(i = 0; i < x->x_length; i++)
 		x->x_row[i] = newrow[i];
 
+    // maintainer message: sereral braces were inserted here to disambiguate the if-else blocks.
+    // The function seems to work, but the actual algorithm is not properly understood.
 	// write to array
-	if(x->x_array)if (!(A = (t_garray *)pd_findbyclass(x->x_array, garray_class)))
-		pd_error(x, "subst: %s: no such array", x->x_array->s_name);
-	else if (!garray_getfloatwords(A, &npoints, &vec))
-		pd_error(x, "subst: %s: bad template ", x->x_array->s_name);
-	else
-	{
-		i = 0;
+	if(x->x_array) 
+    {
+        if (!(A = (t_garray *)pd_findbyclass(x->x_array, garray_class)))
+        {
+            pd_error(x, "subst::calc: %s: no such array", x->x_array->s_name);
+        }
+        else 
+        {
+            if (!garray_getfloatwords(A, &npoints, &vec))
+            {
+                pd_error(x, "subst::calc: %s: bad template ", x->x_array->s_name);
+            }
+            else
+            {
+                i = 0;
 
-		if (l >= npoints)	// keep end of array
-		{
-			while(npoints--)
-			{
-				vec[i].w_float = atom_getfloat(x->x_row + i);
-				i++;
-			}
-		}
-		else				// update 
-		{
-			npoints -= l;
-			while (l--)
-			{
-				vec[i].w_float = atom_getfloat(x->x_row + i);
-				i++;
-			}
-			while (npoints--) 
-				vec[i++].w_float = 0;
-		}
-		garray_redraw(A);
-	}
+                if (l >= npoints)	// keep end of array
+                {
+                    while(npoints--)
+                    {
+                        vec[i].w_float = atom_getfloat(x->x_row + i);
+                        i++;
+                    }
+                }
+                else				// update 
+                {
+                    npoints -= l;
+                    while (l--)
+                    {
+                        vec[i].w_float = atom_getfloat(x->x_row + i);
+                        i++;
+                    }
+                    while (npoints--) 
+                        vec[i++].w_float = 0;
+                }
+            }
+            garray_redraw(A);
+        }
+    }
 
 	// output stuff
 	outlet_float(x->x_outlength, x->x_length);
@@ -266,16 +279,20 @@ static int subst_calc(t_subst *x, int n)
 
 static void subst_list(t_subst *x, t_symbol *s, int argc, t_atom *argv)
 {	
-	t_garray *b = x->x_buf;		/* make local copy of array */
-	float *tab;                 /* we'll store notes in here */
-	int items;
+    if (s) {} // suppress compiler message unused arg 
+	int items = argc;
+    if (argc > MAXSIZE)
+    {
+        pd_error(x, "subst::list: number of elements larger than MAXSIZE, truncating to %d.", MAXSIZE);
+        items = MAXSIZE;
+    }
 	int i;
 
-	for(i = 0; i < argc; i++)
+	for(i = 0; i < items; i++)
 	{
 		x->x_row[i] = argv[i];		// just copy input
 	}
-	x->x_length = argc;
+	x->x_length = (t_float)items;
 
 }
 
@@ -290,10 +307,10 @@ void subst_set(t_subst *x, t_symbol *s)
 
 	if ((b = (t_garray *)pd_findbyclass(s, garray_class)))
 	{
-		post("subst: array set to \"%s\"", s->s_name);
+		post("subst::set: array set to \"%s\"", s->s_name);
 		x->x_buf = b;
 	} else {
-		post("subst: no array \"%s\" (error %d)", s->s_name, b);
+		post("subst::set: no array \"%s\" (error %d)", s->s_name, b);
 		x->x_buf = 0;
 	}
 }
@@ -309,16 +326,16 @@ static void subst_load(t_subst *x, t_symbol *s)
 
 	if ((b = (t_garray *)pd_findbyclass(s, garray_class)))
 	{
-		post("subst: loading array from \"%s\"", s->s_name);
+		post("subst::load: loading array from \"%s\"", s->s_name);
 	} else {
-		post("subst: no array \"%s\" (error %d)", s->s_name, b);
+		post("subst::load: no array \"%s\" (error %d)", s->s_name, b);
 		return;
 	}
 
 		// read from our array
 	if (!garray_getfloatwords(b, &items, &tab))
 	{
-		post("subst: couldn't read from array!");
+		post("subst::load: couldn't read from array!");
 		return;
 	}
 	for(i = 0; i < items; i++)
@@ -326,7 +343,7 @@ static void subst_load(t_subst *x, t_symbol *s)
 		SETFLOAT(x->x_row + i, tab[i].w_float);		// copy array into x->x_row
 	}
 	x->x_length = items;
-	post("subst: loaded %d values from array \"%s\"", items, s->s_name);
+	post("subst::load: loaded %d values from array \"%s\"", items, s->s_name);
 }
 
 //
@@ -340,10 +357,13 @@ static void subst_bang(t_subst *x)
 //
 // substitute the Nth interval
 //
-static void subst_intv(t_subst *x, t_floatarg f)
+static void subst_interval(t_subst *x, t_floatarg f)
 {	
 	int i = (int)f;
-	if(i > x->x_length) i = x->x_length;
+	if(i > x->x_length) {
+        post("subst::interval: interval must be shorter than length.");
+        i = x->x_length;
+    }
 	subst_calc(x, i);
 }
 
@@ -353,8 +373,12 @@ static void subst_intv(t_subst *x, t_floatarg f)
 static void subst_set_order(t_subst *x, t_floatarg f)
 {
 	x->x_order = (t_int)f;
-	if(x->x_order < 2)x->x_order = 2;
-	post("subst: set order to %d", x->x_order);
+	if(x->x_order < MINORDER) 
+    {
+        post("subst::set_order: minimum order value is %d.", MINORDER);
+        x->x_order = MINORDER;
+    }
+	post("subst::load: set order to %d", x->x_order);
 }
 
 //
@@ -362,6 +386,15 @@ static void subst_set_order(t_subst *x, t_floatarg f)
 //
 static void subst_display(t_subst *x)
 {
+    t_symbol *s = x->x_array;
+    if (!s) {
+        s = gensym("(null)");
+    }
+    post("subst status:");
+    post("  version:   \"%s\" ",     version);
+    post("  array name:   \"%s\" ",  s->s_name);
+    post("  substitution order: %d", x->x_order);
+    post("  interval: %d",           x->x_length);
 }
 
 //
@@ -369,7 +402,7 @@ static void subst_display(t_subst *x)
 //
 static void *subst_new(t_symbol *s, int argc, t_atom *argv)
 {
-	long i;
+    if (s) {} // suppress compiler message unused arg
 	t_symbol *sym;
 	t_subst *x = (t_subst *)pd_new(subst_class);
 	// read in order...
@@ -394,32 +427,32 @@ static void *subst_new(t_symbol *s, int argc, t_atom *argv)
 
 static void subst_free(t_subst *x)
 {
-	/* nothing to do */
+	if (x) {}  /* nothing to do */
 }
 
 #ifndef MAXLIB
-void subst_setup(void)
+void subst_setup(void)  // Pure Data
 {
     subst_class = class_new(gensym("subst"), (t_newmethod)subst_new,
     	(t_method)subst_free, sizeof(t_subst), 0, A_GIMME, 0);
-    class_addmethod(subst_class, (t_method)subst_set_order, gensym("order"), A_FLOAT, 0);
-    class_addmethod(subst_class, (t_method)subst_intv, gensym("interval"), A_FLOAT, 0);
-	class_addmethod(subst_class, (t_method)subst_set, gensym("set"), A_SYMBOL, 0);
-	class_addmethod(subst_class, (t_method)subst_load, gensym("load"), A_SYMBOL, 0);
-	class_addmethod(subst_class, (t_method)subst_display, gensym("display"), 0);
+    class_addmethod(subst_class, (t_method)subst_set_order, gensym("order"),    A_FLOAT, 0);
+    class_addmethod(subst_class, (t_method)subst_interval,  gensym("interval"), A_FLOAT, 0);
+	class_addmethod(subst_class, (t_method)subst_set,       gensym("set"),      A_SYMBOL, 0);
+	class_addmethod(subst_class, (t_method)subst_load,      gensym("load"),     A_SYMBOL, 0);
+	class_addmethod(subst_class, (t_method)subst_display,   gensym("display"),  0);
 	class_addlist(subst_class, subst_list);
 	class_addbang(subst_class, subst_bang);
     
     logpost(NULL, 4, "%s", version);
 }
 #else
-void maxlib_subst_setup(void)
+void maxlib_subst_setup(void)   // MaxMSP
 {
     subst_class = class_new(gensym("maxlib_subst"), (t_newmethod)subst_new,
     	(t_method)subst_free, sizeof(t_subst), 0, A_GIMME, 0);
 	class_addcreator((t_newmethod)subst_new, gensym("subst"), A_GIMME, 0);
     class_addmethod(subst_class, (t_method)subst_set_order, gensym("order"), A_FLOAT, 0);
-    class_addmethod(subst_class, (t_method)subst_intv, gensym("interval"), A_FLOAT, 0);
+    class_addmethod(subst_class, (t_method)subst_interval, gensym("interval"), A_FLOAT, 0);
 	class_addmethod(subst_class, (t_method)subst_set, gensym("set"), A_SYMBOL, 0);
 	class_addmethod(subst_class, (t_method)subst_load, gensym("load"), A_SYMBOL, 0);
 	class_addmethod(subst_class, (t_method)subst_display, gensym("display"), 0);
